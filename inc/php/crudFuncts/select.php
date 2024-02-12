@@ -115,14 +115,14 @@ function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
-// --- GLOBAL ---
+// --- GLOBAL RESULT ---
 // - cueillette -
-function getPoidsTotalCueillette( $connection )
+function getPoidsTotalCueillette( $connection, $dateDebut, $dateFin )
 {
     $alias = "poidsTotal";
-    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes";
-    $row = exeSelect( $connection, $query )[0];
-    return $row[$alias];
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes ".
+        "WHERE DateCeuillette BETWEEN $dateDebut AND $dateFin";
+    return exeSelect( $connection, $query )[0][$alias];
 }
 
 function getPoidsTotalCueilletteInParcelle( $connection, $idParcelle )
