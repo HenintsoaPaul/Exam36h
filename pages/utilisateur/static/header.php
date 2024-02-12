@@ -30,7 +30,7 @@
                       </ul>
                 </div>
                 <div class="rounded bg-light">
-                  <a href="#" type="button" class="btn">Deconnexion</a>
+                  <a href="../../index.php" type="button" class="btn">Deconnexion</a>
                 </div>
             </div>
         </div>

@@ -26,7 +26,9 @@
           </div>
             <form action="log.php" method="post" class="d-block">
             <div >
-                <p class="text-danger"> Authentification incorect</p>
+      <?php if(isset($_GET['error'])){ ?>
+            <p class="text-danger"><?php echo $_GET['error'];?></p>
+      <?php }?>
               </div>
               <div class="form-floating mb-3">
                 <input type="text" name="login" id="inputMail" value="henints" class="form-control" placeholder="">
