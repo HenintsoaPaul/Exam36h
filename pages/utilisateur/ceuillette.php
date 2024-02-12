@@ -12,10 +12,6 @@ include "static/header.php";
                     <input type="date" class="form-control" id="dateInput" required>
                 </div>    
                 <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="poidsInput" class="form-label">Poids Ceuilli</label>
-                        <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
-                    </div>
                     <div class="col-md-6 ">
                         <label for="parcelleInput" class="form-label">Parcelle</label>
                         <select name="parcelleInput" class="form-select" id="parcelleInput">
@@ -24,6 +20,10 @@ include "static/header.php";
                             <option value="2"> P2 </option>
                             <option value="3"> P3 </option>
                         </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="poidsInput" class="form-label">Poids Ceuilli</label>
+                        <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
                 </div>
                 <div>
@@ -36,3 +36,12 @@ include "static/header.php";
         </div>
     </div>
 </section>
+
+<script>
+    var poidsInput = document.getElementById("poisInput") ;
+    poidsInput.addEventListener("input" , function() {
+    /// la valeur saisie
+        var poids = poidsInput.value;
+    });
+
+</script>
