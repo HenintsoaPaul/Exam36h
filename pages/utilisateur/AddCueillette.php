@@ -5,7 +5,7 @@
  $connection = db_connect();
  $date = $_POST['date'];
  $poids = $_POST['poidsInput'];
- $parcelle = $_POST['parcelleInput'];
+ $parcelle = $_POST['parcelleInput']; 
  $idCueilleur = $_POST['ceuilleurInput'];
  $link = "ceuillette.php?message";
 

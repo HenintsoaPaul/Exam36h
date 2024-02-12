@@ -58,11 +58,13 @@ closeConnection($connection);
 <script>
     var poidsInput = document.getElementById("poidsInput") ;
     var parcelleInput = document.getElementById("parcelleInput");
+    var dateInput = document.getElementById("dateInput");
     poidsInput.addEventListener("input" , function() {
     /// la valeur saisie
         var idParcelle = parcelleInput.value;
         var poids = poidsInput.value;
-        var poidsRestant = send("getPoidsRestant.php", idParcelle, "idParcelle");
+        var date = dateInput.value;
+        var poidsRestant = getRestePoids("getPoidsRestant.php", date, idParcelle);
         if(poidsRestant < poids){
             var divErreur = document.getElementById("errorLabel");
             divErreur.style.display = "block";
