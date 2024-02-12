@@ -117,27 +117,54 @@ function getAllDepenses( $connection )
     return getAllRows( $connection, "the_depenses" );
 }
 
+function getAllGenre( $connection )
+{
+    return getAllRows( $connection, "the_Genres" );
+}
+
+function getAllCueillettes( $connection )
+{
+    return getAllRows( $connection, "the_cueillettes" );
+}
+
+function getAllParcelles( $connection )
+{
+    return getAllRows( $connection, "the_parcelles" );
+}
+
+function getAllUsers( $connection )
+{
+    return getAllRows( $connection, "the_users" );
+}
+
 function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
-// --- GLOBAL ---
+
+
+// --- GLOBAL RESULT ---
 // - cueillette -
-function getPoidsTotalCueillette( $connection )
+function getPoidsTotalCueilli( $connection )
 {
-    $alias = "poidsTotal";
-    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes";
-    $row = exeSelect( $connection, $query )[0];
-    return $row[$alias];
+    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes";
+    return exeSelect( $connection, $query )[0]['poids'];
 }
 
-function getPoidsTotalCueilletteInParcelle( $connection, $idParcelle )
+function getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin )
 {
-    $alias = "poidsTotal";
-    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes WHERE idParcelle = $idParcelle";
-    $row = exeSelect( $connection, $query )[0];
-    return $row[$alias];
+    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes " .
+        "WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    return exeSelect( $connection, $query )[0]['poids'];
 }
+
+function getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $dateDebut, $dateFin )
+{
+    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes WHERE idParcelle = $idParcelle ".
+        "AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    return exeSelect( $connection, $query )[0]['poids'];
+}
+
 
 // - parcelle -
 function getPoidsTotalInParcelle( $connection, $idParcelle )
@@ -152,7 +179,7 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
     // Get the occupancy rate and yield for the varietal planted in the parcel
     $query = "SELECT occupation, RendementParPied as rendement FROM the_varietesthes v
              JOIN the_parcelles p ON p.idVarieteThe = v.idVarieteThe
-            WHERE p.idVarieteThe = $idParcelle";
+            WHERE p.idParcelle = $idParcelle";
     $row = exeSelect( $connection, $query )[0];
 
     // Calculate the number of tree feet
@@ -161,43 +188,55 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
     return $nbPieds * $row['rendement'];
 }
 
-function getPoidsRestantInParcelle( $connection, $idParcelle )
+function getPoidsRestantInParcelle( $connection, $idParcelle, $dateDebut, $dateFin )
 {
-    $produit = getPoidsTotalInParcelle($connection, $idParcelle);
-    $nesorina = getPoidsTotalCueilletteInParcelle($connection, $idParcelle);
+    // Assuming $dateDebut and $dateFin are strings in the format 'YYYY-MM-DD'
+    list( $yearDebut, $monthDebut, $dayDebut ) = explode( '-', $dateDebut );
+    list( $yearFin, $monthFin, $dayFin ) = explode( '-', $dateFin );
+
+    // Determine the start date based on whether the month of $dateDebut is less than $dateFin
+    $startDate = ($monthDebut < $monthFin || $yearDebut < $yearFin) ? "$yearFin-$monthFin-01" : $dateDebut;
+
+    $nesorina = getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $startDate, $dateFin );
+    $produit = getPoidsTotalInParcelle( $connection, $idParcelle ); // constant tout les debuts de mois
+
     return $produit - $nesorina;
 }
 
+
 // - depense -
-function getSommeDepenses( $connection )
+function getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin )
 {
-    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses";
-    return exeSelect($connection, $query)[0]['sumD'];
+    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses " .
+        "WHERE DateDepense BETWEEN '$dateDebut' AND '$dateFin'";
+    return exeSelect( $connection, $query )[0]['sumD'];
 }
 
-// - salaires -
-function getSommeSalaires( $connection )
-{
-    $query = "SELECT salaire FROM the_salaires ORDER BY idSalaire DESC LIMIT  1";
-    $montantSalaire = exeSelect($connection, $query)[0]['salaire'];
 
-    $query = "SELECT count(idCeuilleur) as nb FROM the_cueilleurs";
-    $nbCueilleurs = exeSelect($connection, $query)[0]['nb'];
+// - salaires -
+function getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin )
+{
+    // get last inserted salaire
+    $query = "SELECT salaire FROM the_salaires ORDER BY idSalaire DESC LIMIT  1";
+    $montantSalaire = exeSelect( $connection, $query )[0]['salaire'];
+
+    // get nb employees == nb cueillettes
+    $query = "SELECT count(idCeuilleur) as nb FROM ".
+        "(SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') As t";
+    $nbCueilleurs = exeSelect( $connection, $query )[0]['nb'];
 
     return $nbCueilleurs * $montantSalaire;
 }
 
-// - other -
-function getCoutRevientParKilo($connection)
-{
-    $sumSalairesCeuilleurs = getSommeSalaires($connection);
-    $sumDepenses = getSommeDepenses($connection);
-    $sumNivoaka = $sumSalairesCeuilleurs - $sumDepenses;
 
-    $poidsTotalCueilli = getPoidsTotalCueillette($connection);
+// - other -
+function getCoutRevientParKilo( $connection, $dateDebut, $dateFin )
+{
+    $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
+    $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
+    $sumNivoaka = $sumSalairesCueilleurs - $sumDepenses;
+
+    $poidsTotalCueilli = getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin );
 
     return $sumNivoaka / $poidsTotalCueilli;
-}
-function getAllGenre($connection){
-    return getAllRows( $connection, "the_Genres" );
 }
