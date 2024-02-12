@@ -9,10 +9,9 @@
  */
 function checkLogin( $connection, $pseudo, $password, $idStatus )
 {
-    $format = "SELECT * FROM the_users WHERE pseudo = '%s' AND password = '%s' AND idStatu = '%s'";
-    $query = sprintf( $format, $pseudo, $password, $idStatus );
+    $format = "SELECT * FROM the_users WHERE pseudo = '%s'";
+    $query = sprintf( $format, $pseudo );
     $result = false;
-
     try {
         $result = mysqli_query( $connection, $query );
 
@@ -24,14 +23,11 @@ function checkLogin( $connection, $pseudo, $password, $idStatus )
         }
     }
     catch ( Exception $e ) {
-        // Handle the exception, e.g., log the error message
         error_log( $e->getMessage() );
-        // Optionally, you can display the error message to the user in a user-friendly way
         echo "An error occurred: " . htmlspecialchars( $e->getMessage() );
     }
-
-    // Return the number of rows returned by the query
-    return mysqli_num_rows( $result );
+    $user = mysqli_fetch_assoc($result);
+    return  $user;
 }
 
 /**

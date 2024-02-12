@@ -28,7 +28,7 @@
                           <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-categories.html">Categorie</a>
+                          <a class="nav-link" href="insertion-categorie.html">Categorie</a>
                         </li>
                       </ul>
                 </div>
