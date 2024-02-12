@@ -115,3 +115,83 @@ function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
+// --- GLOBAL ---
+// - cueillette -
+function getPoidsTotalCueillette( $connection )
+{
+    $alias = "poidsTotal";
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes";
+    $row = exeSelect( $connection, $query )[0];
+    return $row[$alias];
+}
+
+function getPoidsTotalCueilletteInParcelle( $connection, $idParcelle )
+{
+    $alias = "poidsTotal";
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes WHERE idParcelle = $idParcelle";
+    $row = exeSelect( $connection, $query )[0];
+    return $row[$alias];
+}
+
+// - parcelle -
+function getPoidsTotalInParcelle( $connection, $idParcelle )
+{
+    // Get the surface area of the parcel
+    $query = "SELECT surface FROM the_parcelles WHERE idParcelle = $idParcelle";
+    $surface = exeSelect( $connection, $query )[0]['surface'];
+
+    // Convert the surface area : Ha -> square meters
+    $surface *= 10000;
+
+    // Get the occupancy rate and yield for the varietal planted in the parcel
+    $query = "SELECT occupation, RendementParPied as rendement FROM the_varietesthes v
+             JOIN the_parcelles p ON p.idVarieteThe = v.idVarieteThe
+            WHERE p.idVarieteThe = $idParcelle";
+    $row = exeSelect( $connection, $query )[0];
+
+    // Calculate the number of tree feet
+    $nbPieds = $surface / $row['occupation'];
+
+    return $nbPieds * $row['rendement'];
+}
+
+function getPoidsRestantInParcelle( $connection, $idParcelle )
+{
+    $produit = getPoidsTotalInParcelle($connection, $idParcelle);
+    $nesorina = getPoidsTotalCueilletteInParcelle($connection, $idParcelle);
+    return $produit - $nesorina;
+}
+
+// - depense -
+function getSommeDepenses( $connection )
+{
+    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses";
+    return exeSelect($connection, $query)[0]['sumD'];
+}
+
+// - salaires -
+function getSommeSalaires( $connection )
+{
+    $query = "SELECT salaire FROM the_salaires ORDER BY idSalaire DESC LIMIT  1";
+    $montantSalaire = exeSelect($connection, $query)[0]['salaire'];
+
+    $query = "SELECT count(idCeuilleur) as nb FROM the_cueilleurs";
+    $nbCueilleurs = exeSelect($connection, $query)[0]['nb'];
+
+    return $nbCueilleurs * $montantSalaire;
+}
+
+// - other -
+function getCoutRevientParKilo($connection)
+{
+    $sumSalairesCeuilleurs = getSommeSalaires($connection);
+    $sumDepenses = getSommeDepenses($connection);
+    $sumNivoaka = $sumSalairesCeuilleurs - $sumDepenses;
+
+    $poidsTotalCueilli = getPoidsTotalCueillette($connection);
+
+    return $sumNivoaka / $poidsTotalCueilli;
+}
+function getAllGenre($connection){
+    return getAllRows( $connection, "the_Genres" );
+}
