@@ -29,7 +29,7 @@
                 <a class="btn btn-secondary" type="button" href="pages/admin/login.php">Login Admin</a>
               </div>
             </div>
-            <div class="col-12 col-md-6 d-flex justify-content-end">
+            <div class="col-12 col-md-6 d-flex justify-content-center">
               <img
                 src="assets/img/tea.jpg"
                 class="w-50"
