@@ -164,26 +164,29 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
     return $nbPieds * $row['rendement'];
 }
 
-function getPoidsRestantInParcelle( $connection, $idParcelle )
+function getPoidsRestantInParcelle( $connection, $idParcelle, $dateDebut, $dateFin )
 {
     $produit = getPoidsTotalInParcelle($connection, $idParcelle);
-    $nesorina = getPoidsTotalCueilletteInParcelle($connection, $idParcelle);
+    $nesorina = getPoidsTotalCueilletteInParcelleInPeriod($connection, $idParcelle, $dateDebut, $dateFin);
     return $produit - $nesorina;
 }
 
 // - depense -
-function getSommeDepenses( $connection )
+function getSommeDepenses( $connection, $dateDebut, $dateFin )
 {
-    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses";
+    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses ".
+        "WHERE DateDepense BETWEEN $dateDebut AND $dateFin";
     return exeSelect($connection, $query)[0]['sumD'];
 }
 
 // - salaires -
 function getSommeSalaires( $connection )
 {
+    // get last inserted salaire
     $query = "SELECT salaire FROM the_salaires ORDER BY idSalaire DESC LIMIT  1";
     $montantSalaire = exeSelect($connection, $query)[0]['salaire'];
 
+    // get number of employees
     $query = "SELECT count(idCeuilleur) as nb FROM the_cueilleurs";
     $nbCueilleurs = exeSelect($connection, $query)[0]['nb'];
 
@@ -191,13 +194,13 @@ function getSommeSalaires( $connection )
 }
 
 // - other -
-function getCoutRevientParKilo($connection)
+function getCoutRevientParKilo($connection, $dateDebut, $dateFin)
 {
-    $sumSalairesCeuilleurs = getSommeSalaires($connection);
-    $sumDepenses = getSommeDepenses($connection);
-    $sumNivoaka = $sumSalairesCeuilleurs - $sumDepenses;
+    $sumSalairesCueilleurs = getSommeSalaires($connection);
+    $sumDepenses = getSommeDepenses($connection, $dateDebut, $dateFin);
+    $sumNivoaka = $sumSalairesCueilleurs - $sumDepenses;
 
-    $poidsTotalCueilli = getPoidsTotalCueillette($connection);
+    $poidsTotalCueilli = getPoidsTotalCueillette($connection, $dateDebut, $dateFin);
 
     return $sumNivoaka / $poidsTotalCueilli;
 }
