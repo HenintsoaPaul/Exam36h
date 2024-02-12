@@ -1,6 +1,14 @@
 # CREATE DATABASE the;
 # USE the;
 
+CREATE TABLE the_Salaires(
+                             idSalaire INT AUTO_INCREMENT,
+                             salaire DECIMAL(25,2)   NOT NULL,
+                             DateDebutSalaire DATE,
+                             PRIMARY KEY(idSalaire)
+);
+
+
 CREATE TABLE the_VarietesThes(
                                  idVarieteThe INT AUTO_INCREMENT,
                                  NomVariete VARCHAR(100)  NOT NULL,
