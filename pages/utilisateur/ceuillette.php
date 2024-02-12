@@ -13,7 +13,7 @@ closeConnection($connection);
             <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center ">
                 <div class="h1 text-center"> Faire une cueillette </div>
                 <div class="bg-dark p-1 w-100 my-2"></div>
-                <p class="text-danger" id="errorLabel"> Le poids est trop grand</p>
+                <p class="text-danger" id="errorLabel" style="display:none;"> Le poids est trop grand</p>
                 <div class="form-group mb-3">
                     <label for="dateInput" class="form-label">Date de cueillette</label>
                     <input type="date" class="form-control" id="dateInput" required> 
@@ -54,7 +54,11 @@ closeConnection($connection);
         var poids = poidsInput.value;
         var poidsRestant = send("getPoidsRestant.php", idParcelle, "idParcelle");
         if(poidsRestant < poids){
-            console.log("suup");
+            var divErreur = document.getElementById("errorLabel");
+            divErreur.style.display = "block";
+        } else{
+            var divErreur = document.getElementById("errorLabel");
+            divErreur.style.display = "none";
         }
     });
 </script>
