@@ -40,62 +40,15 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h3>Poids restants au <span id="dateFinTitle">  </span> </h3>
-                        <table class="table">
+                        <table class="table" id="parcelleTable">
                             <thead>
                                 <tr>
                                     <th>Parcelle</th>
                                     <th>Poids restant</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>3w`23`ws
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
+                            <tbody id="parcelleTableBody">
+                                
                             </tbody>
                         </table>
                     </div>
@@ -142,8 +95,26 @@
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
         var allParcelle = getAllParcelle("getAllParcelle.php");
+        
+        var tbody = document.getElementById("parcelleTableBody");
+        for (let index = 0; index < allParcelle.length; index++) {
 
+            const parcelle = allParcelle[index];
+            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,value.idParcelle);
 
+            var tr = document.createElement("tr");
+
+            var td_idParcelle = document.createElement("td");
+            var td_reste = document.createElement("td");
+            
+            td_idParcelle.innerHTML = parcelle.idParcelle;
+            td_reste.innerHTML = reste;
+
+            tr.appendChild(td_idParcelle);
+            tr.appendChild(td_reste);
+
+            tbody.appendChild(tr);
+        }
     ///
 
     /// Affichage de resultat

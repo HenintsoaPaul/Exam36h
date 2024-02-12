@@ -10,7 +10,7 @@
               </h1>
               <p class="fw-light">
                 Bienvenue dans la grande famille des ceuilleur , dans cette section vous pouvez vous epanouir en tant que tel.
-                Vous pourez <a href="ceuillette.php" class="link">faire des ceuillettes</a> , enregistrer <a href="depense.php" class="link">depenses</a> et voir <a href="resultat.php" class="link">les resultats</a> 
+                Vous pourez <a href="ceuillette.php" class="link">faire des ceuillettes</a> , enregistrer <a href="depense.php" class="link">depenses</a> et voir <a href="resultats.php" class="link">les resultats</a> 
               </p>
             </div>
             <div class="col-12 col-md-6 d-flex justify-content-end">
