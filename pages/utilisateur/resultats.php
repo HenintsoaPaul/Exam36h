@@ -99,7 +99,7 @@
         for (let index = 0; index < allParcelle.length; index++) {
 
             const parcelle = allParcelle[index];
-            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,value.idParcelle);
+            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,parcelle.idParcelle);
 
             var tr = document.createElement("tr");
 
