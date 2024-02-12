@@ -32,7 +32,7 @@ include "static/header.php";
                 </div>
             </form>
             <div class="col-12 col-md-6 d-none d-lg-flex justify-content-end">
-                <img src="../../assets/img/depense.jpg" class="img-fluid" alt="image portrait" />
+                <img src="../../assets/img/spend-money.jpg" class="img-fluid rounded-3 shadow-lg" alt="image portrait" />
             </div>
         </div>
     </div>

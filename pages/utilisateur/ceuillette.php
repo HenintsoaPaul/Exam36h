@@ -32,6 +32,15 @@ closeConnection($connection);
                         <label for="poidsInput" class="form-label">Poids Cueillit</label>
                         <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
+                    <div class="col-md-6 ">
+                        <label for="ceuilleurInput" class="form-label">Ceuilleur</label>
+                        <select name="ceuilleurInput" class="form-select" id="ceuilleurInput">
+                            <option value="">Choisir un ceuilleur</option>
+                            <option value="1"> P1 </option>
+                            <option value="2"> P2 </option>
+                            <option value="3"> P3 </option>
+                        </select>
+                    </div>
                 </div>
                 <div class="d-inline">
                     <button type="submit" class="btn btn-success">Ceuillir</button>
@@ -39,7 +48,7 @@ closeConnection($connection);
                 
             </form>
             <div class="col-12 col-md-6 d-none d-lg-flex justify-content-end ">
-                <img src="../../assets/img/baby-picker.jpg" class="w-100 rounded-3" alt="image portrait" />
+                <img src="../../assets/img/baby-picker.jpg" class="w-100 rounded-3 shadow-lg" alt="image portrait" />
             </div>
         </div>
     </div>
