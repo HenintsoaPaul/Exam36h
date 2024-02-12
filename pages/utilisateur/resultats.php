@@ -84,7 +84,6 @@
     var dateDebutInput = document.getElementById("dateDebutInput");
     var dateFinInput = document.getElementById("dateFinInput");
 
-
     /// Action lors de la validation du formulaire
     resultForm.addEventListener("submit" , function(event){
         event.preventDefault();

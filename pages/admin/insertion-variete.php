@@ -23,18 +23,18 @@
 
                     <!-- Nom -->
                     <div class="form-group col-md-12">
-                        <label for="nomVariete">Nom Variete</label>
+                        <label for="nomVariete" class="form-label">Nom Variete</label>
                         <input class="form-control" type="text" name="nomVariete" id="nomVariete" required>
                     </div>
                     <div class="row">
                         <!-- OCCUPATION -->
                         <div class="form-group col-md-6"> 
-                            <label for="occupation">Occupation</label>
+                            <label for="occupation" class="form-label">Occupation</label>
                             <input class="form-control" type="text" name="occupation" id="occupation" required>
                         </div>
                         <!-- Rendement par pied -->
                         <div class="form-group col-md-6"> 
-                            <label for="rendement">Rendement par pied</label>
+                            <label for="rendement" class="form-label">Rendement par pied</label>
                             <input class="form-control" type="text" name="rendement" id="rendement" required>
                         </div>
                     </div>
