@@ -6,10 +6,10 @@
  * @param string $password
  * @return int|string
  */
-function checkLogin( $connection, $pseudo, $password )
+function checkLogin( $connection, $pseudo, $password, $idStatus )
 {
-    $format = "SELECT * FROM Users WHERE pseudo = '%s' AND password = '%s'";
-    $query = sprintf( $format, $pseudo, $password );
+    $format = "SELECT * FROM the_users WHERE pseudo = '%s' AND password = '%s' AND idStatu = '%s'";
+    $query = sprintf( $format, $pseudo, $password, $idStatus );
     $result = false;
 
     try {
@@ -33,3 +33,18 @@ function checkLogin( $connection, $pseudo, $password )
     return mysqli_num_rows( $result );
 }
 
+/**
+ * Return 1 on SUCCESS.
+ */
+function checkLoginAdmin($connection, $pseudo, $password)
+{
+    return checkLogin($connection, $pseudo, $password, 1);
+}
+
+/**
+ * Return 1 on SUCCESS.
+ */
+function checkLoginUser($connection, $pseudo, $password)
+{
+    return checkLogin($connection, $pseudo, $password, 2);
+}
