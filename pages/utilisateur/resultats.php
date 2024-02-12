@@ -148,6 +148,9 @@
         resultLayout.classList.replace("d-none" , "d-block");
     });
 </script>
+<script>
+    activeCurrentPage("resultat_li");
+</script>
 <?php
     include"static/footer.php";
 ?>

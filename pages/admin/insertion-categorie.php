@@ -24,6 +24,9 @@
             </div>
         </div>
     </div>
+    <script>
+        activeCurrentPage("categorie_li")
+      </script>
     <br />
 <?php
     include "static/footer.php";

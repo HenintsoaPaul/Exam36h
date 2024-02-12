@@ -19,6 +19,10 @@
           </div>
         </div>
       </section>
+
+      <script>
+        activeCurrentPage("admin_li")
+      </script>
 <?php
   include "static/footer.php"
 ?>

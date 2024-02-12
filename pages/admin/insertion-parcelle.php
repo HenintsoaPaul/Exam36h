@@ -42,6 +42,9 @@ $connection = db_connect();
         </div>
     </div>
     <br />
+    <script>
+        activeCurrentPage("parcelle_li")
+      </script>
     <?php
 include "static/footer.php";
 ?>

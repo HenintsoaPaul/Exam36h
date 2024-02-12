@@ -30,6 +30,9 @@
             </div>
     </div>
     <br />
+    <script>
+        activeCurrentPage("salaire_li")
+      </script>
     <?php
 include "static/footer.php";
 ?>
