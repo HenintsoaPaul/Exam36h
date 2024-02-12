@@ -133,6 +133,15 @@ function getPoidsTotalCueilletteInParcelle( $connection, $idParcelle )
     return $row[$alias];
 }
 
+function getPoidsTotalCueilletteInParcelleInPeriod( $connection, $idParcelle, $dateDebut, $dateFin )
+{
+    $alias = "poidsTotal";
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes WHERE idParcelle = $idParcelle ".
+        "AND DateCeuillette BETWEEN $dateDebut AND $dateFin";
+    $row = exeSelect( $connection, $query )[0];
+    return $row[$alias];
+}
+
 // - parcelle -
 function getPoidsTotalInParcelle( $connection, $idParcelle )
 {
