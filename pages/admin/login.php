@@ -31,6 +31,9 @@
             </div>
           </div>
             <form action="log.php" method="post" class="d-block" name="form">
+              <div >
+                <p class="text-danger"> Authentification incorect</p>
+              </div>
               <div class="form-floating mb-3">
                 <input type="text" name="login" id="inputMail" value="alexAdmin" class="form-control" placeholder="">
                 <label for="inputMail">Login</label>
