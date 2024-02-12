@@ -116,6 +116,8 @@ function getAllCategoriesDepenses( $connection )
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
 
+// --- GLOBAL ---
+// - cueillette -
 function getPoidsTotalCueillette( $connection )
 {
     $alias = "poidsTotal";
@@ -124,11 +126,15 @@ function getPoidsTotalCueillette( $connection )
     return $row[$alias];
 }
 
-function getPoidsRestantOnParcelle( $connection, $idParcelle )
+function getPoidsTotalCueilletteInParcelle( $connection, $idParcelle )
 {
-    $query = "";
+    $alias = "poidsTotal";
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes WHERE idParcelle = $idParcelle";
+    $row = exeSelect( $connection, $query )[0];
+    return $row[$alias];
 }
 
+// - parcelle -
 function getPoidsTotalInParcelle( $connection, $idParcelle )
 {
     // Get the surface area of the parcel
@@ -143,7 +149,6 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
              JOIN the_parcelles p ON p.idVarieteThe = v.idVarieteThe
             WHERE p.idVarieteThe = $idParcelle";
     $row = exeSelect( $connection, $query )[0];
-    var_dump($row);
 
     // Calculate the number of tree feet
     $nbPieds = $surface / $row['occupation'];
