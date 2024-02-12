@@ -42,6 +42,9 @@ closeConnection($connection);
             </div>
         </div>
     </div>
+    <script>
+        activeCurrentPage("depense_li");
+    </script>
 </section>
 <?php
 include "static/footer.php";

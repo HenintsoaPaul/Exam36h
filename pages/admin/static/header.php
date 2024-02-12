@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/font/bootstrap-icons.min.css">
+    <script src="../../assets/js/affichage.js"></script>
     <title>Admin Magic Tea</title>
 </head>
 <body>
@@ -16,23 +18,25 @@
 
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="home.php">Admin Home<span class="sr-only"></span></a>
+                        <li class="nav-item">
+                          <a class="nav-link" id="admin_li" href="home.php">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.php">Variete</a>
+                          <a class="nav-link" id="variete_li" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
+                          <a class="nav-link" id="parcelle_li" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-cueilleur.php">Cueilleur</a>
+
+                          <a class="nav-link" id="ceuilleur_li" href="insertion-cueilleur.php">Ceuilleur</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-categorie.php">Categorie Depense</a>
+                          <a class="nav-link" id="categorie_li" href="insertion-categorie.php">Categorie</a>
+                          
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="insertion-salaire.php">Salaire</a>
+                            <a class="nav-link" id="salaire_li" href="insertion-salaire.php">Salaire</a>
                           </li>
                       </ul>
                 </div>

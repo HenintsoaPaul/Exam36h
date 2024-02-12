@@ -47,6 +47,9 @@
         </div>
     </div>
     <br />
+    <script>
+        activeCurrentPage("variete_li")
+      </script>
     <?php
 include "static/footer.php";
 ?>

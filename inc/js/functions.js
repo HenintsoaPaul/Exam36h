@@ -30,7 +30,7 @@ function getTab(link) {
       }
   }
   xhr.open("GET", link,  false); 
-  xhr.send(null); 
+  xhr.send(null);  
   return retour;
 } 
 function getRestePoids(herf,date, idParcelle) {
@@ -58,3 +58,107 @@ function getRestePoids(herf,date, idParcelle) {
 
   return retour;
 }
+function getPoidsCueilli(herf,dateDebut, dateFin) {
+  var xhr = getxhr();
+  var Data = new FormData();
+  Data.append("dateDebut", dateDebut);
+  Data.append("dateFin", dateFin);
+
+  var retour;
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if(xhr.status == 200) {
+          // console.log(xhr.responseText);
+          console.log(xhr.responseText);
+          retour = JSON.parse(xhr.responseText);
+        } else {
+          console.log("error : " + xhr.status);
+        }
+      }
+    };
+
+  xhr.open("POST", herf, false);
+  xhr.send(Data);
+
+  return retour;
+}
+
+function getPrixRevient(herf,dateDebut, dateFin) {
+  var xhr = getxhr();
+  var Data = new FormData();
+  Data.append("dateDebut", dateDebut);
+  Data.append("dateFin", dateFin);
+
+  var retour;
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if(xhr.status == 200) {
+          // console.log(xhr.responseText);
+          console.log(xhr.responseText);
+          retour = JSON.parse(xhr.responseText);
+        } else {
+          console.log("error : " + xhr.status);
+        }
+      }
+    };
+
+  xhr.open("POST", herf, false);
+  xhr.send(Data);
+
+  return retour;
+}
+
+function getPoidsRestants(herf,dateDebut, dateFin, idParcelle) {
+  var xhr = getxhr();
+  var Data = new FormData();
+  Data.append("dateDebut", dateDebut);
+  Data.append("dateFin", dateFin);
+  Data.append("idParcelle", idParcelle);
+
+
+  var retour;
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if(xhr.status == 200) {
+          // console.log(xhr.responseText);
+          console.log(xhr.responseText);
+          retour = JSON.parse(xhr.responseText);
+        } else {
+          console.log("error : " + xhr.status);
+        }
+      }
+    };
+
+  xhr.open("POST", herf, false);
+  xhr.send(Data);
+
+  return retour;
+}
+
+function getAllParcelle(herf) {
+  var xhr = getxhr();
+  var Data = new FormData();
+
+  var retour;
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if(xhr.status == 200) {
+          // console.log(xhr.responseText);
+          console.log(xhr.responseText);
+          retour = JSON.parse(xhr.responseText);
+        } else {
+          console.log("error : " + xhr.status);
+        }
+      }
+    };
+
+  xhr.open("POST", herf, false);
+  xhr.send(Data);
+
+  return retour;
+}
+

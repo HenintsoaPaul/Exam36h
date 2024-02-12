@@ -45,4 +45,10 @@ if ( isset($_GET['message']) ) {
     <br />
 <?php
     include "static/footer.php";
+
+    <script>
+        activeCurrentPage("salaire_li")
+      </script>
+    <?php
+include "static/footer.php";
 ?>
