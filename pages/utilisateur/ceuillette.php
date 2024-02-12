@@ -24,7 +24,7 @@ if ( isset($_GET['message']) ) {
                 <div class="h1 text-center"> Faire une cueillette </div>
                 <div class="bg-dark p-1 w-100 my-2"></div>
 
-                <p class="text-<?= $className ?>" id="errorLabel" style="display:none; "><?= $insertLog ?></p>
+                <p class="text-<?= $className ?>" id="insertLog"><?= $insertLog ?></p>
 
                 <p class="text-danger" id="errorLabel" style="display:none;"> Le poids est trop grand</p>
 
@@ -45,7 +45,7 @@ if ( isset($_GET['message']) ) {
                     </div>
 
                     <div class="col-md-6">
-                        <label for="poidsInput" class="form-label">Poids Cueillit</label>
+                        <label for="poidsInput" class="form-label">Poids Cueillit (Kg)</label>
                         <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
                     <div class="col-md-6 ">
@@ -60,7 +60,7 @@ if ( isset($_GET['message']) ) {
                 </div>
 
                 <div class="d-inline">
-                    <button type="submit" class="btn btn-success">Ceuillir</button>
+                    <button type="submit" class="btn btn-success" id="btn-submit">Ceuillir</button>
                 </div>
                 
             </form>
@@ -77,14 +77,21 @@ if ( isset($_GET['message']) ) {
     const dateInput = document.getElementById("dateInput");
 
     poidsInput.addEventListener("input" , function() {
-    /// la valeur saisie
+    // la valeur saisie
         const idParcelle = parcelleInput.value;
         const date = dateInput.value;
         const poidsRestant = getRestePoids("getPoidsRestant.php", date, idParcelle);
 
         const poids = poidsInput.value;
+        console.log(poids);
+
         const divErreur = document.getElementById("errorLabel");
+        const btnSubmit = document.getElementById("btn-submit");
+        document.getElementById("insertLog").style.display = "none";
+
         divErreur.style.display = poidsRestant < poids ? "block" : "none";
+        if (poidsRestant < poids) btnSubmit.classList.add("disabled");
+        else btnSubmit.classList.remove("disabled");
     });
 
     activeCurrentPage("ceuillette_li")
