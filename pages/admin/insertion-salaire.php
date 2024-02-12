@@ -5,7 +5,7 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/addSalaire.php" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
                     <h1>Salaire</h1>
                     <div class="row">
                         <!-- Montant -->
@@ -15,7 +15,7 @@
                         </div>
                         <!-- Date debut -->
                         <div class="form-group col-md-6"> 
-                            <label for="dateInput">Date de debut</label>
+                            <label for="dateInput">Date</label>
                             <input type="date" class="form-control" required name="dateInput" id="dateInput">
                         </div>
                     </div>

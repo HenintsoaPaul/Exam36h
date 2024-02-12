@@ -115,3 +115,8 @@ function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
+
+function getAllGenre($connection){
+    return getAllRows( $connection, "the_Genres" );
+
+}
