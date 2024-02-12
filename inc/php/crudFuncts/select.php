@@ -155,3 +155,41 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
 
     return $nbPieds * $row['rendement'];
 }
+
+function getPoidsRestantInParcelle( $connection, $idParcelle )
+{
+    $produit = getPoidsTotalInParcelle($connection, $idParcelle);
+    $nesorina = getPoidsTotalCueilletteInParcelle($connection, $idParcelle);
+    return $produit - $nesorina;
+}
+
+// - depense -
+function getSommeDepenses( $connection )
+{
+    $query = "SELECT sum(MontantDepense) as sumD FROM the_depenses";
+    return exeSelect($connection, $query)[0]['sumD'];
+}
+
+// - salaires -
+function getSommeSalaires( $connection )
+{
+    $query = "SELECT salaire FROM the_salaires ORDER BY idSalaire DESC LIMIT  1";
+    $montantSalaire = exeSelect($connection, $query)[0]['salaire'];
+
+    $query = "SELECT count(idCeuilleur) as nb FROM the_cueilleurs";
+    $nbCueilleurs = exeSelect($connection, $query)[0]['nb'];
+
+    return $nbCueilleurs * $montantSalaire;
+}
+
+// - other -
+function getCoutRevientParKilo($connection)
+{
+    $sumSalairesCeuilleurs = getSommeSalaires($connection);
+    $sumDepenses = getSommeDepenses($connection);
+    $sumNivoaka = $sumSalairesCeuilleurs - $sumDepenses;
+
+    $poidsTotalCueilli = getPoidsTotalCueillette($connection);
+
+    return $sumNivoaka / $poidsTotalCueilli;
+}
