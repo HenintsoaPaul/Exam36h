@@ -26,8 +26,7 @@ function checkLogin( $connection, $pseudo, $password, $idStatus )
         error_log( $e->getMessage() );
         echo "An error occurred: " . htmlspecialchars( $e->getMessage() );
     }
-    $user = mysqli_fetch_assoc($result);
-    return  $user;
+    return mysqli_fetch_assoc( $result );
 }
 
 /**
@@ -105,4 +104,14 @@ function getAllCueilleurs( $connection )
 function getAllVarietes( $connection )
 {
     return getAllRows( $connection, "the_varietesthes" );
+}
+
+function getAllDepenses( $connection )
+{
+    return getAllRows( $connection, "the_depenses" );
+}
+
+function getAllCategoriesDepenses( $connection )
+{
+    return getAllRows( $connection, "the_CategoriesDepenses" );
 }
