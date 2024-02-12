@@ -4,9 +4,7 @@ require_once '../../../inc/php/crudFuncts/create.php';
 
 
 $link = "../insertion-ceuilleur.php?message";
-if ( isset( $error ) ) {
-    header( "Location:$link=$error" );
-}
+
 
 $dtn = $_POST['naissance'];
 $nom = $_POST['nomInput'];

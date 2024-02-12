@@ -2,7 +2,7 @@
 function exeInsertThenNbRows( $connection, $query )
 {
     $nbRowsInserted = 0;
-    try {
+    try { 
         if ( mysqli_query( $connection, $query ) ) {
 
             $nbRowsInserted = mysqli_affected_rows( $connection );
