@@ -4,6 +4,7 @@ require_once '../../inc/php/connection.php';
 include '../../inc/php/crudFuncts/select.php';
 $connection = db_connect();
 $parcelles = getAllParcelles($connection);
+$cueilleurs = getAllCueilleurs($connection); 
 closeConnection($connection); 
 ?>
 <script src="../../inc/js/functions.js"></script>
@@ -33,12 +34,12 @@ closeConnection($connection);
                         <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
                     <div class="col-md-6 ">
-                        <label for="ceuilleurInput" class="form-label">Ceuilleur</label>
+                        <label for="cueilleurInput" class="form-label">Ceuilleur</label>
                         <select name="ceuilleurInput" class="form-select" id="ceuilleurInput">
-                            <option value="">Choisir un ceuilleur</option>
-                            <option value="1"> P1 </option>
-                            <option value="2"> P2 </option>
-                            <option value="3"> P3 </option>
+                            <option value="">Choisir un cueilleur</option>
+            <?php   for($i=0;$i<count($cueilleurs);$i++){?>
+                            <option value="<?php echo $cueilleurs[$i]['idCeuilleur'];?>"><?php echo $cueilleurs[$i]['Nom'];?></option>
+        <?php       }?>
                         </select>
                     </div>
                 </div>

@@ -6,8 +6,8 @@
  $date = $_POST['date'];
  $poids = $_POST['poidsInput'];
  $parcelle = $_POST['parcelleInput'];
- $idCueilleur = $_POST['cueilleurInput'];
- $link = "../ceuillette.php?message";
+ $idCueilleur = $_POST['ceuilleurInput'];
+ $link = "ceuillette.php?message";
 
  addCueillette($connection, $date, $poids, $parcelle, $idCueilleur);
  $message = $nbRowsAdded === 1 ? "success" : "failed";
