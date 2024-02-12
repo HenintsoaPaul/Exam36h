@@ -44,6 +44,9 @@
         </div>
     </div>
     <br />
+    <script>
+        activeCurrentPage("ceuilleur_li")
+      </script>
     <?php
 include "static/footer.php";
 ?>

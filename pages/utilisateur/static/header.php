@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/font/bootstrap-icons.min.css">
+    <script src="../../assets/js/affichage.js"></script>
     <title>Admin Magic Tea</title>
 </head>
 <body>
@@ -16,17 +17,17 @@
                 </div>
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="home.php">User Home<span class="sr-only"></span></a>
-                        </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="ceuillette.php">Ceuillette</a>
+                          <a class="nav-link" id="userHome_li" href="home.php">User Home<span class="sr-only"></span></a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="depense.php">Depense</a>
+                        <li class="nav-item" >
+                          <a class="nav-link" id="ceuillette_li" href="ceuillette.php">Ceuillette</a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="resultats.php">Resultats</a>
+                        <li class="nav-item" >
+                          <a class="nav-link " id="depense_li" href="depense.php">Depense</a>
+                        </li>
+                        <li class="nav-item" >
+                          <a class="nav-link" id="resultat_li" href="resultats.php">Resultats</a>
                         </li>
                       </ul>
                 </div>
