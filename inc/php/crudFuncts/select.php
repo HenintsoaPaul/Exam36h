@@ -32,3 +32,4 @@ function checkLogin( $connection, $pseudo, $password )
     // Return the number of rows returned by the query
     return mysqli_num_rows( $result );
 }
+
