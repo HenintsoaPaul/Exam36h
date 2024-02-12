@@ -127,11 +127,6 @@ function getAllCueillettes( $connection )
     return getAllRows( $connection, "the_cueillettes" );
 }
 
-function getAllParcelles( $connection )
-{
-    return getAllRows( $connection, "the_parcelles" );
-}
-
 function getAllUsers( $connection )
 {
     return getAllRows( $connection, "the_users" );
