@@ -7,10 +7,11 @@ $connection = db_connect();
 <?php
   include "static/header.php"
 ?>
-    <div class="main">
+    <div class="main m-5">
         <div class="container">
             <div class="row">
                 <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <div class="card p-5 rounded border-3">    
                     <h1>Parcelle</h1>
                     <div class="row">
                         <!-- SURFACE -->
@@ -31,7 +32,11 @@ $connection = db_connect();
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">Add New Parcelle</button>
+                    <div>
+
+                        <button type="submit" class="btn btn-success mt-3">Add New Parcelle</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
