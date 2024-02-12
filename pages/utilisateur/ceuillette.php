@@ -45,3 +45,6 @@ include "static/header.php";
     });
 
 </script>
+<?php
+include "static/footer.php";
+?>
