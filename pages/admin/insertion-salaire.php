@@ -43,12 +43,9 @@ if ( isset($_GET['message']) ) {
             </div>
     </div>
     <br />
-<?php
-    include "static/footer.php";
-
     <script>
         activeCurrentPage("salaire_li")
-      </script>
-    <?php
-include "static/footer.php";
+    </script>
+<?php
+    include "static/footer.php";
 ?>

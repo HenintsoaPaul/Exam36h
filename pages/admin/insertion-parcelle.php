@@ -29,7 +29,7 @@ if ( isset($_GET['message']) ) {
                     <div class="row">
                         <!-- SURFACE -->
                         <div class="form-group col-md-6"> 
-                            <label for="surface">Surface</label>
+                            <label for="surface">Surface (Ha)</label>
                             <input class="form-control" type="number" name="surface" id="surface" required>
                         </div>
                         <!-- variete -->
@@ -56,10 +56,7 @@ if ( isset($_GET['message']) ) {
 
     <script>
         activeCurrentPage("parcelle_li")
-      </script>
-    <?php
-include "static/footer.php";
-?>
+    </script>
 <?php
     include "static/footer.php";
 ?>
