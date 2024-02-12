@@ -142,6 +142,8 @@
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
         var allParcelle = getAllParcelle("getAllParcelle.php");
+        var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,allParcelle[0].idParcelle);
+        
 
 
     ///
