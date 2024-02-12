@@ -6,10 +6,11 @@ require_once 'inc/php/connection.php';
 $connection = db_connect();
 
 //addCueilleur($connection, "Boto", "2022-12-12", 5);
-addVariete($connection, "Cannabis", 25.1, 15.15);
-addCategorieDepense($connection,"Bet261");
-addParcelle($connection,590, 4);
-addCueillette($connection, "2000-01-01", 1000, 1, 3);
+//addVariete($connection, "Cannabis", 25.1, 15.15);
+//addCategorieDepense($connection,"Bet261");
+//addParcelle($connection,590, 4);
+//addCueillette($connection, "2000-01-01", 1000, 1, 3);
+addSalaire($connection, 150);
 
 closeConnection($connection);
 
