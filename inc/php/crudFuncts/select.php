@@ -115,3 +115,11 @@ function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
+
+function getPoidsTotalCueillette( $connection )
+{
+    $alias = "poidsTotal";
+    $query = "SELECT sum(PoidsCeuilli) AS $alias FROM the_cueillettes";
+    $row = exeSelect( $connection, $query )[0];
+    return $row[$alias];
+}
