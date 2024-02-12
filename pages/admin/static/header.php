@@ -16,20 +16,23 @@
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
                         <li class="nav-item active">
-                          <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
+                          <a class="nav-link" href="home.php">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.html">Variete</a>
+                          <a class="nav-link" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
+                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
+                          <a class="nav-link" href="insertion-ceuilleur.php">Cueilleur</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-categorie.html">Categorie</a>
+                          <a class="nav-link" href="insertion-categorie.php">Categorie</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="insertion-salaire.php">Salaire</a>
+                          </li>
                       </ul>
                 </div>
                 <div class="rounded bg-light">
@@ -38,23 +41,3 @@
             </div>
         </div>
     </header>
-
-    <div class="main">
-        <div class="container">
-            <div class="row">
-                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
-                    <h1>Categorie</h1>
-                    <!-- Nom -->
-                    <div class="form-group col-md-12">
-                        <label for="nomInput">Nom Categorie</label>
-                        <input class="form-control" type="text" name="nomInput" id="nomInput" required>
-                    </div>
-                    <button type="submit" class="btn btn-success mt-3">New Categorie</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <br />
-    <script src="../../assets/js/bootstrap.min.js"></script>
-</body>
-</html>
