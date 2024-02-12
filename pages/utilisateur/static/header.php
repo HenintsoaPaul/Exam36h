@@ -7,7 +7,7 @@
     <title>Admin Magic Tea</title>
 </head>
 <body>
-    <header>
+    <header class="shadow-lg">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container d-flex">
                 <div class="navbar-brand uppercase">
