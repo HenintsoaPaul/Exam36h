@@ -23,7 +23,7 @@ function sendData(form, page, redirection) {
         alert($msg['msg']);
       }
       else{
-        window.location.href="redirection";
+        window.location.href=redirection;
       }
     });
 
