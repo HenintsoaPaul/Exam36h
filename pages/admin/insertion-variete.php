@@ -5,11 +5,12 @@
     <script> alert("<?php echo $_GET['message'] ?>");</script>
 <?php }?>
 
-    <div class="main">
+    <div class="main m-5">
         <div class="container">
             <div class="row">
                 <form action="traitements/addVariete.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
-                    <h1>Variete de the</h1>
+                <div class="card p-5 rounded border-3">    
+                <h1>Variete de the</h1>
                     <!-- Nom -->
                     <div class="form-group col-md-12">
                         <label for="nomVariete">Nom Variete</label>
@@ -27,7 +28,10 @@
                             <input class="form-control" type="text" name="rendement" id="rendement" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
+                    <div>
+                        <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
+                    </div>
+                    </div>
                 </form>
             </div>
         </div>
