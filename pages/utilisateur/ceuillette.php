@@ -10,13 +10,13 @@ closeConnection($connection);
 <section class="my-5" id="main">
     <div class="container ">
         <div class="row gy-4  gy-md-0">
-            <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center ">
+            <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center " action="AddCueillette.php" method="POST">
                 <div class="h1 text-center"> Faire une cueillette </div>
                 <div class="bg-dark p-1 w-100 my-2"></div>
                 <p class="text-danger" id="errorLabel" style="display:none;"> Le poids est trop grand</p>
                 <div class="form-group mb-3">
                     <label for="dateInput" class="form-label">Date de cueillette</label>
-                    <input type="date" class="form-control" id="dateInput" required> 
+                    <input type="date" class="form-control" id="dateInput" required name="date"> 
                 </div>    
                 <div class="row mb-3">
                     <div class="col-md-6 ">
