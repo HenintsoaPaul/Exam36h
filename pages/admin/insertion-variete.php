@@ -1,3 +1,6 @@
+<?php
+  include "static/header.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

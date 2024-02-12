@@ -1,3 +1,6 @@
+<?php
+  include "static/header.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,34 +50,15 @@
                 Welcome to the admin page
               </h1>
               <p class="fw-light">Dans cette partie vous allez pouvoir administer les 
-                <a href="insertion-variete.html" class="link">Varietes</a> ,
-                <a href="insertion-parcelle.html" class="link">Parcelles</a> ,
-                <a href="insertion-ceuilleur.html" class="link">Ceuilleurs</a> ,
-                <a href="insertion-categorie.html" class="link">Categorie</a>
+                <a href="insertion-variete.php" class="link">Varietes</a> ,
+                <a href="insertion-parcelle.php" class="link">Parcelles</a> ,
+                <a href="insertion-ceuilleur.php" class="link">Ceuilleurs</a> ,
+                <a href="insertion-categorie.php" class="link">Categorie</a>
+                <a href="insertion-salaire.php" class="link">Salaire</a>
               </p>
           </div>
         </div>
       </section>
-    <footer >
-        <div class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <ul class="navbar-nav d-flex flex-column">
-                    <li class="nav-item">  
-                        <h3>Contributors</h3>
-                    </li>
-                    <li class="nav-item">
-                        <p>ETU 002434</p>
-                    </li>
-                    <li class="nav-item">
-                        <p>ETU 002443</p>
-                    </li>
-                    <li class="nav-item">
-                        <p>ETU 002510</p>
-                    </li>
-                  </ul>
-            </div>
-        </div>
-    </footer>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php
+  include "static/footer.php"
+?>

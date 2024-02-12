@@ -91,3 +91,15 @@ function addSalaire( $connection, $salaire, $dateDebutSalaire = null )
 
     return exeInsertThenNbRows( $connection, $query );
 }
+
+function addDepense( $connection, $dateDepense, $montantDepense, $idCategorieDepense )
+{
+    if ( !isset( $dateDepense ) ) echo "dateDepense cannot be null!";
+    if ( !isset( $montantDepense ) ) echo "montantDepense cannot be null!";
+    if ( !isset( $idCategorieDepense ) ) echo "idCategorieDepense cannot be null!";
+
+    $format = "INSERT INTO the_depenses (datedepense, montantdepense, idcategoriedepense) VALUES ('%s',%f, %d)";
+    $query = sprintf( $format, $dateDepense, $montantDepense, $idCategorieDepense );
+
+    return exeInsertThenNbRows( $connection, $query );
+}
