@@ -25,19 +25,24 @@
             </div>
           </div>
             <form action="log.php" method="post" class="d-block">
-            <div >
-      <?php if(isset($_GET['error'])){ ?>
-            <p class="text-danger"><?php echo $_GET['error'];?></p>
-      <?php }?>
-              </div>
+                <!-- login Error Log -->
+                <div >
+                    <?php if ( isset($_GET['error']) ) { ?>
+                        <p class="text-danger"><?= $_GET['error'] ?></p>
+                    <?php } ?>
+                </div>
+                <!-- login Error Log -->
+
               <div class="form-floating mb-3">
                 <input type="text" name="login" id="inputMail" value="henints" class="form-control" placeholder="">
                 <label for="inputMail">Login</label>
               </div>
+
               <div class="form-floating mb-3">
                 <input type="password" class="form-control" name="password" id="inputPass" value="user" placeholder="">
                 <label for="inputPass">Password</label>
               </div>
+
               <div class="d-flex justify-content-between">
                 <a href="../../" class=" fs-5 nav-link"> <i class="bi bi-arrow-left"></i></a>
                 <button type="submit" class="btn btn-success">Log in</button>
