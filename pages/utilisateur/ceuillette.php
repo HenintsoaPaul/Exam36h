@@ -27,6 +27,15 @@ include "static/header.php";
                         <label for="poidsInput" class="form-label"> Poids Ceuilli</label>
                         <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
+                    <div class="col-md-6 ">
+                        <label for="ceuilleurInput" class="form-label">Ceuilleur</label>
+                        <select name="ceuilleurInput" class="form-select" id="ceuilleurInput">
+                            <option value="">Choisir un ceuilleur</option>
+                            <option value="1"> P1 </option>
+                            <option value="2"> P2 </option>
+                            <option value="3"> P3 </option>
+                        </select>
+                    </div>
                 </div>
                 <div class="d-inline">
                     <button type="submit" class="btn btn-success">Ceuillir</button>
