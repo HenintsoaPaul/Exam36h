@@ -21,6 +21,12 @@
                         <li class="nav-item">
                           <a class="nav-link" href="ceuillette.php">Ceuillette</a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="depense.php">Depense</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="resultats.php">Resultats</a>
+                        </li>
                       </ul>
                 </div>
                 <div class="rounded bg-light">

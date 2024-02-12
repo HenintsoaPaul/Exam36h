@@ -42,9 +42,9 @@ $connection = db_connect();
         </div>
     </div>
     <br />
-    <script src="../../assets/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <?php
+include "static/footer.php";
+?>
 <?php
 closeConnection($connection);
 ?>
