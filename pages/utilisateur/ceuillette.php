@@ -80,6 +80,9 @@ closeConnection($connection);
         }
     });
 </script>
+<script>
+    activeCurrentPage("ceuillette_li")
+</script>
 <?php
 include "static/footer.php";
 ?>
