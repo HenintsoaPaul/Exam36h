@@ -1,6 +1,7 @@
 <?php
-    include"static/header.php";
+    include "static/header.php";
 ?>
+<script src="../../inc/js/functions.js"></script>
 <section id="filtre" class="py-3 bg-light">
     <div class="container">
     <h2>Filtre de resultat</h2>
@@ -127,6 +128,10 @@
     var resultForm = document.getElementById("resultFormulaire");
     var resultLayout = document.getElementById("resultLayout");
     var nullLayout = document.getElementById("nullLayout");
+    var dateDebutInput = document.getElementById("dateDebutInput");
+    var dateFinInput = document.getElementById("dateFinInput");
+
+
     /// Action lors de la validation du formulaire
     resultForm.addEventListener("submit" , function(event){
         event.preventDefault();
@@ -134,12 +139,16 @@
         var coutDeRevient = document.getElementById("coutDeRevient");
         var dateFin = document.getElementById("dateFinTitle"); 
     /// Traitement de donnee
+        var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
+        var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
+        var allParcelle = getAllParcelle("getAllParcelle.php");
+
 
     ///
 
     /// Affichage de resultat
-        poidsTotal.innerHTML = 100;
-        coutDeRevient.innerHTML = 578;
+        poidsTotal.innerHTML = poidsCueilli;
+        coutDeRevient.innerHTML = prixRevient;
     
         console.log(poidsTotal);
         console.log(coutDeRevient);
