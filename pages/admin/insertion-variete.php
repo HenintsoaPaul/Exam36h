@@ -19,10 +19,10 @@
                           <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.html">Variete</a>
+                          <a class="nav-link" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
+                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
