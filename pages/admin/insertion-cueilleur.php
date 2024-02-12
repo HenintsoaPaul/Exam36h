@@ -49,7 +49,7 @@ if ( isset($_GET['message']) ) {
                         </div>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-success mt-3">New Ceuilleur</button>
+                        <button type="submit" class="btn btn-success mt-3">Add New Ceuilleur</button>
                     </div>
                 </div>
                 </form>
