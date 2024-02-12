@@ -42,26 +42,26 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/addVariete.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                     <h1>Variete de the</h1>
                     <!-- Nom -->
                     <div class="form-group col-md-12">
-                        <label for="nomInput">Nom Variete</label>
-                        <input class="form-control" type="text" name="nomInput" id="nomInput">
+                        <label for="nomVariete">Nom Variete</label>
+                        <input class="form-control" type="text" name="nomVariete" id="nomVariete" required>
                     </div>
                     <div class="row">
                         <!-- OCCUPATION -->
                         <div class="form-group col-md-6"> 
-                            <label for="occupationInput">Occupation</label>
-                            <input class="form-control" type="number" name="occupationInput" id="occupationInput">
+                            <label for="occupation">Occupation</label>
+                            <input class="form-control" type="number" name="occupation" id="occupation" required>
                         </div>
                         <!-- Rendement par pied -->
                         <div class="form-group col-md-6"> 
-                            <label for="rendementInput">Rendement par pied</label>
-                            <input class="form-control" type="number" name="rendementInput" id="rendementInput">
+                            <label for="rendement">Rendement par pied</label>
+                            <input class="form-control" type="number" name="rendement" id="rendement" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">New Variete</button>
+                    <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
                 </form>
             </div>
         </div>
