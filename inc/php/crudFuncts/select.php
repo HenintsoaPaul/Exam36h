@@ -115,7 +115,6 @@ function getAllCategoriesDepenses( $connection )
 {
     return getAllRows( $connection, "the_CategoriesDepenses" );
 }
-
 // --- GLOBAL ---
 // - cueillette -
 function getPoidsTotalCueillette( $connection )
@@ -192,4 +191,7 @@ function getCoutRevientParKilo($connection)
     $poidsTotalCueilli = getPoidsTotalCueillette($connection);
 
     return $sumNivoaka / $poidsTotalCueilli;
+}
+function getAllGenre($connection){
+    return getAllRows( $connection, "the_Genres" );
 }

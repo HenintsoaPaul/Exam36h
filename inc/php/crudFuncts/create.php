@@ -82,12 +82,13 @@ function addCueillette($connection, $dateCueillette, $poidsCeuilli, $idParcelle,
     return exeInsertThenNbRows( $connection, $query );
 }
 
-function addSalaire( $connection, $salaire, $dateDebutSalaire = null )
+function addSalaire( $connection, $salaire, $dateDebutSalaire)
 {
     if ( !isset( $salaire ) ) echo "salaire cannot be null!";
 
-    $format = "INSERT INTO the_salaires (salaire, DateDebutSalaire) VALUES (%f, %d)";
-    $query = sprintf( $format, $salaire, $dateDebutSalaire );
+    $format = "INSERT INTO the_salaires (salaire, DateDebutSalaire) VALUES (%f,'".$dateDebutSalaire."')";
+    $query = sprintf( $format, $salaire );
+    echo $query;
 
     return exeInsertThenNbRows( $connection, $query );
 }

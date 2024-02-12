@@ -25,7 +25,7 @@
                           <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-ceuilleur.php">Cueilleur</a>
+                          <a class="nav-link" href="insertion-ceuilleur.php">Ceuilleur</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="insertion-categorie.php">Categorie</a>
