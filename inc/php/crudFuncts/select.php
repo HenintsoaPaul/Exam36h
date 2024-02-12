@@ -123,3 +123,30 @@ function getPoidsTotalCueillette( $connection )
     $row = exeSelect( $connection, $query )[0];
     return $row[$alias];
 }
+
+function getPoidsRestantOnParcelle( $connection, $idParcelle )
+{
+    $query = "";
+}
+
+function getPoidsTotalInParcelle( $connection, $idParcelle )
+{
+    // Get the surface area of the parcel
+    $query = "SELECT surface FROM the_parcelles WHERE idParcelle = $idParcelle";
+    $surface = exeSelect( $connection, $query )[0]['surface'];
+
+    // Convert the surface area : Ha -> square meters
+    $surface *= 10000;
+
+    // Get the occupancy rate and yield for the varietal planted in the parcel
+    $query = "SELECT occupation, RendementParPied as rendement FROM the_varietesthes v
+             JOIN the_parcelles p ON p.idVarieteThe = v.idVarieteThe
+            WHERE p.idVarieteThe = $idParcelle";
+    $row = exeSelect( $connection, $query )[0];
+    var_dump($row);
+
+    // Calculate the number of tree feet
+    $nbPieds = $surface / $row['occupation'];
+
+    return $nbPieds * $row['rendement'];
+}
