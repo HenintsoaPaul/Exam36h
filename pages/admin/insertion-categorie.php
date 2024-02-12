@@ -1,9 +1,12 @@
 <?php
   include "static/header.php"
 ?>
-    <div class="main">
+    <div class="main m-5">
         <div class="container">
             <div class="row">
+                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <div class="card p-5 rounded border-3">      
+                <h1>Categorie</h1>
                 <form action="traitements/addCategorie.php" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
                     <h1>Categorie</h1>
                     <!-- Nom -->
@@ -11,7 +14,11 @@
                         <label for="nomInput">Nom Categorie</label>
                         <input class="form-control" type="text" name="nomInput" id="nomInput" required>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">New Categorie</button>
+                    <div>
+
+                      <button type="submit" class="btn btn-success mt-3">New Categorie</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

@@ -7,7 +7,7 @@
   closeConnection($connection);
   echo(count($genres));
 ?>
-    <div class="main">
+    <div class="main m-5">
         <div class="container">
             <div class="row">
                 <form action="traitements/addCueilleur.php" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
@@ -35,7 +35,10 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">New Ceuilleur</button>
+                    <div>
+                        <button type="submit" class="btn btn-success mt-3">New Ceuilleur</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
