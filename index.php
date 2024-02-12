@@ -1,3 +1,20 @@
+<?php
+require_once 'inc/php/crudFuncts/select.php';
+require_once 'inc/php/crudFuncts/create.php';
+require_once 'inc/php/connection.php';
+
+$connection = db_connect();
+
+//addCueilleur($connection, "Boto", "2022-12-12", 5);
+//addVariete($connection, "Cannabis", 25.1, 15.15);
+//addCategorieDepense($connection,"Bet261");
+//addParcelle($connection,590, 4);
+//addCueillette($connection, "2000-01-01", 1000, 1, 3);
+addSalaire($connection, 150);
+
+closeConnection($connection);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +27,7 @@
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <div class="navbar-brand uppercase">
+                <div class="navbar-brand text-uppercase">
                     <p class="fw-bold">  Magic<span id="logoMark" class=" mx-1 px-1 bg-success rounded">Tea</span>  </p>
                 </div>
             </div>
@@ -19,18 +36,20 @@
     <section class="my-5" id="main">
         <div class="container">
           <div class="row gy-4 gy-md-0">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center ">
               <h1 class="fw-bold">
                 Ceuillete de The
               </h1>
               <h2 class="fw-light">Bienvenue sur ce site de gestion de ceulliette de the , vous povez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
-              <a class="btn btn-primary" type="button" href="pages/utilisateur/login.html">Login Utilisateur</a>
-              <a class="btn btn-secondary" type="button" href="pages/admin/login.html">Login Admin</a>
+              <div class="mt-5">
+                <a class="btn btn-success" type="button" href="pages/utilisateur/login.html">Login Utilisateur</a>
+                <a class="btn btn-secondary" type="button" href="pages/admin/login.html">Login Admin</a>
+              </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 d-flex justify-content-end">
               <img
-                src="../img/IMG_7221.JPG"
-                class="w-100"
+                src="assets/img/tea.jpg"
+                class="w-50"
                 alt="image portrait"
               />
             </div>

@@ -23,7 +23,7 @@ function sendData(form, page) {
         alert($msg['msg']);
       }
       // else{
-      //   window.location.href="pages/index.html";
+      //   window.location.href="pages/index.php";
       // }
     });
 
