@@ -16,19 +16,19 @@
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
                         <li class="nav-item active">
-                          <a class="nav-link" href="#">Admin Home<span class="sr-only"></span></a>
+                          <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Variete</a>
+                          <a class="nav-link" href="insertion-variete.html">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Parcelles</a>
+                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Ceuilleur</a>
+                          <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Categories</a>
+                          <a class="nav-link" href="insertion-categories.html">Categorie</a>
                         </li>
                       </ul>
                 </div>
@@ -45,33 +45,23 @@
                 <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
                     <h1>Variete de the</h1>
                     <!-- Nom -->
+                    <div class="form-group col-md-12">
+                        <label for="nomInput">Nom Variete</label>
+                        <input class="form-control" type="text" name="nomInput" id="nomInput">
+                    </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="nomInput">Nom</label>
-                            <input class="form-control" type="text" name="nomInput" id="nomInput">
-                        </div>
-                        <!-- PRENOM -->
+                        <!-- OCCUPATION -->
                         <div class="form-group col-md-6"> 
-                            <label for="prenomInput">Prenom</label>
-                            <input class="form-control" type="text" name="prenomInput" id="prenomInput">
+                            <label for="occupationInput">Occupation</label>
+                            <input class="form-control" type="number" name="occupationInput" id="occupationInput">
+                        </div>
+                        <!-- Rendement par pied -->
+                        <div class="form-group col-md-6"> 
+                            <label for="rendementInput">Rendement par pied</label>
+                            <input class="form-control" type="number" name="rendementInput" id="rendementInput">
                         </div>
                     </div>
-                    <!-- DATE DE NAISSANCE -->
-                    <div class="form-group">
-                        <label for="naissanceInput">Date De naissance</label>
-                        <input class="form-control" type="date" name="naissanceInput" id="naissanceInput">
-                    </div>
-                    <!-- LOGIN -->
-                    <div class="form-group">
-                        <label for="loginInput">Login</label>
-                        <input class="form-control" type="text" name="loginInput" id="loginInput">
-                    </div>
-                    <!-- PASSWORD -->
-                    <div class="form-group">
-                        <label for="passwordInput">Password</label>`
-                        <input class="form-control" type="password" name="passwordInput" id="passwordInput">
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Valider Utilisateur</button>
+                    <button type="submit" class="btn btn-success mt-3">New Variete</button>
                 </form>
             </div>
         </div>
