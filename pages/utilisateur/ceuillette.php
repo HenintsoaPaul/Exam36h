@@ -43,7 +43,7 @@ include "static/header.php";
                 
             </form>
             <div class="col-12 col-md-6 d-none d-lg-flex justify-content-end ">
-                <img src="../../assets/img/baby-picker.jpg" class="w-100 rounded-3" alt="image portrait" />
+                <img src="../../assets/img/baby-picker.jpg" class="w-100 rounded-3 shadow-lg" alt="image portrait" />
             </div>
         </div>
     </div>
