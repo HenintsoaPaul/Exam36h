@@ -8,8 +8,9 @@ elseif ( !isset( $_POST['occupation'] ) ) $error = "occupation cannot be null!";
 elseif ( !isset( $_POST['rendement'] ) ) $error = "rendement cannot be null!";
 
 // Redirect if a value is null
+$link = "insertion-Variete.php?message";
 if ( isset( $error ) ) {
-    header( "Location:insertionVariete.php?error=$error" );
+    header( "Location:$link=$error" );
 }
 
 $nomVariete = $_POST['nomVariete'];
@@ -22,11 +23,7 @@ $nbRowsAdded = addVariete( $connection, $nomVariete, $occupation, $rendementParP
 closeConnection( $connection );
 
 // redirection
-if (isset($nbRowsAdded) && $nbRowsAdded === 1) {
-    header( "Location:insertionVariete.php?error=insert_variete_success" );
-}
-else {
-    header( "Location:insertionVariete.php?error=insert_variete_failed" );
-}
+$message = $nbRowsAdded === 1 ? "success" : "failed";
+header("Location:$link=$message");
 
 ?>

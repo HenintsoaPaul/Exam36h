@@ -25,8 +25,8 @@
               </h1>
               <h2 class="fw-light">Bienvenue sur ce site de gestion de ceulliette de the , vous povez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
               <div class="mt-5">
-                <a class="btn btn-success" type="button" href="pages/utilisateur/login.html">Login Utilisateur</a>
-                <a class="btn btn-secondary" type="button" href="pages/admin/login.html">Login Admin</a>
+                <a class="btn btn-success" type="button" href="pages/utilisateur/login.php">Login Utilisateur</a>
+                <a class="btn btn-secondary" type="button" href="pages/admin/login.php">Login Admin</a>
               </div>
             </div>
             <div class="col-12 col-md-6 d-flex justify-content-end">
@@ -53,7 +53,7 @@
                         <p>ETU 002443</p>
                     </li>
                     <li class="nav-item">
-                        <p>ETU 002510</p>
+                        <p>ETU 002610</p>
                     </li>
                   </ul>
             </div>

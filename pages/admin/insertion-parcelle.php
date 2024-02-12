@@ -1,3 +1,8 @@
+<?php
+require_once 'inc/php/connection.php';
+
+$connection = db_connect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +24,10 @@
                           <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.html">Variete</a>
+                          <a class="nav-link" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
+                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
@@ -42,26 +47,28 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
-                    <h1>Variete de the</h1>
-                    <!-- Nom -->
-                    <div class="form-group col-md-12">
-                        <label for="nomInput">Nom Variete</label>
-                        <input class="form-control" type="text" name="nomInput" id="nomInput">
-                    </div>
+                <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                    <h1>Parcelle</h1>
                     <div class="row">
-                        <!-- OCCUPATION -->
+                        <!-- SURFACE -->
                         <div class="form-group col-md-6"> 
-                            <label for="occupationInput">Occupation</label>
-                            <input class="form-control" type="number" name="occupationInput" id="occupationInput">
+                            <label for="surface">Surface</label>
+                            <input class="form-control" type="number" name="surface" id="surface" required>
                         </div>
-                        <!-- Rendement par pied -->
+                        <!-- variete -->
                         <div class="form-group col-md-6"> 
-                            <label for="rendementInput">Rendement par pied</label>
-                            <input class="form-control" type="number" name="rendementInput" id="rendementInput">
+                            <label for="idVariete">Variete</label>
+                            <select name="idVariete" title="variete" class="form-select" required>
+                                <option value="">Choisir une variete</option>
+                                <?php
+                                $allVarietes = getAllVarietes($connection);
+                                foreach ($allVarietes as $variete) { ?>
+                                    <option value="<?= $variete['idVarieteThe'] ?>"><?= $variete['NomVariete'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">New Variete</button>
+                    <button type="submit" class="btn btn-success mt-3">Add New Parcelle</button>
                 </form>
             </div>
         </div>
@@ -70,3 +77,6 @@
     <script src="../../assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php
+closeConnection($connection);
+?>

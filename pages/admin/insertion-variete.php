@@ -19,10 +19,10 @@
                           <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.html">Variete</a>
+                          <a class="nav-link" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
+                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
@@ -42,25 +42,26 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
-                    <h1>Parcelle</h1>
+                <form action="traitements/addVariete.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                    <h1>Variete de the</h1>
+                    <!-- Nom -->
+                    <div class="form-group col-md-12">
+                        <label for="nomVariete">Nom Variete</label>
+                        <input class="form-control" type="text" name="nomVariete" id="nomVariete" required>
+                    </div>
                     <div class="row">
-                        <!-- SURFACE -->
+                        <!-- OCCUPATION -->
                         <div class="form-group col-md-6"> 
-                            <label for="surfaceInput">Surface</label>
-                            <input class="form-control" type="number" name="surfaceInput" id="surfaceInput">
+                            <label for="occupation">Occupation</label>
+                            <input class="form-control" type="number" name="occupation" id="occupation" required>
                         </div>
-                        <!-- variete -->
+                        <!-- Rendement par pied -->
                         <div class="form-group col-md-6"> 
-                            <label for="varieteInput">Variete</label>
-                            <select name="varieteInput" title="variete" class="form-select" >
-                                <option value="#">Choisir une variete</option>
-                                <option value="1">variete 1</option>
-                                <option value="2">variete 2</option>
-                            </select>
+                            <label for="rendement">Rendement par pied</label>
+                            <input class="form-control" type="number" name="rendement" id="rendement" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">New Parcelle</button>
+                    <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
                 </form>
             </div>
         </div>
