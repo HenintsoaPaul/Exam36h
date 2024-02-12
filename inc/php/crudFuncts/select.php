@@ -101,6 +101,12 @@ function getAllCueilleurs( $connection )
     return getAllRows( $connection, "the_cueilleurs" );
 }
 
+function getAllParcelles( $connection )
+{
+    return getAllRows( $connection, "the_parcelles" );
+}
+
+
 function getAllVarietes( $connection )
 {
     return getAllRows( $connection, "the_varietesthes" );
