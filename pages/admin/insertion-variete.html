@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <title>Admin Magic Tea</title>
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container d-flex">
+                <div class="navbar-brand uppercase">
+                    <p class="fw-bold">  Magic<span id="logoMark" class=" mx-1 px-1 bg-success rounded">Tea</span>  </p>
+                </div>
+                <div class="flex-grow-1 d-flex justify-content-center">
+                    <ul class="navbar-nav gap-5">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Admin Home<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Variete</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Parcelles</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Ceuilleur</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Categories</a>
+                        </li>
+                      </ul>
+                </div>
+                <div class="rounded bg-light">
+                  <a href="#" type="button" class="btn">Deconnexion</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <form action="" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                    <h1>Variete de the</h1>
+                    <!-- Nom -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nomInput">Nom</label>
+                            <input class="form-control" type="text" name="nomInput" id="nomInput">
+                        </div>
+                        <!-- PRENOM -->
+                        <div class="form-group col-md-6"> 
+                            <label for="prenomInput">Prenom</label>
+                            <input class="form-control" type="text" name="prenomInput" id="prenomInput">
+                        </div>
+                    </div>
+                    <!-- DATE DE NAISSANCE -->
+                    <div class="form-group">
+                        <label for="naissanceInput">Date De naissance</label>
+                        <input class="form-control" type="date" name="naissanceInput" id="naissanceInput">
+                    </div>
+                    <!-- LOGIN -->
+                    <div class="form-group">
+                        <label for="loginInput">Login</label>
+                        <input class="form-control" type="text" name="loginInput" id="loginInput">
+                    </div>
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+                        <label for="passwordInput">Password</label>`
+                        <input class="form-control" type="password" name="passwordInput" id="passwordInput">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Valider Utilisateur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <script src="../../assets/js/bootstrap.min.js"></script>
+</body>
+</html>
