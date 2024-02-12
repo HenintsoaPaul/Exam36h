@@ -5,12 +5,12 @@
  $connection = db_connect();
  $date = $_POST['date'];
  $poids = $_POST['poidsInput'];
- $parcelle = $_POST['parcelleInput'];
+ $parcelle = $_POST['parcelleInput']; 
  $idCueilleur = $_POST['ceuilleurInput'];
  $link = "ceuillette.php?message";
 
- addCueillette($connection, $date, $poids, $parcelle, $idCueilleur);
- $message = $nbRowsAdded === 1 ? "success" : "failed";
+addCueillette($connection, $date, $poids, $parcelle, $idCueilleur);
+
 header("Location:$link=$message");
 
 ?>

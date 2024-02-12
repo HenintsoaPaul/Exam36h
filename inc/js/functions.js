@@ -33,10 +33,11 @@ function getTab(link) {
   xhr.send(null); 
   return retour;
 } 
-function send(herf,data,name) {
+function getRestePoids(herf,date, idParcelle) {
   var xhr = getxhr();
   var Data = new FormData();
-  Data.append(name,data);
+  Data.append("idParcelle", idParcelle);
+  Data.append("date", date);
 
   var retour;
 

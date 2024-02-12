@@ -7,13 +7,14 @@ $connection = db_connect();
 $user = checkLoginUser($connection, $login, $pass);
 $error=null;
 closeConnection($connection);
-if($user['Password'] != $pass){
-    echo($pass."  ".$user['Password']);
-    $error = "Mot de passe incorrect!";
-} else if ($user['idStatu'] != 2){
+ if ($user['idStatu'] != 2){
     $error = "Vous n'etes pas admin!";
 } else if ($user == null){
     $error = "Utilisateur inexistant.";
+}
+else if($user['Password'] != $pass){
+    echo($pass."  ".$user['Password']);
+    $error = "Mot de passe incorrect!";
 }
 if($error != null){
     header("Location:login.php?error=".$error);
