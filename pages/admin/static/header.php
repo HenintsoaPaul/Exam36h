@@ -15,6 +15,7 @@
                 <div class="navbar-brand uppercase">
                     <p class="fw-bold">  Magic<span id="logoMark" class=" mx-1 px-1 bg-success rounded">Tea</span>  </p>
                 </div>
+
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
                         <li class="nav-item">
@@ -27,18 +28,21 @@
                           <a class="nav-link" id="parcelle_li" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
+
                           <a class="nav-link" id="ceuilleur_li" href="insertion-cueilleur.php">Ceuilleur</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" id="categorie_li" href="insertion-categorie.php">Categorie</a>
+                          
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="salaire_li" href="insertion-salaire.php">Salaire</a>
                           </li>
                       </ul>
                 </div>
+
                 <div class="rounded bg-light">
-                  <a href="#" type="button" class="btn">Deconnexion</a>
+                  <a href="logout.php" type="button" class="btn">Deconnexion</a>
                 </div>
             </div>
         </div>
