@@ -16,19 +16,19 @@
                 <div class="flex-grow-1 d-flex justify-content-center">
                     <ul class="navbar-nav gap-5">
                         <li class="nav-item active">
-                          <a class="nav-link" href="home.html">Admin Home<span class="sr-only"></span></a>
+                          <a class="nav-link" href="home.php">Admin Home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-variete.html">Variete</a>
+                          <a class="nav-link" href="insertion-variete.php">Variete</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-parcelle.html">Parcelle</a>
+                          <a class="nav-link" href="insertion-parcelle.php">Parcelle</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-ceuilleur.html">Cueilleur</a>
+                          <a class="nav-link" href="insertion-ceuilleur.php">Cueilleur</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="insertion-categorie.html">Categorie</a>
+                          <a class="nav-link" href="insertion-categorie.php">Categorie</a>
                         </li>
                       </ul>
                 </div>

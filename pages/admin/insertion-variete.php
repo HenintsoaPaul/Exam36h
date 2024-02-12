@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <title>Admin Magic Tea</title>
 </head>
+<?php if (isset($_GET['message'])) { ?>
+    <script> alert("<?php echo $_GET['message'] ?>");</script>
+<?php }?>
 <body>
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,12 +56,12 @@
                         <!-- OCCUPATION -->
                         <div class="form-group col-md-6"> 
                             <label for="occupation">Occupation</label>
-                            <input class="form-control" type="number" name="occupation" id="occupation" required>
+                            <input class="form-control" type="text" name="occupation" id="occupation" required>
                         </div>
                         <!-- Rendement par pied -->
                         <div class="form-group col-md-6"> 
                             <label for="rendement">Rendement par pied</label>
-                            <input class="form-control" type="number" name="rendement" id="rendement" required>
+                            <input class="form-control" type="text" name="rendement" id="rendement" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mt-3">Add New Variete</button>

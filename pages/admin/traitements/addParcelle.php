@@ -1,13 +1,11 @@
 <?php
-require_once 'inc/php/connection.php';
-require_once 'inc/php/crudFuncts/create.php';
+require_once '../../../inc/php/connection.php';
+require_once '../../../inc/php/crudFuncts/create.php';
 
-// Verify inputs
 if ( !isset( $_POST['surface'] ) ) $error = "surface cannot be null!";
 elseif ( !isset( $_POST['idVariete'] ) ) $error = "idVariete cannot be null!";
 
-// Redirect if a value is null
-$link = "insertion-parcelle.php?message";
+$link = "../insertion-parcelle.php?message";
 if ( isset( $error ) ) {
     header( "Location:$link=$error" );
 }
