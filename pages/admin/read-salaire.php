@@ -4,7 +4,7 @@ require_once '../../inc/php/connection.php';
 require_once '../../inc/php/crudFuncts/select.php';
 
 $connection = db_connect();
-$parcelles = getAllParcelles($connection); 
+$salaires = getAllSalaires($connection); 
 closeConnection($connection);?>
 <div class="main">
         <div class="container">
@@ -18,11 +18,13 @@ closeConnection($connection);?>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> 1500</td>
-                        <td>-- / -- / --</td>
-                    </tr>
+    <?php for ($i=0; $i < count($salaires); $i++) { ?>
+              <tr>
+                  <td> <?= $salaires[$i]['idSalaire']?> </td>
+                  <td> <?= $salaires[$i]['salaire']?> </td>
+                  <td> <?= $salaires[$i]['DateDebutSalaire']?> </td>
+              </tr>
+    <?php }?>
                 </tbody>
               </table>
         </div>
