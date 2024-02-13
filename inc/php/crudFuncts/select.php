@@ -207,6 +207,7 @@ function getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $date
 
 
 // - parcelle -
+// Obtenir le poids total par parcelle par une seule requette en se basant sur la logique de la fonction suivante. Retourne moi la requete.
 function getPoidsTotalInParcelle( $connection, $idParcelle )
 {
     // Get the surface area of the parcel
@@ -431,4 +432,79 @@ function getBeneficeInPeriod( $connection, $dateDebut, $dateFin )
     $sumRevient = getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin );
 
     return $sumVente - $sumRevient;
+}
+
+
+// PREDICTION
+function getPoids100PercentPerParcelle( $connection )
+{
+    $query = "SELECT idParcelle, (p.surface * 10000) / v.occupation * v.RendementParPied AS poidsTotal
+        FROM the_parcelles AS p JOIN the_varietesthes v ON p.idVarieteThe = v.idVarieteThe ORDER BY  idParcelle";
+    return exeSelect( $connection, $query );
+}
+
+function getMoyennePoidsCueilliParParcelle( $connection )
+{
+    $query = "SELECT t1.*, MontantPrixVente as montant FROM
+    (select idParcelle, AVG(PoidsCeuilli) as moy FROM the_cueillettes GROUP BY idParcelle ORDER BY idParcelle) AS t1
+    JOIN the_parcelles as p ON t1.idParcelle = p.idParcelle
+    JOIN the.the_varietesthes as tv on p.idVarieteThe = tv.idVarieteThe
+    JOIN the.the_prixvente tp on tv.idVarieteThe = tp.idVarieteThe";
+
+    return exeSelect( $connection, $query );
+}
+
+function calculateDaysBetweenDates( $date1String, $date2String )
+{
+    try {
+        $date1 = new DateTime( $date1String );
+        $date2 = new DateTime( $date2String );
+        $interval = $date1->diff( $date2 );
+        return $interval->format( '%a' );
+    }
+    catch ( Exception $e ) {
+    }
+}
+
+/**
+ * @return array|null Array of poidsRestant foreach Parcelle.
+ */
+function getPredictionPoidsRestantParParcelle( $connection, $dateFin )
+{
+    // get poids total foreach parcel
+    $poidsParParcelle = getPoids100PercentPerParcelle( $connection );
+
+    // poids moyenne foreach parcel
+    $moyennePoidsCueilliParParcelle = getMoyennePoidsCueilliParParcelle( $connection );
+
+    $now = "2023-01-01";
+    for ( $i = 0; $i < count( $poidsParParcelle ); $i ++ ) {
+        $idParcelle = $poidsParParcelle[$i]['idParcelle'];
+
+        // nb days of cueillage
+        $dateLastRegen = getRegenerateStarter( $connection, $idParcelle, $now, $dateFin );
+        $nbDaysCueillage = calculateDaysBetweenDates( $dateLastRegen, $dateFin );
+
+        for ( $k = 0; $k < $nbDaysCueillage; $k ++ ) {
+            $poidsParParcelle[$idParcelle]['poidsTotal'] -= $moyennePoidsCueilliParParcelle[$idParcelle]['moy'];
+        }
+    }
+
+    return $poidsParParcelle;
+}
+
+function getPredictionMontant( $connection, $dateFin )
+{
+    $now = "2023-01-01";
+    $nbDaysCueillage = calculateDaysBetweenDates( $now, $dateFin );
+
+    $montantPredits = [];
+
+    $moyennesParParcelle = getMoyennePoidsCueilliParParcelle( $connection );
+    foreach ($moyennesParParcelle as $moyenne) {
+        $idParcelle = $moyenne['idParcelle'];
+        $montantPredits[$idParcelle] = $nbDaysCueillage * $moyenne['moy'] * $moyenne['montant'];
+    }
+
+    return $montantPredits;
 }
