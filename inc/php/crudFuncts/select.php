@@ -121,6 +121,7 @@ function getAllSalaires( $connection )
 {
     return getAllRows( $connection, "the_salaires" );
 }
+
 function getAllGenre( $connection )
 {
     return getAllRows( $connection, "the_Genres" );
@@ -145,7 +146,7 @@ function getAllCategoriesDepenses( $connection )
 
 // --- GLOBAL RESULT ---
 // - cueillette -
-function getPoidsTotalCueilli( $connection ) 
+function getPoidsTotalCueilli( $connection )
 {
     $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes";
     return exeSelect( $connection, $query )[0]['poids'];
@@ -160,7 +161,7 @@ function getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin )
 
 function getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $dateDebut, $dateFin )
 {
-    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes WHERE idParcelle = $idParcelle ".
+    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes WHERE idParcelle = $idParcelle " .
         "AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
     return exeSelect( $connection, $query )[0]['poids'];
 }
@@ -232,21 +233,45 @@ function getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin )
 }
 
 
-// - other -
+// - cout revient -
 function getCoutRevientParKilo( $connection, $dateDebut, $dateFin )
 {
-    $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
-    $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
-    $sumNivoaka = $sumSalairesCueilleurs - $sumDepenses;
-
+    $sumNivoaka = getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin );
     $poidsTotalCueilli = getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin );
 
     return $sumNivoaka / $poidsTotalCueilli;
 }
 
+function getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin )
+{
+    $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
+    $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
+
+    return $sumSalairesCueilleurs - $sumDepenses;
+}
+
 
 // PART TWO
-function get()
+// - Montant Vente -
+function getSommeVenteInPeriod( $connection, $dateDebut, $dateFin )
 {
+    // get last inserted PrixVente
+    $query = "SELECT MontantPrixVente, idVarieteThe FROM the_prixvente ORDER BY idPrixVente DESC limit 1";
 
+    // get sum total Vente = sum ( poidsCueilli * montant )
+    $query = "SELECT SUM(PoidsCeuilli * MontantPrixVente) as sum FROM
+                (SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') AS c
+                    JOIN the_parcelles as p on c.idParcelle = p.idParcelle
+                    JOIN the_varietesthes as v on p.idVarieteThe = v.idVarieteThe
+                    JOIN ($query) as pv on v.idVarieteThe = pv.idVarieteThe";
+
+    return exeSelect( $connection, $query )[0]['sum'];
+}
+
+function getBeneficeInPeriod( $connection, $dateDebut, $dateFin )
+{
+    $sumVente = getSommeVenteInPeriod( $connection, $dateDebut, $dateFin );
+    $sumRevient = getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin );
+
+    return $sumVente - $sumRevient;
 }
