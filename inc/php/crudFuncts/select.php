@@ -275,7 +275,7 @@ function getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin )
     $montantSalaire = exeSelect( $connection, $query )[0]['salaire'];
 
     // get nb employees == nb cueillettes
-    $query = "SELECT count(idCueilleur) as nb FROM ".
+    $query = "SELECT count(idCueilleur) as nb FROM " .
         "(SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') As t";
     $nbCueilleurs = exeSelect( $connection, $query )[0]['nb'];
 
@@ -336,7 +336,7 @@ function getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin )
     $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
     $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
 
-    return $sumSalairesCueilleurs - $sumDepenses;
+    return $sumSalairesCueilleurs + $sumDepenses;
 }
 
 
