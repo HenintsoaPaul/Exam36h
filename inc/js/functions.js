@@ -92,6 +92,7 @@ function getPoidsCueilli(herf, dateDebut, dateFin) {
 
     return retour;
 }
+
 function getSommeVente(herf, dateDebut, dateFin) {
     var xhr = getxhr();
     var Data = new FormData();
@@ -117,6 +118,7 @@ function getSommeVente(herf, dateDebut, dateFin) {
 
     return retour;
 }
+
 function getPrixRevient(herf, dateDebut, dateFin) {
     var xhr = getxhr();
     var Data = new FormData();
@@ -193,4 +195,5 @@ function getAllParcelle(herf) {
 
     return retour;
 }
+
 
