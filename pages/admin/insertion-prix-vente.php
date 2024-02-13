@@ -11,7 +11,7 @@ $className = "";
 $insertLog = "";
 if ( isset($_GET['message']) ) {
     $className = $_GET['message'] == "success" ? "success" : "danger";
-    $insertLog = $_GET['message'] == "success" ? "New Parcelle Added Successfully!" : "Oops! Failed To Add New Parcelle.";
+    $insertLog = $_GET['message'] == "success" ? "Prix de vente ajoutée!" : "Oops! Il y'a une erreur dans l'insertion du prix de vente.";
 }
 ?>
     <div class="main my-5">
