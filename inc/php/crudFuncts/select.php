@@ -82,7 +82,6 @@ function exeSelect( $connection, $query )
 }
 function getMoisRegeneration($connection, $idVariete){
     $query = "SELECT * FROM the_Regenerations WHERE idVarieteThe = $idVariete";
-    print($query);
     return exeSelect($connection, $query);
 }
 
