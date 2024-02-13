@@ -75,7 +75,7 @@
         }
     ///
     montantTotal.innerHTML = summont;
-    poidsTotal.innerHTML = ;
+    poidsTotal.innerHTML = "?";
     /// Affichage de resultat
         nullLayout.classList.replace("d-block" , "d-none");
         previsionLayout.classList.replace("d-none" , "d-block");
