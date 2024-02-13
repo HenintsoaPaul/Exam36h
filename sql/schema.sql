@@ -1,6 +1,3 @@
-# CREATE DATABASE the;
-# USE the;
-
 CREATE TABLE the_VarietesThes(
                                  idVarieteThe INT AUTO_INCREMENT,
                                  NomVariete VARCHAR(100)  NOT NULL,
@@ -48,12 +45,57 @@ CREATE TABLE the_Genres(
                            UNIQUE(NomGenre)
 );
 
+CREATE TABLE the_Salaires(
+                             idSalaire INT AUTO_INCREMENT,
+                             salaire DECIMAL(25,2)   NOT NULL,
+                             DateDebutSalaire DATE,
+                             PRIMARY KEY(idSalaire)
+);
+
+CREATE TABLE the_Mois(
+                         idMois INT AUTO_INCREMENT,
+                         NomMois VARCHAR(50)  NOT NULL,
+                         PRIMARY KEY(idMois),
+                         UNIQUE(NomMois)
+);
+
+CREATE TABLE the_PrixVente(
+                              idPrixVente INT AUTO_INCREMENT,
+                              MontantPrixVente DECIMAL(25,2)  ,
+                              dateConfig DATE NOT NULL,
+                              idVarieteThe INT NOT NULL,
+                              PRIMARY KEY(idPrixVente),
+                              UNIQUE(MontantPrixVente),
+                              FOREIGN KEY(idVarieteThe) REFERENCES the_VarietesThes(idVarieteThe)
+);
+
+CREATE TABLE the_PoidsMinimal(
+                                 idPoidsMinimal INT AUTO_INCREMENT,
+                                 Poids DECIMAL(25,2)   NOT NULL,
+                                 DateConfig DATE NOT NULL,
+                                 PRIMARY KEY(idPoidsMinimal)
+);
+
+CREATE TABLE the_Bonus(
+                          idBonus INT AUTO_INCREMENT,
+                          Bonus DECIMAL(25,2)   NOT NULL,
+                          DateConfig DATE NOT NULL,
+                          PRIMARY KEY(idBonus)
+);
+
+CREATE TABLE the_Mallus(
+                           idMallus INT AUTO_INCREMENT,
+                           Mallus DECIMAL(25,2)   NOT NULL,
+                           DateConfig DATE NOT NULL,
+                           PRIMARY KEY(idMallus)
+);
+
 CREATE TABLE the_Cueilleurs(
-                               idCeuilleur INT AUTO_INCREMENT,
+                               idCueilleur INT AUTO_INCREMENT,
                                Nom VARCHAR(50)  NOT NULL,
                                DateNaissance DATE NOT NULL,
                                idGenre INT NOT NULL,
-                               PRIMARY KEY(idCeuilleur),
+                               PRIMARY KEY(idCueilleur),
                                FOREIGN KEY(idGenre) REFERENCES the_Genres(idGenre)
 );
 
@@ -71,8 +113,17 @@ CREATE TABLE the_Cueillettes(
                                 DateCeuillette DATE NOT NULL,
                                 PoidsCeuilli DECIMAL(15,2)   NOT NULL,
                                 idParcelle INT NOT NULL,
-                                idCeuilleur INT NOT NULL,
+                                idCueilleur INT NOT NULL,
                                 PRIMARY KEY(idCeuillette),
                                 FOREIGN KEY(idParcelle) REFERENCES the_Parcelles(idParcelle),
-                                FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+                                FOREIGN KEY(idCueilleur) REFERENCES the_Cueilleurs(idCueilleur)
+);
+
+CREATE TABLE the_Regenerations(
+                                  idRegeneration INT AUTO_INCREMENT,
+                                  idMois INT NOT NULL,
+                                  idVarieteThe INT NOT NULL,
+                                  PRIMARY KEY(idRegeneration),
+                                  FOREIGN KEY(idMois) REFERENCES the_Mois(idMois),
+                                  FOREIGN KEY(idVarieteThe) REFERENCES the_VarietesThes(idVarieteThe)
 );

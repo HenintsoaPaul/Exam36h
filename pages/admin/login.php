@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../assets/main.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
+
+    <script src="../../inc/js/login.js"></script>
+
     <title>Magic Tea</title>
 </head>
+
+<script src="../../assets/js/bootstrap.min.js"></script>
+
 <body>
-    <header>
+    <header class="shadow">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <div class="navbar-brand text-uppercase">
@@ -25,13 +32,20 @@
                 <p class="fw-bold">  Magic<span id="logoMark" class="text-light mx-1 px-2 bg-success rounded">Tea</span>  </p>
             </div>
           </div>
-            <form action="login" method="post" class="d-block">
+            <form action="log.php" method="post" class="d-block" name="form">
+
+                <!-- Authentification log -->
+                  <div >
+                    <p class="text-danger"><?php if ( isset($_GET['error']) ) echo $_GET['error']; ?></p>
+                  </div>
+                <!-- Authentification log -->
+
               <div class="form-floating mb-3">
-                <input type="text" name="loginMail" id="inputMail" value="adminlogin@gmail.com" class="form-control" placeholder="">
+                <input type="text" name="login" id="inputMail" value="alexAdmin" class="form-control" placeholder="">
                 <label for="inputMail">Login</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" id="inputPass" value="IAmAdmin" placeholder="">
+                <input type="password" class="form-control" name="password" id="inputPass" value="admin" placeholder="">
                 <label for="inputPass">Password</label>
               </div>
               <div class="d-flex justify-content-between">
@@ -42,5 +56,4 @@
         </div>
     </div>
 </body>
-<script src="../../assets/js/bootstrap.min.js"></script>
 </html>
