@@ -130,6 +130,7 @@
     /// Traitement de donnee
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
+        console.log("prixRevient "+prixRevient );
         var allParcelle = getAllParcelle("getAllParcelle.php");
         
         var tbody = document.getElementById("parcelleTableBody");
