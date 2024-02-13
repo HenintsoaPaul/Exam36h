@@ -59,6 +59,15 @@ CREATE TABLE the_Mois(
                          UNIQUE(NomMois)
 );
 
+CREATE TABLE the_PrixVente(
+                              idPrixVente INT AUTO_INCREMENT,
+                              MontantPrixVente DECIMAL(25,2)  ,
+                              idVarieteThe INT NOT NULL,
+                              PRIMARY KEY(idPrixVente),
+                              UNIQUE(MontantPrixVente),
+                              FOREIGN KEY(idVarieteThe) REFERENCES the_VarietesThes(idVarieteThe)
+);
+
 CREATE TABLE the_Cueilleurs(
                                idCeuilleur INT AUTO_INCREMENT,
                                Nom VARCHAR(50)  NOT NULL,
@@ -95,4 +104,31 @@ CREATE TABLE the_Regenerations(
                                   PRIMARY KEY(idRegeneration),
                                   FOREIGN KEY(idMois) REFERENCES the_Mois(idMois),
                                   FOREIGN KEY(idVarieteThe) REFERENCES the_VarietesThes(idVarieteThe)
+);
+
+CREATE TABLE the_PoidsMinimal(
+                                 idPoidsMinimal INT AUTO_INCREMENT,
+                                 Poids DECIMAL(25,2)   NOT NULL,
+                                 DateConfig DATE NOT NULL,
+                                 idCeuilleur INT NOT NULL,
+                                 PRIMARY KEY(idPoidsMinimal),
+                                 FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+);
+
+CREATE TABLE the_Bonus(
+                          idBonus INT AUTO_INCREMENT,
+                          Bonus DECIMAL(25,2)   NOT NULL,
+                          DateConfig DATE NOT NULL,
+                          idCeuilleur INT NOT NULL,
+                          PRIMARY KEY(idBonus),
+                          FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+);
+
+CREATE TABLE the_Mallus(
+                           idMallus INT AUTO_INCREMENT,
+                           Mallus DECIMAL(25,2)   NOT NULL,
+                           DateConfig DATE NOT NULL,
+                           idCeuilleur INT NOT NULL,
+                           PRIMARY KEY(idMallus),
+                           FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
 );
