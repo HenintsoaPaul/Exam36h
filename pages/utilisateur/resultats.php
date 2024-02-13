@@ -139,6 +139,9 @@
 
         let allParcelle = getAllParcelle("getAllParcelle.php");
         let montantVente = getSommeVente("getSommeVente.php", dateDebutInput.value, dateFinInput.value);
+        let valbenefice = getByPeriod("get-benefice.php", dateDebutInput.value, dateFinInput.value);
+        let valdepense = getByPeriod("get-depense.php", dateDebutInput.value, dateFinInput.value);
+
         let tbody = document.getElementById("parcelleTableBody");
 
         tbody.innerHTML = "";
@@ -167,8 +170,8 @@
         if(coutRevientPerKilo !== "undefined") coutDeRevient.innerHTML = coutRevientPerKilo;
 
         ventes.innerHTML = montantVente;
-        depenses.innerHTML = "0";
-        benefice.innerHTML = "0";
+        depenses.innerHTML = valdepense;
+        benefice.innerHTML = valbenefice;
     
         dateFin.innerHTML = document.getElementById("dateFinInput").value;
         nullLayout.classList.replace("d-block" , "d-none");
