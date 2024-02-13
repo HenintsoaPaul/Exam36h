@@ -1,18 +1,18 @@
 <footer >
     <div class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container flex-column flex-md-row">
-            <ul class="navbar-nav d-flex flex-column">
+        <ul class="navbar-nav d-flex flex-column">
                 <li class="nav-item">  
                     <h3>Contributors</h3>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002434</p>
+                    <p>JACQUES Chan Alex - ETU 002434</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002443</p>
+                    <p> MANITRAJA Henintsoa Paul - ETU 002443</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002610</p>
+                    <p>RAVELOMANANTSOA Sergiana Francourt - ETU 002610</p>
                 </li>
               </ul>
               <div class="row">
