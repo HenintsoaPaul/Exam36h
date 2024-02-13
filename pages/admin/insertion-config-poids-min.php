@@ -1,5 +1,5 @@
 <?php
-  include "static/header.php";
+include "static/header.php";
 
 $className = "";
 $insertLog = "";
@@ -21,14 +21,6 @@ if ( isset($_GET['message']) ) {
                         </div>
                         <!-- insert LOG -->
 
-                        <!-- Ceuilleur -->
-                        <div class="form-group col-12 mb-3">
-                            <label for="cueilleurInput" class="form-label"> Cueilleur </label>
-                            <select name="cueilleurInput" id="cueilleurInput" class="form-select" required>
-                                <option value="">Choisir un cueilleur</option>
-                                <option value="1"> C1 </option>
-                            </select>
-                        </div>
                         <div class="row mb-3">
                             <!-- Montant -->
                             <div class="form-group col-12 col-lg-6"> 
@@ -50,7 +42,8 @@ if ( isset($_GET['message']) ) {
     </div>
     <br/>
     <script>
-        activeCurrentPage("configPoids_li")
+        activeCurrentPage("configPoids_li");
+        activeCurrentPage("configDropdown");
     </script>
 <?php
     include "static/footer.php";

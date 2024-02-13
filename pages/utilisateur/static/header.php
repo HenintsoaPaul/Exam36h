@@ -34,11 +34,13 @@
                         <li class="nav-item" >
                           <a class="nav-link" id="resultat_li" href="resultats.php">Resultats</a>
                         </li>
+                        <li class="nav-item" >
+                          <a class="nav-link" id="paiements_li" href="paiements.php">Paiements</a>
+                        </li>
                       </ul>
                       <div class="rounded ">
                         <a href="../../index.php" type="button" class="btn hover-fill transition-fill">Deconnexion</a>
                       </div>
-                    
                   </div>
             </div>
           </div>
