@@ -212,3 +212,18 @@ function addPoidsMinimal( $connection, $poids, $date, $idCueilleur )
 
     return exeInsertThenNbRows( $connection, $query );
 }
+
+/**
+ * @return int 1 on SUCCESS.
+ */
+function addPrixRevient( $connection, $montant, $date, $idVariete )
+{
+    if ( !isset( $montant ) ) echo "montant cannot be null!";
+    if ( !isset( $date ) ) echo "date cannot be null!";
+    if ( !isset( $idVariete ) ) echo "idVariete cannot be null!";
+
+    $format = "INSERT INTO the_prixvente (montantprixvente, dateconfig, idvarietethe) VALUES (%f, '%s', %d)";
+    $query = sprintf( $format, $montant, $date, $idVariete );
+
+    return exeInsertThenNbRows( $connection, $query );
+}
