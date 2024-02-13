@@ -80,10 +80,13 @@ function exeSelect( $connection, $query )
     }
     return null;
 }
-function getMoisRegeneration($connection, $idVariete){
+
+function getAllMoisRegeneration( $connection, $idVariete )
+{
     $query = "SELECT * FROM Regeneration WHERE idVarieteThe = $idVariete";
-    return exeSelect($connection, $query);
+    return exeSelect( $connection, $query );
 }
+
 // SELECT ALL COLUMNS + ALL ROWS
 /**
  * Return all columns of all rows in the specified table. Columns' name are the indexes of a row.
@@ -129,15 +132,16 @@ function getAllGenre( $connection )
 {
     return getAllRows( $connection, "the_Genres" );
 }
-function getAllMois( $connection ) {
-    return getAllRows( $connection, "the_mois");
+
+function getAllMois( $connection )
+{
+    return getAllRows( $connection, "the_mois" );
 }
 
 function getAllCueillettes( $connection )
 {
     return getAllRows( $connection, "the_cueillettes" );
 }
-
 
 function getAllUsers( $connection )
 {
@@ -152,12 +156,6 @@ function getAllCategoriesDepenses( $connection )
 
 // --- GLOBAL RESULT ---
 // - cueillette -
-function getPoidsTotalCueilli( $connection )
-{
-    $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes";
-    return exeSelect( $connection, $query )[0]['poids'];
-}
-
 function getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin )
 {
     $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes " .
@@ -238,6 +236,8 @@ function getCurrentPoidsMin( $connection )
     return exeSelect( $connection, $query )[0]['s'];
 }
 
+
+// - bonus -
 function getCurrentBonus( $connection )
 {
     $query = "SELECT Bonus as s FROM the_bonus ORDER BY idBonus DESC LIMIT 1";
@@ -249,6 +249,34 @@ function getValueOfBonusPerDay( $connection )
     $salaire = getCurrentSalaire( $connection );
     $percent = getCurrentBonus( $connection );
     return $salaire * $percent;
+}
+
+function getSumBonusOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
+{
+    $sumBonus = 0;
+    $valueBonus = getValueOfBonusPerDay( $connection );
+    $poidsMin = getCurrentPoidsMin( $connection );
+
+    $query = "SELECT * FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND PoidsCeuilli > $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    $daysBonus = exeSelect( $connection, $query );
+
+    foreach ( $daysBonus as $ignored ) $sumBonus += $valueBonus;
+
+    return $sumBonus;
+}
+
+function getSommeBonusAllCueilleursInPeriod( $connection, $dateDebut, $dateFin )
+{
+    $sumBonus = 0;
+    $valueBonus = getValueOfMallusPerDay( $connection );
+    $poidsMin = getCurrentPoidsMin( $connection );
+
+    $query = "SELECT * FROM the_cueillettes WHERE PoidsCeuilli > $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    $daysBonus = exeSelect( $connection, $query );
+
+    foreach ( $daysBonus as $ignored ) $sumBonus += $valueBonus;
+
+    return $sumBonus;
 }
 
 
@@ -264,6 +292,34 @@ function getValueOfMallusPerDay( $connection )
     $salaire = getCurrentSalaire( $connection );
     $percent = getCurrentMallus( $connection );
     return $salaire * $percent;
+}
+
+function getSumMallusOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
+{
+    $sumMallus = 0;
+    $valueMallus = getValueOfMallusPerDay( $connection );
+    $poidsMin = getCurrentPoidsMin( $connection );
+
+    $query = "SELECT * FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND PoidsCeuilli < $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    $daysBonus = exeSelect( $connection, $query );
+
+    foreach ( $daysBonus as $ignored ) $sumMallus += $valueMallus;
+
+    return $sumMallus;
+}
+
+function getSommeMallusAllCueilleursInPeriod( $connection, $dateDebut, $dateFin )
+{
+    $sumMallus = 0;
+    $valueMallus = getValueOfMallusPerDay( $connection );
+    $poidsMin = getCurrentPoidsMin( $connection );
+
+    $query = "SELECT * FROM the_cueillettes WHERE PoidsCeuilli < $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    $daysBonus = exeSelect( $connection, $query );
+
+    foreach ( $daysBonus as $ignored ) $sumMallus += $valueMallus;
+
+    return $sumMallus;
 }
 
 
@@ -286,34 +342,6 @@ function getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin )
     $nbCueilleurs = exeSelect( $connection, $query )[0]['nb'];
 
     return $nbCueilleurs * $montantSalaire;
-}
-
-function getSumBonusOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
-{
-    $sumBonus = 0;
-    $valueBonus = getValueOfBonusPerDay( $connection );
-    $poidsMin = getCurrentPoidsMin( $connection );
-
-    $query = "SELECT * FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND PoidsCeuilli > $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
-    $daysBonus = exeSelect( $connection, $query );
-
-    foreach ( $daysBonus as $ignored ) $sumBonus += $valueBonus;
-
-    return $sumBonus;
-}
-
-function getSumMallusOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
-{
-    $sumMallus = 0;
-    $valueBonus = getValueOfMallusPerDay( $connection );
-    $poidsMin = getCurrentPoidsMin( $connection );
-
-    $query = "SELECT * FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND PoidsCeuilli < $poidsMin AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
-    $daysBonus = exeSelect( $connection, $query );
-
-    foreach ( $daysBonus as $ignored ) $sumMallus += $valueBonus;
-
-    return $sumMallus;
 }
 
 function getPaiementOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
@@ -341,8 +369,8 @@ function getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin )
 {
     $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
     $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
-    $sumBonusAllCueilleurs = 0;
-    $sumMallusAllCueilleurs = 0;
+    $sumBonusAllCueilleurs = getSommeBonusAllCueilleursInPeriod( $connection, $dateDebut, $dateFin );
+    $sumMallusAllCueilleurs = getSommeMallusAllCueilleursInPeriod( $connection, $dateDebut, $dateFin );
 
     return $sumSalairesCueilleurs + $sumDepenses + $sumBonusAllCueilleurs - $sumMallusAllCueilleurs;
 }
