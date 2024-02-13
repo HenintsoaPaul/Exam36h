@@ -432,3 +432,29 @@ function getBeneficeInPeriod( $connection, $dateDebut, $dateFin )
 
     return $sumVente - $sumRevient;
 }
+
+
+// PREDICTION
+function getMoyennePoidsCueilliParParcelle( $connection )
+{
+    $query = "select idParcelle, AVG(PoidsCeuilli) as moy FROM the_cueillettes GROUP BY idParcelle";
+    return exeSelect( $connection, $query );
+}
+
+function getPoidsRestantParParcelle( $connection, $dateFin )
+{
+    $lastDateRegen = getLastDateRegenBeforeDateFin( $connection, $dateFin );
+    $nbDaysCueillage = getNumberDateBetween( $lastDateRegen, $dateFin );
+
+    // get poids total foreach parcel
+    $poidsParParcelle = getPoids100PercentPerParcelle( $connection );
+
+    $moyennePoidsCueilliParParcelle = getMoyennePoidsCueilliParParcelle( $connection );
+    for ( $i = 0; $i < $nbDaysCueillage; $i ++ ) {
+        for ( $j = 0; $j < count($poidsParParcelle); $j ++ ) {
+            $poidsParParcelle[$j] -= $moyennePoidsCueilliParParcelle[$j];
+        }
+    }
+
+    return $poidsParParcelle;
+}
