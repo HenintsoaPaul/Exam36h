@@ -81,8 +81,40 @@ function exeSelect( $connection, $query )
     return null;
 }
 function getMoisRegeneration($connection, $idVariete){
-    $query = "SELECT * FROM Regeneration WHERE idVarieteThe = $idVariete";
+    $query = "SELECT * FROM the_Regenerations WHERE idVarieteThe = $idVariete";
+    print($query);
     return exeSelect($connection, $query);
+}
+
+// Fonction de comparaison pour trier selon l'idMois
+function comparaisonDecroissanteIdMois($a, $b) {
+    return $b["idMois"] - $a["idMois"];
+}
+
+/// Recupere l'idVariete planter dans une parcelle donnee
+function getIdVarieteByIdParcelle( $connection , $idParcelle){
+    $idVariete = exeSelect($connection , "Select idVarieteThe from the_Parcelles WHERE idParcelle = ".$idParcelle);
+    return $idVariete[0]['idVarieteThe'];
+}
+function getRegenerateStarter( $connection , $idParcelle ,$dateDebut , $dateFin ){
+    $sep = explode("-" ,$dateFin);
+    $deb = explode("-",$dateDebut);
+    // Récupérer le mois sous forme numérique (de 1 à 12)
+    $moisFin = $sep[1];
+    
+    $idVariete = getIdVarieteByIdParcelle($connection,$idParcelle);
+    $moisRegenerations = getMoisRegeneration($connection , $idVariete);
+
+    // Utilise la fonction usort() avec la fonction de comparaison pour trier le tableau
+    usort($moisRegenerations, "comparaisonDecroissanteIdMois");
+    $result = $deb[1];
+    foreach ($moisRegenerations as $id => $mois) {
+        if( $mois['idMois'] < $moisFin){
+            $result = $mois['idMois'];
+            break;
+        }
+    }
+    return $result;
 }
 // SELECT ALL COLUMNS + ALL ROWS
 /**
@@ -204,9 +236,9 @@ function getPoidsRestantInParcelle( $connection, $idParcelle, $dateDebut, $dateF
     list( $yearDebut, $monthDebut, $dayDebut ) = explode( '-', $dateDebut );
     list( $yearFin, $monthFin, $dayFin ) = explode( '-', $dateFin );
 
+    $idMois = getRegenerateStarter($connection,$idParcelle,$dateDebut,$dateFin);
     // Determine the start date based on whether the month of $dateDebut is less than $dateFin
-    $startDate = ($monthDebut < $monthFin || $yearDebut < $yearFin) ? "$yearFin-$monthFin-01" : $dateDebut;
-
+    $startDate = ($monthDebut < $monthFin || $yearDebut < $yearFin) ? "$yearFin-$idMois-01" : $dateDebut;
     $nesorina = getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $startDate, $dateFin );
     $produit = getPoidsTotalInParcelle( $connection, $idParcelle ); // constant tout les debuts de mois
 
