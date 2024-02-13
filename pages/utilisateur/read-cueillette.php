@@ -7,7 +7,7 @@ $connection = db_connect();
 $cueillettes = getAllCueillettes($connection); 
 closeConnection($connection);
 ?>
-<div class="main">
+<div class="main min-height-style">
         <div class="container">
             <h1>Liste des Cueillettes</h1>
             <table class="table table-hover">
