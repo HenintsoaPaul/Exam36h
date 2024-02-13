@@ -18,7 +18,7 @@ if ( isset($_GET['message']) ) {
 <script src="../../inc/js/functions.js"></script>
 
 <section class="my-5" id="main">
-    <div class="container ">
+    <div class="container "> 
         <div class="row gy-4  gy-md-0">
             <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center " action="AddCueillette.php" method="POST">
                 <div class="h1 text-center"> Faire une cueillette </div>
@@ -61,6 +61,8 @@ if ( isset($_GET['message']) ) {
 
                 <div class="d-inline">
                     <button type="submit" class="btn btn-success" id="btn-submit">Ceuillir</button>
+                    <a href="read-cueillette.php" type="button" class="link">Voir les cueillettes</a>
+
                 </div>
                 
             </form>

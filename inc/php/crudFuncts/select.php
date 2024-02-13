@@ -117,6 +117,10 @@ function getAllDepenses( $connection )
     return getAllRows( $connection, "the_depenses" );
 }
 
+function getAllSalaires( $connection )
+{
+    return getAllRows( $connection, "the_salaires" );
+}
 function getAllGenre( $connection )
 {
     return getAllRows( $connection, "the_Genres" );
