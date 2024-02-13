@@ -62,6 +62,7 @@ CREATE TABLE the_Mois(
 CREATE TABLE the_PrixVente(
                               idPrixVente INT AUTO_INCREMENT,
                               MontantPrixVente DECIMAL(25,2)  ,
+                              dateConfig DATE NOT NULL,
                               idVarieteThe INT NOT NULL,
                               PRIMARY KEY(idPrixVente),
                               UNIQUE(MontantPrixVente),
