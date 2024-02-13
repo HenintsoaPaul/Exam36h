@@ -93,7 +93,31 @@ function getPoidsCueilli(herf, dateDebut, dateFin) {
 
     return retour;
 }
+function getSommeVente(herf, dateDebut, dateFin) {
+    var xhr = getxhr();
+    var Data = new FormData();
+    Data.append("dateDebut", dateDebut);
+    Data.append("dateFin", dateFin);
 
+    var retour;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // console.log(xhr.responseText);
+                console.log("somme vente: "+xhr.responseText);
+                retour = JSON.parse(xhr.responseText);
+            } else {
+                console.log("error : " + xhr.status);
+            }
+        }
+    };
+
+    xhr.open("POST", herf, false);
+    xhr.send(Data);
+
+    return retour;
+}
 function getPrixRevient(herf, dateDebut, dateFin) {
     var xhr = getxhr();
     var Data = new FormData();

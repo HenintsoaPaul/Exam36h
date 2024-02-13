@@ -127,13 +127,15 @@
         var depenses = document.getElementById("montantDepenses");
         var benefice = document.getElementById("benefice");
 
+
     /// Traitement de donnee
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
         console.log("prixRevient "+prixRevient );
         var allParcelle = getAllParcelle("getAllParcelle.php");
-        
+        var montantVente = getSommeVente("getSommeVente.php", dateDebutInput.value, dateFinInput.value);
         var tbody = document.getElementById("parcelleTableBody");
+
         tbody.innerHTML = "";
         for (let index = 0; index < allParcelle.length; index++) {
 
@@ -163,7 +165,7 @@
         {coutDeRevient.innerHTML = prixRevient;}
 
 
-        ventes.innerHTML = 0;
+        ventes.innerHTML = montantVente;
         depenses.innerHTML = 0;
         benefice.innerHTML = 0;
     
