@@ -37,6 +37,9 @@
                         <li class="nav-item" >
                           <a class="nav-link" id="paiements_li" href="paiements.php">Paiements</a>
                         </li>
+                        <li class="nav-item" >
+                          <a class="nav-link" id="prevision_li" href="prevision.php">Prevision</a>
+                        </li>
                       </ul>
                       <div class="rounded ">
                         <a href="../../index.php" type="button" class="btn hover-fill transition-fill">Deconnexion</a>

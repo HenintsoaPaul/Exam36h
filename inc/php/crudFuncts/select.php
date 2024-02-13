@@ -83,7 +83,7 @@ function exeSelect( $connection, $query )
 
 function getMoisRegeneration( $connection, $idVariete )
 {
-    $query = "SELECT * FROM the_Regenerations WHERE idVarieteThe = $idVariete";
+    $query = "SELECT * FROM the_regenerations WHERE idVarieteThe = $idVariete";
     return exeSelect( $connection, $query );
 }
 
@@ -96,7 +96,7 @@ function comparaisonDecroissanteIdMois( $a, $b )
 /// Recupere l'idVariete planter dans une parcelle donnee
 function getIdVarieteByIdParcelle( $connection, $idParcelle )
 {
-    $idVariete = exeSelect( $connection, "Select idVarieteThe from the_Parcelles WHERE idParcelle = " . $idParcelle );
+    $idVariete = exeSelect( $connection, "Select idVarieteThe from the_parcelles WHERE idParcelle = " . $idParcelle );
     return $idVariete[0]['idVarieteThe'];
 }
 
@@ -165,7 +165,7 @@ function getAllSalaires( $connection )
 
 function getAllGenre( $connection )
 {
-    return getAllRows( $connection, "the_Genres" );
+    return getAllRows( $connection, "the_genres" );
 }
 
 function getAllMois( $connection )
@@ -185,7 +185,7 @@ function getAllUsers( $connection )
 
 function getAllCategoriesDepenses( $connection )
 {
-    return getAllRows( $connection, "the_CategoriesDepenses" );
+    return getAllRows( $connection, "the_categoriesdepenses" );
 }
 
 
@@ -412,17 +412,17 @@ function getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin )
 // - Montant Vente -
 function getSommeVenteInPeriod( $connection, $dateDebut, $dateFin )
 {
-    // get last inserted PrixVente
-    $query = "SELECT MontantPrixVente, idVarieteThe FROM the_prixvente ORDER BY idPrixVente DESC limit 1";
+    $query = "SELECT MontantPrixVente, idVarieteThe FROM the_prixvente";
 
     // get sum total Vente = sum ( poidsCueilli * montant )
-    $query = "SELECT SUM(PoidsCeuilli * MontantPrixVente) as sum FROM
-                (SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') AS c
-                    JOIN the_parcelles as p on c.idParcelle = p.idParcelle
-                    JOIN the_varietesthes as v on p.idVarieteThe = v.idVarieteThe
-                    JOIN ($query) as pv on v.idVarieteThe = pv.idVarieteThe";
+    $query = "SELECT SUM(PoidsCeuilli * MontantPrixVente) as total FROM
+                (SELECT c.PoidsCeuilli, pv.MontantPrixVente FROM
+                    (SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') AS c
+                    JOIN the_parcelles as p ON c.idParcelle = p.idParcelle
+                    JOIN the_varietesthes as v ON p.idVarieteThe = v.idVarieteThe
+                    JOIN ($query) as pv ON v.idVarieteThe = pv.idVarieteThe) AS subquery";
 
-    return exeSelect( $connection, $query )[0]['sum'];
+    return exeSelect($connection, $query)[0]['total'];
 }
 
 function getBeneficeInPeriod( $connection, $dateDebut, $dateFin )

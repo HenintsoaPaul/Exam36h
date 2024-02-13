@@ -137,7 +137,7 @@
         let poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         let coutRevientPerKilo = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
 
-        let allParcelle = getAllParcelle("getAllParcelle.php");
+        let allParcelle = getAllParcelle("get-all-parcelle.php");
         let montantVente = getSommeVente("getSommeVente.php", dateDebutInput.value, dateFinInput.value);
         let valbenefice = getByPeriod("get-benefice.php", dateDebutInput.value, dateFinInput.value);
         let valdepense = getByPeriod("get-depense.php", dateDebutInput.value, dateFinInput.value);

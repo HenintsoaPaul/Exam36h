@@ -191,7 +191,7 @@ function getAllParcelle(herf) {
     };
 
     xhr.open("POST", herf, false);
-    xhr.send(Data);
+    xhr.send(null);
 
     return retour;
 }

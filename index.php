@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +26,9 @@
           <div class="row gy-4 gy-md-0">
             <div class="col-12 col-md-6 d-flex flex-column justify-content-center ">
               <h1 class="fw-bold">
-                Ceuillete de The
+                Cueillete de The
               </h1>
-              <h2 class="fw-light">Bienvenue sur ce site de gestion de ceulliette de the , vous povez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
+              <h2 class="fw-light">Bienvenue sur notre site de gestion de cueillette de the, vous pouvez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
               <div class="mt-5">
                 <a class="btn btn-success" type="button" href="pages/utilisateur/login.php">Login Utilisateur</a>
                 <a class="btn btn-secondary" type="button" href="pages/admin/login.php">Login Admin</a>

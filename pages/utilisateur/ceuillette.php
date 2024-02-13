@@ -20,7 +20,7 @@ if ( isset($_GET['message']) ) {
 <section class="my-5" id="main">
     <div class="container "> 
         <div class="row gy-4  gy-md-0">
-            <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center " action="AddCueillette.php" method="POST">
+            <form class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center " action="add-cueillette.php" method="POST">
                 <div class="h1 text-center"> Faire une cueillette </div>
                 <div class="bg-dark p-1 w-100 my-2"></div>
 
