@@ -19,7 +19,7 @@ else if ($user['idStatu'] != 2){
     $error = "Vous n'etes pas un User simple!";
 }
 
-$link = isset($error) ? "Location:login.php?error=$error" : "Location:home.php";
+$link = isset($error) ? "login.php?error=$error" : "home.php";
 header("Location:$link");
 
 ?>

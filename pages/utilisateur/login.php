@@ -36,12 +36,12 @@
                 <!-- login Error Log -->
 
               <div class="form-floating mb-3">
-                <input type="text" name="login" id="inputMail" value="henints" class="form-control" placeholder="">
+                <input type="text" name="login" id="inputMail" value="henints" class="form-control" placeholder="" required>
                 <label for="inputMail">Login</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" id="inputPass" value="user" placeholder="">
+                <input type="password" class="form-control" name="password" id="inputPass" value="user" placeholder="" required>
                 <label for="inputPass">Password</label>
               </div>
 
