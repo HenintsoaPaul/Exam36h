@@ -2,7 +2,7 @@
 function exeInsertThenNbRows( $connection, $query )
 {
     $nbRowsInserted = 0;
-    try { 
+    try {
         if ( mysqli_query( $connection, $query ) ) {
 
             $nbRowsInserted = mysqli_affected_rows( $connection );
@@ -25,8 +25,7 @@ function exeInsertThenNbRows( $connection, $query )
 }
 
 /**
- * Return 0 on FAILURE.
- * Return int != 0 on SUCCESS.
+ * @return int 0 on FAILURE, otherwise SUCCESS.
  */
 function exeInsertThenLastId( $connection, $query )
 {
@@ -53,6 +52,9 @@ function exeInsertThenLastId( $connection, $query )
     return isset( $lastId ) ? $lastId : 0; // Returns the ID if available, otherwise  0
 }
 
+/**
+ * @return int last inserted id on SUCCESS, otherwise 0.
+ */
 function addVariete( $connection, $nomVariete, $occupation, $rendementParPied )
 {
     if ( !isset( $nomVariete ) ) echo "nomVariete cannot be null!";
@@ -65,6 +67,9 @@ function addVariete( $connection, $nomVariete, $occupation, $rendementParPied )
     return exeInsertThenLastId( $connection, $query );
 }
 
+/**
+ * @return int 1 on SUCCESS.
+ */
 function addParcelle( $connection, $surface, $idVariete )
 {
     if ( !isset( $surface ) ) echo "surface cannot be null!";
@@ -76,7 +81,10 @@ function addParcelle( $connection, $surface, $idVariete )
     return exeInsertThenNbRows( $connection, $query );
 }
 
-function addCueilleur($connection, $nom, $dateNaissance, $idGenre)
+/**
+ * @return int 1 on SUCCESS.
+ */
+function addCueilleur( $connection, $nom, $dateNaissance, $idGenre )
 {
     if ( !isset( $nom ) ) echo "nom cannot be null!";
     if ( !isset( $dateNaissance ) ) echo "dateNaissance cannot be null!";
@@ -88,6 +96,9 @@ function addCueilleur($connection, $nom, $dateNaissance, $idGenre)
     return exeInsertThenNbRows( $connection, $query );
 }
 
+/**
+ * @return int 1 on SUCCESS.
+ */
 function addCategorieDepense( $connection, $nomCategorie )
 {
     if ( !isset( $nomCategorie ) ) echo "nomCategorie cannot be null!";
@@ -98,7 +109,10 @@ function addCategorieDepense( $connection, $nomCategorie )
     return exeInsertThenNbRows( $connection, $query );
 }
 
-function addCueillette($connection, $dateCueillette, $poidsCeuilli, $idParcelle, $idCeuilleur)
+/**
+ * @return int 1 on SUCCESS.
+ */
+function addCueillette( $connection, $dateCueillette, $poidsCeuilli, $idParcelle, $idCeuilleur )
 {
     if ( !isset( $dateCueillette ) ) echo "dateCueillette cannot be null!";
     if ( !isset( $poidsCeuilli ) ) echo "poidsCeuilli cannot be null!";
@@ -111,17 +125,23 @@ function addCueillette($connection, $dateCueillette, $poidsCeuilli, $idParcelle,
     return exeInsertThenNbRows( $connection, $query );
 }
 
-function addSalaire( $connection, $salaire, $dateDebutSalaire)
+/**
+ * @return int 1 on SUCCESS.
+ */
+function addSalaire( $connection, $salaire, $dateDebutSalaire )
 {
     if ( !isset( $salaire ) ) echo "salaire cannot be null!";
 
-    $format = "INSERT INTO the_salaires (salaire, DateDebutSalaire) VALUES (%f,'".$dateDebutSalaire."')";
+    $format = "INSERT INTO the_salaires (salaire, DateDebutSalaire) VALUES (%f,'" . $dateDebutSalaire . "')";
     $query = sprintf( $format, $salaire );
     echo $query;
 
     return exeInsertThenNbRows( $connection, $query );
 }
 
+/**
+ * @return int 1 on SUCCESS.
+ */
 function addDepense( $connection, $dateDepense, $montantDepense, $idCategorieDepense )
 {
     if ( !isset( $dateDepense ) ) echo "dateDepense cannot be null!";
@@ -130,6 +150,20 @@ function addDepense( $connection, $dateDepense, $montantDepense, $idCategorieDep
 
     $format = "INSERT INTO the_depenses (datedepense, montantdepense, idcategoriedepense) VALUES ('%s',%f, %d)";
     $query = sprintf( $format, $dateDepense, $montantDepense, $idCategorieDepense );
+
+    return exeInsertThenNbRows( $connection, $query );
+}
+
+/**
+ * @return int 1 on SUCCESS.
+ */
+function addRegeneration( $connection, $idMois, $idVarieteThe )
+{
+    if ( !isset( $idMois ) ) echo "idMois cannot be null!";
+    if ( !isset( $idVarieteThe ) ) echo "idVarieteThe cannot be null!";
+
+    $format = "INSERT INTO the_regenerations ( idMois, idVarieteThe ) VALUES (%d,%d)";
+    $query = sprintf( $format, $idMois, $idVarieteThe );
 
     return exeInsertThenNbRows( $connection, $query );
 }
