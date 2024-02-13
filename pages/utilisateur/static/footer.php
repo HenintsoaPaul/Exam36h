@@ -28,7 +28,7 @@
                                   <i class="fs-3 bi bi-file-earmark-spreadsheet"><span class=" d-lg-none px-1">Google Sheet</span></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/script.php">
+                                <a class="nav-link" href="../script.php">
                                   <i class="fs-3 bi bi-filetype-sql"><span class=" d-lg-none px-1">Script SQL</span></i></a>
                             </li>
                         </ul>
