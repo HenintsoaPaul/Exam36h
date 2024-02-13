@@ -445,7 +445,12 @@ function getPoids100PercentPerParcelle( $connection )
 
 function getMoyennePoidsCueilliParParcelle( $connection )
 {
-    $query = "select idParcelle, AVG(PoidsCeuilli) as moy FROM the_cueillettes GROUP BY idParcelle ORDER BY idParcelle";
+    $query = "SELECT t1.*, MontantPrixVente as montant FROM
+    (select idParcelle, AVG(PoidsCeuilli) as moy FROM the_cueillettes GROUP BY idParcelle ORDER BY idParcelle) AS t1
+    JOIN the_parcelles as p ON t1.idParcelle = p.idParcelle
+    JOIN the.the_varietesthes as tv on p.idVarieteThe = tv.idVarieteThe
+    JOIN the.the_prixvente tp on tv.idVarieteThe = tp.idVarieteThe";
+
     return exeSelect( $connection, $query );
 }
 
@@ -464,7 +469,7 @@ function calculateDaysBetweenDates( $date1String, $date2String )
 /**
  * @return array|null Array of poidsRestant foreach Parcelle.
  */
-function getPoidsRestantParParcelle( $connection, $dateFin )
+function getPredictionPoidsRestantParParcelle( $connection, $dateFin )
 {
     // get poids total foreach parcel
     $poidsParParcelle = getPoids100PercentPerParcelle( $connection );
@@ -472,18 +477,34 @@ function getPoidsRestantParParcelle( $connection, $dateFin )
     // poids moyenne foreach parcel
     $moyennePoidsCueilliParParcelle = getMoyennePoidsCueilliParParcelle( $connection );
 
-    $dateDebut = "2023-01-01";
+    $now = "2023-01-01";
     for ( $i = 0; $i < count( $poidsParParcelle ); $i ++ ) {
         $idParcelle = $poidsParParcelle[$i]['idParcelle'];
 
         // nb days of cueillage
-        $dateLastRegen = getRegenerateStarter( $connection, $idParcelle, $dateDebut, $dateFin );
+        $dateLastRegen = getRegenerateStarter( $connection, $idParcelle, $now, $dateFin );
         $nbDaysCueillage = calculateDaysBetweenDates( $dateLastRegen, $dateFin );
 
         for ( $k = 0; $k < $nbDaysCueillage; $k ++ ) {
-            $poidsParParcelle[$i] -= $moyennePoidsCueilliParParcelle[$i];
+            $poidsParParcelle[$idParcelle]['poidsTotal'] -= $moyennePoidsCueilliParParcelle[$idParcelle]['moy'];
         }
     }
 
     return $poidsParParcelle;
+}
+
+function getPredictionMontant( $connection, $dateFin )
+{
+    $now = "2023-01-01";
+    $nbDaysCueillage = calculateDaysBetweenDates( $now, $dateFin );
+
+    $montantPredits = [];
+
+    $moyennesParParcelle = getMoyennePoidsCueilliParParcelle( $connection );
+    foreach ($moyennesParParcelle as $moyenne) {
+        $idParcelle = $moyenne['idParcelle'];
+        $montantPredits[$idParcelle] = $nbDaysCueillage * $moyenne['moy'] * $moyenne['montant'];
+    }
+
+    return $montantPredits;
 }
