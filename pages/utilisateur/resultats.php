@@ -137,5 +137,5 @@
     activeCurrentPage("resultat_li");
 </script>
 <?php
-    include"static/footer.php";
+    include "static/footer.php";
 ?>
