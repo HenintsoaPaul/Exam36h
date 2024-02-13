@@ -6,7 +6,7 @@
  $dateFin = $_POST['dateFin'];
  $dateDebut = $_POST['dateDebut'];
 
- $poids = getSommeCoutRevientInPeriod($connection, $dateDebut, $dateFin );
+ $poids = getCoutRevientParKilo($connection, $dateDebut, $dateFin );
  closeConnection($connection);
  echo json_encode($poids);
 

@@ -80,7 +80,10 @@ function exeSelect( $connection, $query )
     }
     return null;
 }
-
+function getMoisRegeneration($connection, $idVariete){
+    $query = "SELECT * FROM Regeneration WHERE idVarieteThe = $idVariete";
+    return exeSelect($connection, $query);
+}
 // SELECT ALL COLUMNS + ALL ROWS
 /**
  * Return all columns of all rows in the specified table. Columns' name are the indexes of a row.
