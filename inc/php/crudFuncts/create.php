@@ -24,6 +24,35 @@ function exeInsertThenNbRows( $connection, $query )
     return $nbRowsInserted;
 }
 
+/**
+ * Return 0 on FAILURE.
+ * Return int != 0 on SUCCESS.
+ */
+function exeInsertThenLastId( $connection, $query )
+{
+    try {
+        if ( mysqli_query( $connection, $query ) ) {
+            if ( mysqli_affected_rows( $connection ) === 1 ) {
+                // Retrieve the ID of the last inserted record
+                $lastId = mysqli_insert_id( $connection );
+            }
+        } else {
+            // Display the MySQL error message
+            $errorMessage = mysqli_error( $connection );
+            echo "MySQL error: $errorMessage";
+            throw new Exception( 'Query failed: ' . $errorMessage );
+        }
+    }
+    catch ( Exception $e ) {
+        // Handle the exception, e.g., log the error message
+        error_log( $e->getMessage() );
+        // Optionally, you can display the error message to the user in a user-friendly way
+        echo "An error occurred: " . htmlspecialchars( $e->getMessage() );
+    }
+
+    return isset( $lastId ) ? $lastId : 0; // Returns the ID if available, otherwise  0
+}
+
 function addVariete( $connection, $nomVariete, $occupation, $rendementParPied )
 {
     if ( !isset( $nomVariete ) ) echo "nomVariete cannot be null!";
@@ -33,7 +62,7 @@ function addVariete( $connection, $nomVariete, $occupation, $rendementParPied )
     $format = "INSERT INTO the_varietesthes (NomVariete, Occupation, RendementParPied) VALUES ('%s',%f, %f)";
     $query = sprintf( $format, $nomVariete, $occupation, $rendementParPied );
 
-    return exeInsertThenNbRows( $connection, $query );
+    return exeInsertThenLastId( $connection, $query );
 }
 
 function addParcelle( $connection, $surface, $idVariete )
