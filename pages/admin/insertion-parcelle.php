@@ -30,7 +30,7 @@ if ( isset($_GET['message']) ) {
                         <!-- SURFACE -->
                         <div class="form-group col-md-6"> 
                             <label for="surface" class="form-label">Surface</label>
-                            <input class="form-control" type="number" name="surface" id="surface" required>
+                            <input class="form-control" type="text" name="surface" id="surface" required>
                         </div>
                         <!-- variete -->
                         <div class="form-group col-md-6"> 

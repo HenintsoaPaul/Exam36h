@@ -11,13 +11,13 @@ $className = "";
 $insertLog = "";
 if ( isset($_GET['message']) ) {
     $className = $_GET['message'] == "success" ? "success" : "danger";
-    $insertLog = $_GET['message'] == "success" ? "New Parcelle Added Successfully!" : "Oops! Failed To Add New Parcelle.";
+    $insertLog = $_GET['message'] == "success" ? "Prix de vente ajoutée!" : "Oops! Il y'a une erreur dans l'insertion du prix de vente.";
 }
 ?>
     <div class="main my-5">
         <div class="container">
             <div class="row col-12">
-                <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/add-prix-vente.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                 <div class="card p-5 rounded border-3">    
                     <h1>Prix de vente</h1>
                     <!-- insert LOG -->
