@@ -71,7 +71,7 @@
                         </div>
                         <div class="card-body text-center">
                             <h3>Couts de revient / Kg</h3>
-                            <p class="fw-bold fs-3"> <span id="coutDeRevient"> </span> <span class="text-success">$</span></p>
+                            <p class="fw-bold fs-3"> <span id="coutDeRevient"> </span> <span class="text-success">Ar</span></p>
                         </div>
                         <div class="card-footer"></div>
                     </div>
@@ -82,7 +82,7 @@
                             </div>
                             <div class="card-body text-center">
                                 <h3>Montant des ventes</h3>
-                                <p class="fw-bold fs-3">  <span id="montantVentes">  </span> <span class="text-success">$</span></p>
+                                <p class="fw-bold fs-3">  <span id="montantVentes">  </span> <span class="text-success">Ar</span></p>
                             </div>
                             <div class="card-footer"></div>
                         </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="card-body text-center">
                                 <h3>Montant des depenses</h3>
-                                <p class="fw-bold fs-3">  <span id="montantDepenses">  </span> <span class="text-danger">$</span></p>
+                                <p class="fw-bold fs-3">  <span id="montantDepenses">  </span> <span class="text-danger">Ar</span></p>
                             </div>
                             <div class="card-footer"></div>
                         </div>
@@ -102,7 +102,7 @@
                             </div>
                             <div class="card-body text-center">
                                 <h3>Benefice</h3>
-                                <p class="fw-bold fs-3">  <span id="benefice">  </span> <span class="text-success">$</span></p>
+                                <p class="fw-bold fs-3">  <span id="benefice">  </span> <span class="text-success">Ar</span></p>
                             </div>
                             <div class="card-footer"></div>
                         </div>
