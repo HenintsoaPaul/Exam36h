@@ -25,10 +25,10 @@ if ( isset($_GET['message']) ) {
                             <label for="nomInput" class="form-label">Nom Categorie</label>
                             <input class="form-control" type="text" name="nomInput" id="nomInput" required>
                         </div>
-                    <div>
-
-                      <button type="submit" class="btn btn-success mt-3">Add New Categorie Depense</button>
-                    </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button type="submit" class="btn btn-success ">Add New Categorie</button>
+                            <a href="read-categorie.php" type="button" class="link">Voir les categories</a>
+                        </div>
                 </div>
                 </form>
             </div>

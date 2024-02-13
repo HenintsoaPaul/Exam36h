@@ -19,21 +19,14 @@ if ( isset($_GET['message']) ) {
             <div class="row col-12">
                 <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                 <div class="card p-5 rounded border-3">    
-                    <h1>Parcelle</h1>
+                    <h1>Prix de vente</h1>
                     <!-- insert LOG -->
                     <div >
                         <p class="text-<?= $className ?>"><?= $insertLog ?></p>
                     </div>
                     <!-- insert LOG -->
-
-                    <div class="row">
-                        <!-- SURFACE -->
-                        <div class="form-group col-md-6"> 
-                            <label for="surface" class="form-label">Surface</label>
-                            <input class="form-control" type="number" name="surface" id="surface" required>
-                        </div>
-                        <!-- variete -->
-                        <div class="form-group col-md-6"> 
+                    <!-- variete -->
+                    <div class="form-group col-12 mb-3"> 
                             <label for="idVariete" class="form-label">Variete</label>
                             <select name="idVariete" title="variete" class="form-select" required>
                                 <option value="">Choisir une variete</option>
@@ -42,11 +35,21 @@ if ( isset($_GET['message']) ) {
                                 <?php } ?>
                             </select>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between mt-3">
-                            <button type="submit" class="btn btn-success ">Add New Parcelle</button>
-                            <a href="read-parcelle.php" type="button" class="link">Voir les parcelles</a>
+                    <div class="row mb-3">
+                        <!-- Montant  -->
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="montantInput" class="form-label">Montant</label>
+                            <input type="text" name="montantInput" id="" class="form-control" required>
                         </div>
+                        <!-- Date -->
+                        <div class="form-group col-md-6"> 
+                            <label for="dateInput" class="form-label">Date</label>
+                            <input class="form-control" type="date" name="dateInput" id="dateInput" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between ">
+                            <button type="submit" class="btn btn-success ">Valider</button>
+                    </div>
                 </div>
                 </form>
             </div>
@@ -55,7 +58,7 @@ if ( isset($_GET['message']) ) {
     <br />
 
     <script>
-        activeCurrentPage("parcelle_li")
+        activeCurrentPage("prixVente_li")
     </script>
 <?php
     include "static/footer.php";
