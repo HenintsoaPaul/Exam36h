@@ -60,13 +60,13 @@ closeConnection($connection);
                     <h3>Contributors</h3>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002434</p>
+                    <p>JACQUES Chan Alex - ETU 002434</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002443</p>
+                    <p> MANITRAJA Henintsoa Paul - ETU 002443</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002610</p>
+                    <p>RAVELOMANANTSOA Sergiana Francourt - ETU 002610</p>
                 </li>
               </ul>
               <div class="row">
