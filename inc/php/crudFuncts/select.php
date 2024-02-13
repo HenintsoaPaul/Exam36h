@@ -80,41 +80,48 @@ function exeSelect( $connection, $query )
     }
     return null;
 }
-function getMoisRegeneration($connection, $idVariete){
+
+function getMoisRegeneration( $connection, $idVariete )
+{
     $query = "SELECT * FROM the_Regenerations WHERE idVarieteThe = $idVariete";
-    return exeSelect($connection, $query);
+    return exeSelect( $connection, $query );
 }
 
 // Fonction de comparaison pour trier selon l'idMois
-function comparaisonDecroissanteIdMois($a, $b) {
+function comparaisonDecroissanteIdMois( $a, $b )
+{
     return $b["idMois"] - $a["idMois"];
 }
 
 /// Recupere l'idVariete planter dans une parcelle donnee
-function getIdVarieteByIdParcelle( $connection , $idParcelle){
-    $idVariete = exeSelect($connection , "Select idVarieteThe from the_Parcelles WHERE idParcelle = ".$idParcelle);
+function getIdVarieteByIdParcelle( $connection, $idParcelle )
+{
+    $idVariete = exeSelect( $connection, "Select idVarieteThe from the_Parcelles WHERE idParcelle = " . $idParcelle );
     return $idVariete[0]['idVarieteThe'];
 }
-function getRegenerateStarter( $connection , $idParcelle ,$dateDebut , $dateFin ){
-    $sep = explode("-" ,$dateFin);
-    $deb = explode("-",$dateDebut);
+
+function getRegenerateStarter( $connection, $idParcelle, $dateDebut, $dateFin )
+{
+    $sep = explode( "-", $dateFin );
+    $deb = explode( "-", $dateDebut );
     // Récupérer le mois sous forme numérique (de 1 à 12)
     $moisFin = $sep[1];
-    
-    $idVariete = getIdVarieteByIdParcelle($connection,$idParcelle);
-    $moisRegenerations = getMoisRegeneration($connection , $idVariete);
+
+    $idVariete = getIdVarieteByIdParcelle( $connection, $idParcelle );
+    $moisRegenerations = getMoisRegeneration( $connection, $idVariete );
 
     // Utilise la fonction usort() avec la fonction de comparaison pour trier le tableau
-    usort($moisRegenerations, "comparaisonDecroissanteIdMois");
+    usort( $moisRegenerations, "comparaisonDecroissanteIdMois" );
     $result = $deb[1];
-    foreach ($moisRegenerations as $id => $mois) {
-        if( $mois['idMois'] < $moisFin){
+    foreach ( $moisRegenerations as $id => $mois ) {
+        if ( $mois['idMois'] < $moisFin ) {
             $result = $mois['idMois'];
             break;
         }
     }
     return $result;
 }
+
 // SELECT ALL COLUMNS + ALL ROWS
 /**
  * Return all columns of all rows in the specified table. Columns' name are the indexes of a row.
@@ -221,16 +228,13 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
     return $nbPieds * $row['rendement'];
 }
 
-/**
- * todo : update funct getPoidsRestantInParcelle()
- */
 function getPoidsRestantInParcelle( $connection, $idParcelle, $dateDebut, $dateFin )
 {
     // Assuming $dateDebut and $dateFin are strings in the format 'YYYY-MM-DD'
     list( $yearDebut, $monthDebut, $dayDebut ) = explode( '-', $dateDebut );
     list( $yearFin, $monthFin, $dayFin ) = explode( '-', $dateFin );
 
-    $idMois = getRegenerateStarter($connection,$idParcelle,$dateDebut,$dateFin);
+    $idMois = getRegenerateStarter( $connection, $idParcelle, $dateDebut, $dateFin );
     // Determine the start date based on whether the month of $dateDebut is less than $dateFin
     $startDate = ($monthDebut < $monthFin || $yearDebut < $yearFin) ? "$yearFin-$idMois-01" : $dateDebut;
     $nesorina = getPoidsTotalCueilliInParcelleInPeriod( $connection, $idParcelle, $startDate, $dateFin );
