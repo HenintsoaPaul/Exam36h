@@ -249,8 +249,10 @@ function getSommeCoutRevientInPeriod( $connection, $dateDebut, $dateFin )
 {
     $sumSalairesCueilleurs = getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin );
     $sumDepenses = getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin );
+    $sumBonusAllCueilleurs = 0;
+    $sumMallusAllCueilleurs = 0;
 
-    return $sumSalairesCueilleurs + $sumDepenses;
+    return $sumSalairesCueilleurs + $sumDepenses + $sumBonusAllCueilleurs - $sumMallusAllCueilleurs;
 }
 
 
