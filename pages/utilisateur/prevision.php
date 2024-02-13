@@ -44,31 +44,38 @@
 /// Les champs dates de filtre
     var date = document.getElementById("dateInput");
 
+    
+
     var montantTotal = document.getElementById("montantLabel");
     var poidsTotal = document.getElementById("poidsLabel");
 /// Action lors de la validation du formulaire
     previsionForm.addEventListener("submit" , function(event){
         event.preventDefault();
     /// Traitement de donnee
-        var data = [];
+        var montantprev = getPredictionMontant("get-prediction-montant.php", date.value);
+        var poidsprev = getPredictionPoids("get-prediction-poids.php", date.value);
+        
+        var sumpoids = 0;
+        var summont = 0;
+        var data =  getAllParcelle("get-all-parcelle.php");
         previsionLayout.innerHTML = "";
         for (let index = 0; index < data.length; index++) {
 
             const chunk = data[index];
 
-            const numParcelle = 1;
-            const surfaceParcelle = 100;
-            const nomVariete = "Variete";
-            const nbDePied = "2";
-            const poidsRestant = "300";
-
+            const numParcelle = chunk.idParcelle;
+            const surfaceParcelle = chunk.Surface;
+            const nomVariete = chunk.idVarieteThe;
+            const nbDePied = "---";
+            // const poidsRestant = poidsprev[index];
+            summont += montantprev[chunk.idParcelle];
 
             var html = "<div class=\"col-12 col-md-6 col-lg-4\"><div class=\"card\"><div class=\"card-body\"><div class=\"card-title\"><div class=\"row text-center\"><div class=\"col-6\">Parcelle "+numParcelle+"</div><div class=\"col-6\">Surface : "+surfaceParcelle+"</div></div></div><div class=\"text-center text-success fw-bold  fs-3 p-1\">"+nomVariete+"</div><img src=\"../../assets/img/green-tea.jpg\" alt=\"\" class=\"img-fluid\"><div class=\"row mb-3\"><div class=\"col-12 p-2\">Nomre de pied : <spna>"+nbDePied+"</spna></div><div class=\"col-12 p-2\">Poids de the restant : <span>"+poidsRestant+" kg</span></div></div></div></div></div>";
             previsionLayout.innerHTML += html;
         }
     ///
-    montantTotal.innerHTML = "1 000 <b class=\"text-success\">Ar</b>";
-    poidsTotal.innerHTML = "700 <b class=\"text-success\">kg</b>";
+    montantTotal.innerHTML = summont;
+    poidsTotal.innerHTML = ;
     /// Affichage de resultat
         nullLayout.classList.replace("d-block" , "d-none");
         previsionLayout.classList.replace("d-none" , "d-block");
