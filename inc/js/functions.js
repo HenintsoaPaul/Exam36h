@@ -297,3 +297,51 @@ function getInfoCueilleur(herf, idCueilleur, dateDebut, dateFin) {
 
     return retour;
 }
+
+function getPredictionPoids(herf, dateFin){
+    var xhr = getxhr();
+    var Data = new FormData();
+    Data.append("dateFin", dateFin);
+    var retour;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // console.log(xhr.responseText);
+                console.log(xhr.responseText);
+                retour = JSON.parse(xhr.responseText);
+            } else {
+                console.log("error : " + xhr.status);
+            }
+        }
+    };
+
+    xhr.open("POST", herf, false);
+    xhr.send(Data);
+
+    return retour;
+}
+
+function getPredictionMontant(herf, dateFin){
+    var xhr = getxhr();
+    var Data = new FormData();
+    Data.append("dateFin", dateFin);
+    var retour;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // console.log(xhr.responseText);
+                console.log(xhr.responseText);
+                retour = JSON.parse(xhr.responseText);
+            } else {
+                console.log("error : " + xhr.status);
+            }
+        }
+    };
+
+    xhr.open("POST", herf, false);
+    xhr.send(Data);
+
+    return retour;
+}

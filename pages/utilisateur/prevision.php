@@ -57,7 +57,7 @@
                         <div class="card-title">
                             <div class="row text-center">
                                 <div class="col-6">Parcelle #</div>
-                                <div class="col-6">10 ha</div>
+                                <div class="col-6">10 ha</div> 
                             </div>
                         </div>
                         <div class="text-center text-success fw-bold  fs-3 p-1">The Variete</div>
