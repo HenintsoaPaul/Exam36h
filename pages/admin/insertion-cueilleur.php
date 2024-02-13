@@ -50,7 +50,7 @@ if ( isset($_GET['message']) ) {
                         </div>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
-                            <button type="submit" class="btn btn-success ">Add New Ceuilleur</button>
+                            <button type="submit" class="btn btn-success ">Add New Cueilleur</button>
                             <a href="read-ceuilleur.php" type="button" class="link">Voir les ceuilleurs</a>
                         </div>
                 </div>

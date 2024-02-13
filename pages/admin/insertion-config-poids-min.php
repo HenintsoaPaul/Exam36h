@@ -1,5 +1,5 @@
 <?php
-  include "static/header.php";
+include "static/header.php";
 
 $className = "";
 $insertLog = "";
@@ -20,6 +20,7 @@ if ( isset($_GET['message']) ) {
                             <p class="text-<?= $className ?>"><?= $insertLog ?></p>
                         </div>
                         <!-- insert LOG -->
+
                         <div class="row mb-3">
                             <!-- Montant -->
                             <div class="form-group col-12 col-lg-6"> 

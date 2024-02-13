@@ -20,6 +20,7 @@ if ( isset($_GET['message']) ) {
                             <p class="text-<?= $className ?>"><?= $insertLog ?></p>
                         </div>
                         <!-- insert LOG -->
+
                     <div class="row mb-3">
                         <!--    Bonus -->
                         <div class="col-12 col-lg-6 form-group">

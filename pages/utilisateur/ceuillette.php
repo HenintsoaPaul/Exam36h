@@ -49,11 +49,11 @@ if ( isset($_GET['message']) ) {
                         <input type="text" name="poidsInput" class="form-control" id="poidsInput" required>
                     </div>
                     <div class="col-md-6 ">
-                        <label for="cueilleurInput" class="form-label">Ceuilleur</label>
+                        <label for="cueilleurInput" class="form-label">Cueilleur</label>
                         <select name="ceuilleurInput" class="form-select" id="ceuilleurInput">
                             <option value="">Choisir un cueilleur</option>
                             <?php foreach ($cueilleurs as $cueilleur) { ?>
-                                <option value="<?= $cueilleur['idCeuilleur'] ?>"><?= $cueilleur['Nom'] ?></option>
+                                <option value="<?= $cueilleur['idCueilleur'] ?>"><?= $cueilleur['Nom'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
