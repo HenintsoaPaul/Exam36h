@@ -69,11 +69,11 @@ CREATE TABLE the_PrixVente(
 );
 
 CREATE TABLE the_Cueilleurs(
-                               idCeuilleur INT AUTO_INCREMENT,
+                               idCueilleur INT AUTO_INCREMENT,
                                Nom VARCHAR(50)  NOT NULL,
                                DateNaissance DATE NOT NULL,
                                idGenre INT NOT NULL,
-                               PRIMARY KEY(idCeuilleur),
+                               PRIMARY KEY(idCueilleur),
                                FOREIGN KEY(idGenre) REFERENCES the_Genres(idGenre)
 );
 
@@ -91,10 +91,10 @@ CREATE TABLE the_Cueillettes(
                                 DateCeuillette DATE NOT NULL,
                                 PoidsCeuilli DECIMAL(15,2)   NOT NULL,
                                 idParcelle INT NOT NULL,
-                                idCeuilleur INT NOT NULL,
+                                idCueilleur INT NOT NULL,
                                 PRIMARY KEY(idCeuillette),
                                 FOREIGN KEY(idParcelle) REFERENCES the_Parcelles(idParcelle),
-                                FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+                                FOREIGN KEY(idCueilleur) REFERENCES the_Cueilleurs(idCueilleur)
 );
 
 CREATE TABLE the_Regenerations(
@@ -110,25 +110,25 @@ CREATE TABLE the_PoidsMinimal(
                                  idPoidsMinimal INT AUTO_INCREMENT,
                                  Poids DECIMAL(25,2)   NOT NULL,
                                  DateConfig DATE NOT NULL,
-                                 idCeuilleur INT NOT NULL,
+                                 idCueilleur INT NOT NULL,
                                  PRIMARY KEY(idPoidsMinimal),
-                                 FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+                                 FOREIGN KEY(idCueilleur) REFERENCES the_Cueilleurs(idCueilleur)
 );
 
 CREATE TABLE the_Bonus(
                           idBonus INT AUTO_INCREMENT,
                           Bonus DECIMAL(25,2)   NOT NULL,
                           DateConfig DATE NOT NULL,
-                          idCeuilleur INT NOT NULL,
+                          idCueilleur INT NOT NULL,
                           PRIMARY KEY(idBonus),
-                          FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+                          FOREIGN KEY(idCueilleur) REFERENCES the_Cueilleurs(idCueilleur)
 );
 
 CREATE TABLE the_Mallus(
                            idMallus INT AUTO_INCREMENT,
                            Mallus DECIMAL(25,2)   NOT NULL,
                            DateConfig DATE NOT NULL,
-                           idCeuilleur INT NOT NULL,
+                           idCueilleur INT NOT NULL,
                            PRIMARY KEY(idMallus),
-                           FOREIGN KEY(idCeuilleur) REFERENCES the_Cueilleurs(idCeuilleur)
+                           FOREIGN KEY(idCueilleur) REFERENCES the_Cueilleurs(idCueilleur)
 );
