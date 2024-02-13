@@ -56,7 +56,7 @@ if ( isset($_GET['message']) ) {
 
     <script>
         activeCurrentPage("parcelle_li")
-      </script>
+    </script>
 <?php
     include "static/footer.php";
 ?>
