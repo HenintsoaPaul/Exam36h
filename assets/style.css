@@ -1,0 +1,14 @@
+.hover-fill{
+    background-color: #f8f9fa;
+    color: #000000;
+  }
+  .hover-fill:hover {
+    background-color:#198754;
+    color: #f8f9fa;
+  }
+
+  .transition-fill {
+    transition-property: all;
+    transition-duration: .15s;
+    transition-timing-function: ease-in;
+  }
