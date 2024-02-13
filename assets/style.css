@@ -12,3 +12,8 @@
     transition-duration: .15s;
     transition-timing-function: ease-in;
   }
+
+
+  .min-height-style {
+    min-height: 60vh;
+  }

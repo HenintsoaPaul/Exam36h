@@ -17,7 +17,7 @@
                 <div class="col-md-3 col-12">
                     <input type="date" id="dateFinInput" class="form-control col-3" required>
                 </div>
-            </div>
+            </div> 
             <div>
                 <button type="submit" class="btn btn-success" id="resultBtn">Voir les paiements</button>
             </div>
@@ -70,21 +70,21 @@
     paiementForm.addEventListener("submit" , function(event){
         event.preventDefault();
     /// Traitement de donnee
-        var data = [];
+        var data = getData("get-all-cueilleurs.php");
         var tbody = document.getElementById("paiementTableBody");
         tbody.innerHTML = "";
         for (let index = 0; index < data.length; index++) {
 
             const chunk = data[index];
-
+            const paiementChunk = getPaiement("get-paiement.php",chunk.idCueilleur,dateDebutInput.value,dateFinInput.value);
             var tr = document.createElement("tr");
         /// Recuperration des valeurs necessaire
-            const dateCueillette = "";
-            const nomCueilleur = "";
-            const poids = "";
-            const bonus = "";
-            const mallus = "";
-            const montantPaiement = "";
+            const dateCueillette = dateFinInput.value;
+            const nomCueilleur = chunk.Nom;
+            const poids = getInfoCueilleur("get-poids-cueilli.php", chunk.idCueilleur,dateDebutInput.value,dateFinInput.value);
+            const bonus = getInfoCueilleur("get-total-bonus.php", chunk.idCueilleur,dateDebutInput.value,dateFinInput.value);
+            const mallus = getInfoCueilleur("get-total-mallus.php", chunk.idCueilleur,dateDebutInput.value,dateFinInput.value);
+            const montantPaiement = paiementChunk;
 
         /// Creation des  membres du tableau
             var td_dateCueillette = document.createElement("td");

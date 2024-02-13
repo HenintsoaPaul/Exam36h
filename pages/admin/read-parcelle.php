@@ -6,7 +6,7 @@ require_once '../../inc/php/crudFuncts/select.php';
 $connection = db_connect();
 $parcelles = getAllParcelles($connection); 
 closeConnection($connection);?>
-<div class="main">
+<div class="main min-height-style">
         <div class="container">
             <h1>Liste des Parcelles</h1>
             <table class="table table-hover">

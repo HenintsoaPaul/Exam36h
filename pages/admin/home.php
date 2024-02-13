@@ -1,9 +1,9 @@
 <?php
   include "static/header.php"
 ?>
-    <section class="py-5" id="main">
+    <section class="py-5" style=" min-height: 60vh;" id="main">
         
-        <div class="container">
+        <div class="container ">
           <div class="row gy-4 gy-md-0">
             <div class="col-12 text-center">
               <h1 class="fw-bold">

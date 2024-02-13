@@ -8,9 +8,8 @@ VALUES ('Homme'),
        ('Non Binaire');
 
 INSERT INTO the_VarietesThes (NomVariete, Occupation, RendementParPied)
-VALUES ('Vert', 2.5, 0.3),
-       ('Noir', 2.5, 0.3),
-       ('Citronelle', 5.5, 0.1),
+VALUES ('Vert', 500, 4),
+       ('Noir', 1000, 1),
        ('Bad Guyz', 250, 2);
 
 INSERT INTO the_CategoriesDepenses (NomCategorie)
@@ -19,9 +18,9 @@ VALUES ('Engrais'),
        ('Logistique');
 
 INSERT INTO the_parcelles (Surface, idVarieteThe)
-VALUES (30, 1),
-       (20, 2),
-       (20, 3);
+VALUES (3, 1),
+       (2, 2),
+       (2, 3);
 
 INSERT INTO the_Cueilleurs (Nom, DateNaissance, idGenre)
 VALUES ('Alex', '2000-02-09', 1),
@@ -35,3 +34,27 @@ VALUES ('alexAdmin', 'admin', 1),
 INSERT INTO the_mois (NomMois)
 VALUES ('Janvier'), ('Fevrier'), ('Mars'), ('Avril'), ('Mai'), ('Juin'),
        ('Juillet'), ('Aout'), ('Septembre'), ('Octobre'), ('Novembre'), ('Decembre');
+
+INSERT INTO the_regenerations (idMois, idVarieteThe)
+VALUES (1, 1),
+       (6, 1);
+
+INSERT INTO the_mallus (Mallus, DateConfig)
+VALUES (10, '2024-01-01');
+
+INSERT INTO the_bonus (Bonus, DateConfig)
+VALUES (10, '2024-01-01');
+
+INSERT INTO the_poidsminimal (Poids, DateConfig)
+VALUES (100, '2024-01-01');
+
+INSERT INTO the_depenses (DateDepense, MontantDepense, idCategorieDepense)
+VALUES ('2024-01-01', 10, 1);
+
+INSERT INTO the_prixvente (MontantPrixVente, dateConfig, idVarieteThe)
+VALUES (100, '2024-01-01', 1),
+       (100, '2024-01-01', 2),
+       (100, '2024-01-01', 3);
+
+INSERT INTO the_salaires (salaire, DateDebutSalaire)
+VALUES (50, '2024-01-01');
