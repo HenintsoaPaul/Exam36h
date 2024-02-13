@@ -188,6 +188,9 @@ function getPoidsTotalInParcelle( $connection, $idParcelle )
     return $nbPieds * $row['rendement'];
 }
 
+/**
+ * todo : update funct getPoidsRestantInParcelle()
+ */
 function getPoidsRestantInParcelle( $connection, $idParcelle, $dateDebut, $dateFin )
 {
     // Assuming $dateDebut and $dateFin are strings in the format 'YYYY-MM-DD'
@@ -221,7 +224,7 @@ function getSommeSalairesInPeriod( $connection, $dateDebut, $dateFin )
     $montantSalaire = exeSelect( $connection, $query )[0]['salaire'];
 
     // get nb employees == nb cueillettes
-    $query = "SELECT count(idCeuilleur) as nb FROM ".
+    $query = "SELECT count(idCueilleur) as nb FROM ".
         "(SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '$dateDebut' AND '$dateFin') As t";
     $nbCueilleurs = exeSelect( $connection, $query )[0]['nb'];
 
@@ -239,4 +242,11 @@ function getCoutRevientParKilo( $connection, $dateDebut, $dateFin )
     $poidsTotalCueilli = getPoidsTotalCueilliInPeriod( $connection, $dateDebut, $dateFin );
 
     return $sumNivoaka / $poidsTotalCueilli;
+}
+
+
+// PART TWO
+function get()
+{
+
 }

@@ -36,7 +36,7 @@
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="ceuilleur_li" href="insertion-cueilleur.php">Ceuilleur</a>
+                      <a class="nav-link" id="ceuilleur_li" href="insertion-cueilleur.php">Cueilleur</a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" data-target="configs" id="configDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

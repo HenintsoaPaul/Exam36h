@@ -21,7 +21,7 @@ if ( isset($_GET['message']) ) {
                         </div>
                         <!-- insert LOG -->
 
-                        <!-- Ceuilleur -->
+                        <!-- Cueilleur -->
                         <div class="form-group col-12 mb-3">
                             <label for="cueilleurInput" class="form-label"> Cueilleur </label>
                             <select name="cueilleurInput" id="cueilleurInput" class="form-select" required>
