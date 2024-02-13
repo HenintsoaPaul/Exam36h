@@ -17,7 +17,7 @@ if ( isset($_GET['message']) ) {
     <div class="main my-5">
         <div class="container">
             <div class="row col-12">
-                <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/add-parcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                 <div class="card p-5 rounded border-3">    
                     <h1>Parcelle</h1>
                     <!-- insert LOG -->

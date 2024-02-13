@@ -10,7 +10,7 @@ closeConnection($connection);
 <section class="my-5" id="main">
     <div class="container ">
         <div class="row gy-4  gy-md-0">
-            <form action="AddDepense.php" method="post" class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center ">
+            <form action="add-depense.php" method="post" class="col-12 col-lg-6 d-flex border-3 flex-column justify-content-center ">
                 <div class="h1 text-center"> Enregitrer une depense </div>
                 <div class="bg-dark p-1 w-100 my-2"></div>
                 <div class="form-group mb-3">

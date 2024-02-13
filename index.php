@@ -1,3 +1,14 @@
+<?php
+require_once 'inc/php/connection.php';
+require_once 'inc/php/crudFuncts/select.php';
+
+$connection = db_connect();
+
+$date = '2024-02-13';
+echo getCoutRevientParKilo($connection, $date, $date);
+
+closeConnection($connection);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +34,9 @@
           <div class="row gy-4 gy-md-0">
             <div class="col-12 col-md-6 d-flex flex-column justify-content-center ">
               <h1 class="fw-bold">
-                Ceuillete de The
+                Cueillete de The
               </h1>
-              <h2 class="fw-light">Bienvenue sur ce site de gestion de ceulliette de the , vous povez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
+              <h2 class="fw-light">Bienvenue sur notre site de gestion de cueillette de the, vous pouvez vous connecter en tant que utilisateur pour etre un cultiivateur ou en tant q'admin si vous avez l'acces (^ ^)</h2>
               <div class="mt-5">
                 <a class="btn btn-success" type="button" href="pages/utilisateur/login.php">Login Utilisateur</a>
                 <a class="btn btn-secondary" type="button" href="pages/admin/login.php">Login Admin</a>
@@ -49,13 +60,13 @@
                     <h3>Contributors</h3>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002434</p>
+                    <p>JACQUES Chan Alex - ETU 002434</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002443</p>
+                    <p> MANITRAJA Henintsoa Paul - ETU 002443</p>
                 </li>
                 <li class="nav-item">
-                    <p>ETU 002610</p>
+                    <p>RAVELOMANANTSOA Sergiana Francourt - ETU 002610</p>
                 </li>
               </ul>
               <div class="row">

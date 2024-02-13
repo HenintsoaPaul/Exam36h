@@ -12,7 +12,7 @@ if ( isset($_GET['message']) ) {
     <div class="main m-5">
         <div class="container">
             <div class="row col-12">
-                <form action="traitements/addSalaire.php" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/add-salaire.php" method="post" id="insertionForm" class="col-12 col-md-6 mx-auto">
                     <div class="card p-5 rounded border-3">
                     <h1>Salaire</h1>
                         <!-- insert LOG -->
