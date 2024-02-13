@@ -27,6 +27,10 @@
                                 <a class="nav-link" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1Q8Oczl6oQT6WgojNK7fKyvjbzqYngUimhr0WameKUuc%2Fedit%3Fusp%3Dsharing%26fbclid%3DIwAR1pgGXX2rgX6dULnqfkz-GFEiO4jAInFvmoYboGbGwzYF1uwM8Ee_LWPS0&h=AT2e6NxSJGK9xOz8hrzZ8oYuGVmQOPDnpWvYYB0eUHsqmhcpYQ1P39SFgGvcuSqzSkMiBWZ-R4xu22vYaPSJ0wK1uF1KHPrnLxZernD5TOJZMjroyiJVbyQr2tdGBF7lXRMXPA">
                                   <i class="fs-3 bi bi-file-earmark-spreadsheet"><span class=" d-lg-none px-1">Google Sheet</span></i></a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                  <i class="fs-3 bi bi-filetype-sql"><span class=" d-lg-none px-1">Script SQL</span></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>

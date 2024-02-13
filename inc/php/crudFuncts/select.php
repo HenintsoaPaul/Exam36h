@@ -1,6 +1,6 @@
 <?php
 
-// --- CHECK LOGIN ---
+// --- CHECK LOGIN  ---
 /**
  * Return the number of row matching Pseudo+Password. If 1, SUCCESS. Else, FAILED.
  * @param string $pseudo
@@ -125,6 +125,9 @@ function getAllSalaires( $connection )
 function getAllGenre( $connection )
 {
     return getAllRows( $connection, "the_Genres" );
+}
+function getAllMois( $connection ) {
+    return getAllRows( $connection, "the_mois");
 }
 
 function getAllCueillettes( $connection )

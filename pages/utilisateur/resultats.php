@@ -64,7 +64,7 @@
                         </div>
                         <div class="card-footer"></div>
                     </div>
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-header">
                         </div>
                         <div class="card-body text-center">
@@ -73,6 +73,36 @@
                         </div>
                         <div class="card-footer"></div>
                     </div>
+                    
+                    <div class="row-lg d-lg-flex mb-3">
+                        <div class=" card col-12 col-lg-6">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3>Montant des ventes</h3>
+                                <p class="fw-bold fs-3">  <span id="montantVentes">  </span> <span class="text-success">$</span></p>
+                            </div>
+                            <div class="card-footer"></div>
+                        </div>
+                        <div class=" card col-12 col-lg-6">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3>Montant des depenses</h3>
+                                <p class="fw-bold fs-3">  <span id="montantDepenses">  </span> <span class="text-danger">$</span></p>
+                            </div>
+                            <div class="card-footer"></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3>Benefice</h3>
+                                <p class="fw-bold fs-3">  <span id="benefice">  </span> <span class="text-success">$</span></p>
+                            </div>
+                            <div class="card-footer"></div>
+                        </div>
             </div>
         </div>
     </div>
@@ -91,10 +121,16 @@
         poidsTotal.innerHTML = 0;
         var coutDeRevient = document.getElementById("coutDeRevient");
         coutDeRevient.innerHTML = 0;
-        var dateFin = document.getElementById("dateFinTitle"); 
+        var dateFin = document.getElementById("dateFinTitle");
+
+        var ventes = document.getElementById("montantVentes");
+        var depenses = document.getElementById("montantDepenses");
+        var benefice = document.getElementById("benefice");
+
     /// Traitement de donnee
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
         var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
+        console.log("prixRevient "+prixRevient );
         var allParcelle = getAllParcelle("getAllParcelle.php");
         
         var tbody = document.getElementById("parcelleTableBody");
@@ -125,6 +161,11 @@
         }
         if(prixRevient != "undefined")
         {coutDeRevient.innerHTML = prixRevient;}
+
+
+        ventes.innerHTML = 0;
+        depenses.innerHTML = 0;
+        benefice.innerHTML = 0;
     
         console.log(poidsTotal);
         console.log(coutDeRevient);
