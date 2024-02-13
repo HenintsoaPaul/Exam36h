@@ -8,9 +8,9 @@ VALUES ('Homme'),
        ('Non Binaire');
 
 INSERT INTO the_VarietesThes (NomVariete, Occupation, RendementParPied)
-VALUES ('Vert', 2.5, 0.3),
-       ('Noir', 2.5, 0.3),
-       ('Citronelle', 5.5, 0.1),
+VALUES ('Vert', 500, 4),
+       ('Noir', 1000, 1),
+       ('Citronelle', 100, 10),
        ('Bad Guyz', 250, 2);
 
 INSERT INTO the_CategoriesDepenses (NomCategorie)
@@ -19,9 +19,9 @@ VALUES ('Engrais'),
        ('Logistique');
 
 INSERT INTO the_parcelles (Surface, idVarieteThe)
-VALUES (30, 1),
-       (20, 2),
-       (20, 3);
+VALUES (3, 1),
+       (2, 2),
+       (2, 3);
 
 INSERT INTO the_Cueilleurs (Nom, DateNaissance, idGenre)
 VALUES ('Alex', '2000-02-09', 1),
