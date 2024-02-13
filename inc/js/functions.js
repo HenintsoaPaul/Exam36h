@@ -79,8 +79,7 @@ function getPoidsCueilli(herf, dateDebut, dateFin) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                // console.log(xhr.responseText);
-                console.log(xhr.responseText);
+                console.log("Poids total cueilli = "+xhr.responseText);
                 retour = JSON.parse(xhr.responseText);
             } else {
                 console.log("error : " + xhr.status);
@@ -129,8 +128,7 @@ function getPrixRevient(herf, dateDebut, dateFin) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                // console.log(xhr.responseText);
-                console.log(xhr.responseText);
+                console.log("Cout Revient Par Kilo = "+xhr.responseText);
                 retour = JSON.parse(xhr.responseText);
             } else {
                 console.log("error : " + xhr.status);

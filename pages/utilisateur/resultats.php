@@ -55,21 +55,23 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6  d-flex flex-column">
+
                     <div class="card mb-md-3">
                         <div class="card-header">
                         </div>
                         <div class="card-body text-center">
-                            <h3>Poids Total</h3>
+                            <h3>Poids Total Cueilli</h3>
                             <p class="fw-bold fs-3"> <span id="poidsTotal"></span> <span class="text-success">Kg</span></p>
                         </div>
                         <div class="card-footer"></div>
                     </div>
+
                     <div class="card mb-3">
                         <div class="card-header">
                         </div>
                         <div class="card-body text-center">
-                            <h3>Couts de revient</h3>
-                            <p class="fw-bold fs-3">  <span id="coutDeRevient">  </span> <span class="text-success">$</span></p>
+                            <h3>Couts de revient / Kg</h3>
+                            <p class="fw-bold fs-3"> <span id="coutDeRevient"> </span> <span class="text-success">$</span></p>
                         </div>
                         <div class="card-footer"></div>
                     </div>
@@ -84,6 +86,7 @@
                             </div>
                             <div class="card-footer"></div>
                         </div>
+
                         <div class=" card col-12 col-lg-6">
                             <div class="card-header">
                             </div>
@@ -108,44 +111,46 @@
     </div>
 </section>
 <script>
-    var resultForm = document.getElementById("resultFormulaire");
-    var resultLayout = document.getElementById("resultLayout");
-    var nullLayout = document.getElementById("nullLayout");
-    var dateDebutInput = document.getElementById("dateDebutInput");
-    var dateFinInput = document.getElementById("dateFinInput");
+    const resultForm = document.getElementById("resultFormulaire");
+    const resultLayout = document.getElementById("resultLayout");
+    const nullLayout = document.getElementById("nullLayout");
+    const dateDebutInput = document.getElementById("dateDebutInput");
+    const dateFinInput = document.getElementById("dateFinInput");
 
     /// Action lors de la validation du formulaire
     resultForm.addEventListener("submit" , function(event){
         event.preventDefault();
-        var poidsTotal = document.getElementById("poidsTotal");
-        poidsTotal.innerHTML = 0;
-        var coutDeRevient = document.getElementById("coutDeRevient");
-        coutDeRevient.innerHTML = 0;
-        var dateFin = document.getElementById("dateFinTitle");
 
-        var ventes = document.getElementById("montantVentes");
-        var depenses = document.getElementById("montantDepenses");
-        var benefice = document.getElementById("benefice");
+        const poidsTotal = document.getElementById("poidsTotal");
+        poidsTotal.innerHTML = "0";
 
+        const coutDeRevient = document.getElementById("coutDeRevient");
+        coutDeRevient.innerHTML = "0";
+
+        const dateFin = document.getElementById("dateFinTitle");
+
+        const ventes = document.getElementById("montantVentes");
+        const depenses = document.getElementById("montantDepenses");
+        const benefice = document.getElementById("benefice");
 
     /// Traitement de donnee
-        var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
-        var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
-        console.log("prixRevient "+prixRevient );
-        var allParcelle = getAllParcelle("getAllParcelle.php");
-        var montantVente = getSommeVente("getSommeVente.php", dateDebutInput.value, dateFinInput.value);
-        var tbody = document.getElementById("parcelleTableBody");
+        let poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
+        let coutRevientPerKilo = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
+
+        let allParcelle = getAllParcelle("getAllParcelle.php");
+        let montantVente = getSommeVente("getSommeVente.php", dateDebutInput.value, dateFinInput.value);
+        let tbody = document.getElementById("parcelleTableBody");
 
         tbody.innerHTML = "";
         for (let index = 0; index < allParcelle.length; index++) {
 
-            const parcelle = allParcelle[index];
-            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,parcelle.idParcelle);
+            let parcelle = allParcelle[index];
+            let reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,parcelle.idParcelle);
 
-            var tr = document.createElement("tr");
+            let tr = document.createElement("tr");
 
-            var td_idParcelle = document.createElement("td");
-            var td_reste = document.createElement("td");
+            let td_idParcelle = document.createElement("td");
+            let td_reste = document.createElement("td");
             
             td_idParcelle.innerHTML = parcelle.idParcelle;
             td_reste.innerHTML = reste;
@@ -158,19 +163,13 @@
     ///
 
     /// Affichage de resultat
-        if (poidsCueilli != "") {
-            poidsTotal.innerHTML    = poidsCueilli;    
-        }
-        if(prixRevient != "undefined")
-        {coutDeRevient.innerHTML = prixRevient;}
-
+        if (poidsCueilli !== "") poidsTotal.innerHTML = poidsCueilli;
+        if(coutRevientPerKilo !== "undefined") coutDeRevient.innerHTML = coutRevientPerKilo;
 
         ventes.innerHTML = montantVente;
-        depenses.innerHTML = 0;
-        benefice.innerHTML = 0;
+        depenses.innerHTML = "0";
+        benefice.innerHTML = "0";
     
-        console.log(poidsTotal);
-        console.log(coutDeRevient);
         dateFin.innerHTML = document.getElementById("dateFinInput").value;
         nullLayout.classList.replace("d-block" , "d-none");
         resultLayout.classList.replace("d-none" , "d-block");
