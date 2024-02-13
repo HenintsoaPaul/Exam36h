@@ -14,9 +14,9 @@ if ( isset($_GET['message']) ) {
     $insertLog = $_GET['message'] == "success" ? "New Parcelle Added Successfully!" : "Oops! Failed To Add New Parcelle.";
 }
 ?>
-    <div class="main m-5">
+    <div class="main my-5">
         <div class="container">
-            <div class="row">
+            <div class="row col-12">
                 <form action="traitements/addParcelle.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                 <div class="card p-5 rounded border-3">    
                     <h1>Parcelle</h1>
@@ -43,10 +43,10 @@ if ( isset($_GET['message']) ) {
                             </select>
                         </div>
                     </div>
-                    <div>
-
-                        <button type="submit" class="btn btn-success mt-3">Add New Parcelle</button>
-                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                            <button type="submit" class="btn btn-success ">Add New Parcelle</button>
+                            <a href="read-parcelle.php" type="button" class="link">Voir les parcelles</a>
+                        </div>
                 </div>
                 </form>
             </div>

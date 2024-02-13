@@ -49,9 +49,10 @@ if ( isset($_GET['message']) ) {
                             </select>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-success mt-3">Add New Ceuilleur</button>
-                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                            <button type="submit" class="btn btn-success ">Add New Ceuilleur</button>
+                            <a href="read-ceuilleur.php" type="button" class="link">Voir les ceuilleurs</a>
+                        </div>
                 </div>
                 </form>
             </div>

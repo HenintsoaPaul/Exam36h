@@ -38,8 +38,9 @@
                             <input class="form-control" type="text" name="rendement" id="rendement" required>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-success ">Add New Variete</button>
+                        <a href="read-variete.php" type="button" class="link">Voir les varietes</a>
                     </div>
                     </div>
                 </form>
