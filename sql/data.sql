@@ -29,7 +29,8 @@ VALUES ('Alex', '2000-02-09', 1),
 INSERT INTO the_users (pseudo, password, idstatu)
 VALUES ('alexAdmin', 'admin', 1),
        ('henints', 'user', 2);
-       ('Sergiana', 'user', 2);
+INSERT INTO the_users (pseudo, password, idstatu)
+VALUES ('Sergiana', 'user', 2);
 
 INSERT INTO the_mois (NomMois)
 VALUES ('Janvier'), ('Fevrier'), ('Mars'), ('Avril'), ('Mai'), ('Juin'),

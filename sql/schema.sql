@@ -65,7 +65,6 @@ CREATE TABLE the_prixvente(
     dateConfig DATE NOT NULL,
     idVarieteThe INT NOT NULL,
     PRIMARY KEY(idPrixVente),
-    UNIQUE(MontantPrixVente),
     FOREIGN KEY(idVarieteThe) REFERENCES the_varietesthes(idVarieteThe)
 );
 
