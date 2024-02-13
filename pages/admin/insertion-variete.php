@@ -56,12 +56,10 @@
                             <div class="col-6 col-lg-4"><input type="checkbox" name="moisInput[]" id=""> Decembre</div>
                         </div>
                     <div>
-                        <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
 
                     <div class="d-flex justify-content-between mt-3">
                         <button type="submit" class="btn btn-success ">Add New Variete</button>
                         <a href="read-variete.php" type="button" class="link">Voir les varietes</a>
-
                     </div>
                     </div>
                 </form>
