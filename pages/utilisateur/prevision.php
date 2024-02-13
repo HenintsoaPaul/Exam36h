@@ -4,7 +4,7 @@
 <section id="main" class=" min-height-style">
     <div class="container mb-3">
         <div class="text-center h1 text-uppercase">Prevision</div>
-        <form action="">
+        <form action="" id="previsionForm">
         <div class="form-group row gap-3">
             <label for="dateInput" class="col-sm-1 col-form-label">Date</label>
             <div class="col ">
@@ -18,92 +18,62 @@
     </div>
     <div class="bg-light">
         <div class="bg-light container text-center">
-            <div class="col-12"><p class="p-1"> Poids de the restant : <span id="montantLabel"> 330 <b class="text-success">kg</b> </span></p></div>
-            <div class="col-12"><p class="p-1"> Montant : <span id="montantLabel"> 1 549 000 <b class="text-success">Ar</b></span></p></div>
+            <div class="col-12"><p class="p-1"> Poids de the restant : <span id="poidsLabel"> 0  </span></p></div>
+            <div class="col-12"><p class="p-1"> Montant : <span id="montantLabel"> 0 </span></p></div>
         </div>
     </div>
     <div class="container mb-3">
-
-        <div class="row gy-3">
+    <div class="container d-block" id="nullLayout">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p> Aucune prevision </p>
+            </div>
+        </div>
+    </div>
+        <div class="row gy-3 d-none " id="previsionLayout">
             <!-- #1 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <div class="row text-center">
-                                <div class="col-6">Parcelle #</div>
-                                <div class="col-6">10 ha</div>
-                            </div>
-                        </div>
-                        <div class="text-center text-success fw-bold  fs-3 p-1">The Variete</div>
-                        <img src="../../assets/img/green-tea.jpg" alt="" class="img-fluid">
-                        <div class="row mb-3">
-                            <div class="col-12 p-2">
-                                <!-- Nombre de pied -->
-                                Nomre de pied : <spna> 62</spna>
-                            </div>
-                            <div class="col-12 p-2">
-                                <!-- Poids de the restant -->
-                                Poids de the restant : <span>300 kg</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #2 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <div class="row text-center">
-                                <div class="col-6">Parcelle #</div>
-                                <div class="col-6">10 ha</div>
-                            </div>
-                        </div>
-                        <div class="text-center text-success fw-bold  fs-3 p-1">The Variete</div>
-                        <img src="../../assets/img/green-tea.jpg" alt="" class="img-fluid">
-                        <div class="row mb-3">
-                            <div class="col-12 p-2">
-                                <!-- Nombre de pied -->
-                                Nomre de pied : <spna> 62</spna>
-                            </div>
-                            <div class="col-12 p-2">
-                                <!-- Poids de the restant -->
-                                Poids de the restant : <span>300 kg</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <div class="row text-center">
-                                <div class="col-6">Parcelle #</div>
-                                <div class="col-6">10 ha</div>
-                            </div>
-                        </div>
-                        <div class="text-center text-success fw-bold  fs-3 p-1">The Variete</div>
-                        <img src="../../assets/img/green-tea.jpg" alt="" class="img-fluid">
-                        <div class="row mb-3">
-                            <div class="col-12 p-2">
-                                <!-- Nombre de pied -->
-                                Nomre de pied : <spna> 62</spna>
-                            </div>
-                            <div class="col-12 p-2">
-                                <!-- Poids de the restant -->
-                                Poids de the restant : <span>300 kg</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!--  -->
         </div>
     </div>
 </section>
+<script>
+    var previsionForm = document.getElementById("previsionForm");
+    var previsionLayout = document.getElementById("previsionLayout");
+    var nullLayout = document.getElementById("nullLayout");
+/// Les champs dates de filtre
+    var date = document.getElementById("dateInput");
+
+    var montantTotal = document.getElementById("montantLabel");
+    var poidsTotal = document.getElementById("poidsLabel");
+/// Action lors de la validation du formulaire
+    previsionForm.addEventListener("submit" , function(event){
+        event.preventDefault();
+    /// Traitement de donnee
+        var data = [];
+        previsionLayout.innerHTML = "";
+        for (let index = 0; index < data.length; index++) {
+
+            const chunk = data[index];
+
+            const numParcelle = 1;
+            const surfaceParcelle = 100;
+            const nomVariete = "Variete";
+            const nbDePied = "2";
+            const poidsRestant = "300";
+
+
+            var html = "<div class=\"col-12 col-md-6 col-lg-4\"><div class=\"card\"><div class=\"card-body\"><div class=\"card-title\"><div class=\"row text-center\"><div class=\"col-6\">Parcelle "+numParcelle+"</div><div class=\"col-6\">Surface : "+surfaceParcelle+"</div></div></div><div class=\"text-center text-success fw-bold  fs-3 p-1\">"+nomVariete+"</div><img src=\"../../assets/img/green-tea.jpg\" alt=\"\" class=\"img-fluid\"><div class=\"row mb-3\"><div class=\"col-12 p-2\">Nomre de pied : <spna>"+nbDePied+"</spna></div><div class=\"col-12 p-2\">Poids de the restant : <span>"+poidsRestant+" kg</span></div></div></div></div></div>";
+            previsionLayout.innerHTML += html;
+        }
+    ///
+    montantTotal.innerHTML = "1 000 <b class=\"text-success\">Ar</b>";
+    poidsTotal.innerHTML = "700 <b class=\"text-success\">kg</b>";
+    /// Affichage de resultat
+        nullLayout.classList.replace("d-block" , "d-none");
+        previsionLayout.classList.replace("d-none" , "d-block");
+    });
+</script>
 <?php 
     include "static/footer.php"
 ?>
