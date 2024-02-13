@@ -171,14 +171,13 @@ function addRegeneration( $connection, $idMois, $idVarieteThe )
 /**
  * @return int 1 on SUCCESS.
  */
-function addBonus( $connection, $bonus, $date, $idCueilleur )
+function addBonus( $connection, $bonus, $date )
 {
     if ( !isset( $bonus ) ) echo "bonus cannot be null!";
     if ( !isset( $date ) ) echo "date cannot be null!";
-    if ( !isset( $idCueilleur ) ) echo "idCueilleur cannot be null!";
 
-    $format = "INSERT INTO the_bonus (bonus, dateconfig, idcueilleur) VALUES (%f, '%s', %d)";
-    $query = sprintf( $format, $bonus, $date, $idCueilleur );
+    $format = "INSERT INTO the_bonus (bonus, dateconfig) VALUES (%f, '%s')";
+    $query = sprintf( $format, $bonus, $date );
 
     return exeInsertThenNbRows( $connection, $query );
 }
@@ -186,14 +185,13 @@ function addBonus( $connection, $bonus, $date, $idCueilleur )
 /**
  * @return int 1 on SUCCESS.
  */
-function addMallus( $connection, $mallus, $date, $idCueilleur )
+function addMallus( $connection, $mallus, $date )
 {
     if ( !isset( $mallus ) ) echo "mallus cannot be null!";
     if ( !isset( $date ) ) echo "date cannot be null!";
-    if ( !isset( $idCueilleur ) ) echo "idCueilleur cannot be null!";
 
-    $format = "INSERT INTO the_mallus (mallus, dateconfig, idcueilleur) VALUES (%f, '%s', %d)";
-    $query = sprintf( $format, $mallus, $date, $idCueilleur );
+    $format = "INSERT INTO the_mallus (mallus, dateconfig) VALUES (%f, '%s')";
+    $query = sprintf( $format, $mallus, $date );
 
     return exeInsertThenNbRows( $connection, $query );
 }
@@ -201,14 +199,13 @@ function addMallus( $connection, $mallus, $date, $idCueilleur )
 /**
  * @return int 1 on SUCCESS.
  */
-function addPoidsMinimal( $connection, $poids, $date, $idCueilleur )
+function addPoidsMinimal( $connection, $poids, $date )
 {
     if ( !isset( $poids ) ) echo "poids cannot be null!";
     if ( !isset( $date ) ) echo "date cannot be null!";
-    if ( !isset( $idCueilleur ) ) echo "idCueilleur cannot be null!";
 
-    $format = "INSERT INTO the_poidsminimal (Poids, dateconfig, idcueilleur) VALUES (%f, '%s', %d)";
-    $query = sprintf( $format, $poids, $date, $idCueilleur );
+    $format = "INSERT INTO the_poidsminimal (Poids, dateconfig) VALUES (%f, '%s')";
+    $query = sprintf( $format, $poids, $date );
 
     return exeInsertThenNbRows( $connection, $query );
 }
