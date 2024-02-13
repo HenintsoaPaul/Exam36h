@@ -1,6 +1,12 @@
 <?php
-  include "static/header.php"
-?>
+include "static/header.php";
+require_once '../../inc/php/connection.php';
+require_once '../../inc/php/crudFuncts/select.php';
+
+$connection = db_connect();
+$categ = getAllCategoriesDepenses($connection); 
+closeConnection($connection);
+?> 
 <div class="main">
         <div class="container">
             <h1>Liste des Categories de depense</h1>
@@ -12,10 +18,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> Materiels</td>
-                    </tr>
+    <?php     for ($i=0; $i < count($categ); $i++) { ?>
+                  <tr>
+                      <td> <?= $categ[$i]['idCategorieDepense']?> </td>
+                      <td> <?= $categ[$i]['NomCategorie']?></td>
+                  </tr>
+    <?php    }?>
                 </tbody>
               </table>
         </div>

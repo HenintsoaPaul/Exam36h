@@ -1,6 +1,11 @@
 <?php
-  include "static/header.php"
-?>
+include "static/header.php";
+require_once '../../inc/php/connection.php';
+require_once '../../inc/php/crudFuncts/select.php';
+
+$connection = db_connect();
+$variete = getAllVarietes($connection); 
+closeConnection($connection);?>
 <div class="main">
         <div class="container">
             <h1>Liste des Varietes</h1>
@@ -9,17 +14,19 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom Variete</th>
-                    <th scope="col">Ocuupation</th>
+                    <th scope="col">Occupation (m²)</th>
                     <th scope="col">Rendement par pied</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> Jaune </td>
-                        <td> 18.2</td>
-                        <td>160</td>
-                    </tr>
+      <?php     for ($i=0; $i < count($variete) ; $i++) { ?>
+                  <tr>
+                      <td> <?= $variete[$i]['idVarieteThe']?> </td>
+                      <td> <?= $variete[$i]['NomVariete']?> </td>
+                      <td> <?= $variete[$i]['Occupation']?> </td>
+                      <td><?= $variete[$i]['RendementParPied']?></td>
+                  </tr>
+    <?php  }?>
                 </tbody>
               </table>
         </div>
