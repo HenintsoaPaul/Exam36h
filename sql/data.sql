@@ -58,3 +58,10 @@ VALUES (100, '2024-01-01', 1),
 
 INSERT INTO the_salaires (salaire, DateDebutSalaire)
 VALUES (50, '2024-01-01');
+
+
+SELECT SUM(PoidsCeuilli * MontantPrixVente) as sum FROM
+                (SELECT * FROM the_cueillettes WHERE DateCeuillette BETWEEN '2024-01-01' AND '2024-02-14') AS c
+                    JOIN the_parcelles as p on c.idParcelle = p.idParcelle
+                    JOIN the_varietesthes as v on p.idVarieteThe = v.idVarieteThe
+                    JOIN (SELECT MontantPrixVente, idVarieteThe FROM the_prixvente ORDER BY idPrixVente DESC limit 1) as pv on v.idVarieteThe = pv.idVarieteThe;
