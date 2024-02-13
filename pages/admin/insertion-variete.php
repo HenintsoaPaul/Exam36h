@@ -4,16 +4,15 @@ require_once '../../inc/php/crudFuncts/select.php';
 include "static/header.php";
 
 $connection = db_connect();
-$mois = getAllMois($connection);
-closeConnection($connection);
-  $className = "";
-  $insertLog = "";
-  if ( isset($_GET['message']) ) {
-      $className = $_GET['message'] == "success" ? "success" : "danger";
-      $insertLog = $_GET['message'] == "success" ? "New Variete Added Successfully!" : "Oops! Failed To Add New Variete.";
-  }
+$mois = getAllMois( $connection );
+closeConnection( $connection );
 
-  
+$className = "";
+$insertLog = "";
+if ( isset( $_GET['message'] ) ) {
+    $className = $_GET['message'] == "success" ? "success" : "danger";
+    $insertLog = $_GET['message'] == "success" ? "New Variete Added Successfully!" : "Oops! Failed To Add New Variete.";
+}
 ?>
 
     <div class="main m-5">
