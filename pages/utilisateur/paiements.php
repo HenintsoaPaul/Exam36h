@@ -34,18 +34,18 @@
     </div>
     <div class="container d-none" id="paiementLayout"> 
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h3>Poids restants au <span id="dateFinTitle">  </span> </h3>
+                        <h3>Liste des paiements<span id="dateFinTitle">  </span> </h3>
                         <table class="table" id="paiementTable">
                             <thead>
                                 <tr>
                                     <th>Date cueillette</th>
                                     <th>Nom cueilleur</th>
-                                    <th>Poids</th>
+                                    <th>Poids cueilli</th>
                                     <th>%Bonus</th>
-                                    <th>%Maallus</th>
+                                    <th>%Mallus</th>
                                     <th>Montant paiement</th>
                                 </tr>
                             </thead>
@@ -70,7 +70,7 @@
     paiementForm.addEventListener("submit" , function(event){
         event.preventDefault();
     /// Traitement de donnee
-        var data ;
+        var data = [];
         var tbody = document.getElementById("paiementTableBody");
         tbody.innerHTML = "";
         for (let index = 0; index < data.length; index++) {
