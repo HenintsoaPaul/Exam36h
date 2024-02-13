@@ -141,7 +141,7 @@ function getAllCategoriesDepenses( $connection )
 
 // --- GLOBAL RESULT ---
 // - cueillette -
-function getPoidsTotalCueilli( $connection )
+function getPoidsTotalCueilli( $connection ) 
 {
     $query = "SELECT sum(PoidsCeuilli) AS poids FROM the_cueillettes";
     return exeSelect( $connection, $query )[0]['poids'];

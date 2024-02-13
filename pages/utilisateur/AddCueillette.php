@@ -1,16 +1,18 @@
-<?php 
- require_once '../../inc/php/connection.php';
- require_once '../../inc/php/crudFuncts/create.php';
- require_once '../../inc/php/crudFuncts/select.php';
- $connection = db_connect();
- $date = $_POST['date'];
- $poids = $_POST['poidsInput'];
- $parcelle = $_POST['parcelleInput']; 
- $idCueilleur = $_POST['ceuilleurInput'];
- $link = "ceuillette.php?message";
+<?php
+require_once '../../inc/php/connection.php';
+require_once '../../inc/php/crudFuncts/create.php';
 
-addCueillette($connection, $date, $poids, $parcelle, $idCueilleur);
+$connection = db_connect();
 
-header("Location:$link=$message");
+$dateCueillette = $_POST['date'];
+$poidsCueilli = $_POST['poidsInput'];
+$idParcelle = $_POST['parcelleInput'];
+$idCueilleur = $_POST['ceuilleurInput'];
 
+$nbRowsInserted = addCueillette( $connection, $dateCueillette, $poidsCueilli, $idParcelle, $idCueilleur );
+
+closeConnection( $connection );
+
+$message = $nbRowsInserted == 1 ? "success" : "failed";
+header( "Location:ceuillette.php?message=$message" );
 ?>

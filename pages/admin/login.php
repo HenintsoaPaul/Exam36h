@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../assets/main.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
+
     <script src="../../inc/js/login.js"></script>
 
     <title>Magic Tea</title>
@@ -14,7 +16,7 @@
 <script src="../../assets/js/bootstrap.min.js"></script>
 
 <body>
-    <header>
+    <header class="shadow">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <div class="navbar-brand text-uppercase">
@@ -31,9 +33,13 @@
             </div>
           </div>
             <form action="log.php" method="post" class="d-block" name="form">
-              <div >
-                <p class="text-danger"> Authentification incorect</p>
-              </div>
+
+                <!-- Authentification log -->
+                  <div >
+                    <p class="text-danger"><?php if ( isset($_GET['error']) ) echo $_GET['error']; ?></p>
+                  </div>
+                <!-- Authentification log -->
+
               <div class="form-floating mb-3">
                 <input type="text" name="login" id="inputMail" value="alexAdmin" class="form-control" placeholder="">
                 <label for="inputMail">Login</label>

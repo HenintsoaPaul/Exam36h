@@ -1,6 +1,7 @@
 <?php
-    include"static/header.php";
+    include "static/header.php";
 ?>
+<script src="../../inc/js/functions.js"></script>
 <section id="filtre" class="py-3 bg-light">
     <div class="container">
     <h2>Filtre de resultat</h2>
@@ -39,62 +40,15 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h3>Poids restants au <span id="dateFinTitle">  </span> </h3>
-                        <table class="table">
+                        <table class="table" id="parcelleTable">
                             <thead>
                                 <tr>
                                     <th>Parcelle</th>
                                     <th>Poids restant</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>3w`23`ws
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20 <span>kg</span> </td>
-                                </tr>
+                            <tbody id="parcelleTableBody">
+                                
                             </tbody>
                         </table>
                     </div>
@@ -127,19 +81,50 @@
     var resultForm = document.getElementById("resultFormulaire");
     var resultLayout = document.getElementById("resultLayout");
     var nullLayout = document.getElementById("nullLayout");
+    var dateDebutInput = document.getElementById("dateDebutInput");
+    var dateFinInput = document.getElementById("dateFinInput");
+
     /// Action lors de la validation du formulaire
     resultForm.addEventListener("submit" , function(event){
         event.preventDefault();
         var poidsTotal = document.getElementById("poidsTotal");
+        poidsTotal.innerHTML = 0;
         var coutDeRevient = document.getElementById("coutDeRevient");
+        coutDeRevient.innerHTML = 0;
         var dateFin = document.getElementById("dateFinTitle"); 
     /// Traitement de donnee
+        var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
+        var prixRevient = getPrixRevient("getPrixRevient.php", dateDebutInput.value, dateFinInput.value);
+        var allParcelle = getAllParcelle("getAllParcelle.php");
+        
+        var tbody = document.getElementById("parcelleTableBody");
+        tbody.innerHTML = "";
+        for (let index = 0; index < allParcelle.length; index++) {
 
+            const parcelle = allParcelle[index];
+            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,parcelle.idParcelle);
+
+            var tr = document.createElement("tr");
+
+            var td_idParcelle = document.createElement("td");
+            var td_reste = document.createElement("td");
+            
+            td_idParcelle.innerHTML = parcelle.idParcelle;
+            td_reste.innerHTML = reste;
+
+            tr.appendChild(td_idParcelle);
+            tr.appendChild(td_reste);
+
+            tbody.appendChild(tr);
+        }
     ///
 
     /// Affichage de resultat
-        poidsTotal.innerHTML = 100;
-        coutDeRevient.innerHTML = 578;
+        if (poidsCueilli != "") {
+            poidsTotal.innerHTML    = poidsCueilli;    
+        }
+        if(prixRevient != "undefined")
+        {coutDeRevient.innerHTML = prixRevient;}
     
         console.log(poidsTotal);
         console.log(coutDeRevient);
@@ -152,5 +137,5 @@
     activeCurrentPage("resultat_li");
 </script>
 <?php
-    include"static/footer.php";
+    include "static/footer.php";
 ?>
