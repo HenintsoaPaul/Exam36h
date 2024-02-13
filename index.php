@@ -9,7 +9,7 @@
     <title>Magic Tea</title>
 </head>
 <body>
-    <header>
+    <header class="shadow">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <div class="navbar-brand text-uppercase">
