@@ -4,8 +4,9 @@ require_once '../../inc/php/connection.php';
 require_once '../../inc/php/crudFuncts/select.php';
 
 $connection = db_connect();
-$cueilleurs = getAllCueilleurs($connection); 
-closeConnection($connection);?>
+$cueilleurs = getAllCueilleurs($connection);
+closeConnection($connection);
+?>
 <div class="main">
         <div class="container">
             <h1>Liste des Cueilleurs</h1>
@@ -19,21 +20,21 @@ closeConnection($connection);?>
                   </tr>
                 </thead>
                 <tbody>
-    <?php       for($i=0;$i<count($cueilleurs); $i++) {?> 
+                    <?php foreach ($cueilleurs as $cueilleur) { ?>
                     <tr>
-                        <td><?= $cueilleurs[$i]['idCeuilleur']?> </td>
-                        <td><?= $cueilleurs[$i]['Nom']?></td>
-                        <td><?= $cueilleurs[$i]['DateNaissance']?></td>
-                        <td><?= $cueilleurs[$i]['idGenre']?></td>
+                        <td><?= $cueilleur['idCueilleur'] ?> </td>
+                        <td><?= $cueilleur['Nom'] ?></td>
+                        <td><?= $cueilleur['DateNaissance'] ?></td>
+                        <td><?= $cueilleur['idGenre'] ?></td>
                     </tr>
-      <?php }?>
+                    <?php } ?>
                 </tbody>
               </table>
         </div>
     </div>
     <script>
         activeCurrentPage("ceuilleur_li")
-      </script>
+    </script>
 <?php
 include "static/footer.php";
 ?>
