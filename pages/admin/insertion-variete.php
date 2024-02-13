@@ -12,7 +12,7 @@
     <div class="main m-5">
         <div class="container">
             <div class="row">
-                <form action="traitements/addVariete.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <form action="traitements/add-variete.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
                 <div class="card p-5 rounded border-3">    
                 <h1>Variete de the</h1>
                     <!-- insert LOG -->
@@ -27,7 +27,7 @@
                         <input class="form-control" type="text" name="nomVariete" id="nomVariete" required>
                     </div>
                     <div class="row mb-3">
-                        <!-- OCCUPATION -->
+                        <!-- OCCUPATION --> 
                         <div class="form-group col-md-6"> 
                             <label for="occupation" class="form-label">Occupation</label>
                             <input class="form-control" type="text" name="occupation" id="occupation" required>
@@ -56,7 +56,7 @@
                             <div class="col-6 col-lg-4"><input type="checkbox" name="moisInput[]" id=""> Decembre</div>
                         </div>
                     <div>
-                        <button type="submit" class="btn btn-success mt-3">Add New Variete</button>
+                        <!-- <button type="submit" class="btn btn-success mt-3">Add New Variete</button> -->
 
                     <div class="d-flex justify-content-between mt-3">
                         <button type="submit" class="btn btn-success ">Add New Variete</button>
