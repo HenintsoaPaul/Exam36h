@@ -6,7 +6,7 @@ INSERT INTO the_Genres (NomGenre)
 VALUES ('Homme'),
        ('Femme'),
        ('Non Binaire');
-
+ 
 INSERT INTO the_VarietesThes (NomVariete, Occupation, RendementParPied)
 VALUES ('Vert', 500, 4),
        ('Noir', 1000, 1),
@@ -40,13 +40,13 @@ VALUES (1, 1),
        (6, 1);
 
 INSERT INTO the_mallus (Mallus, DateConfig)
-VALUES (10, '2024-01-01');
+VALUES (1, '2024-01-01');
 
 INSERT INTO the_bonus (Bonus, DateConfig)
-VALUES (10, '2024-01-01');
+VALUES (1, '2024-01-01');
 
 INSERT INTO the_poidsminimal (Poids, DateConfig)
-VALUES (100, '2024-01-01');
+VALUES (10, '2024-01-01');
 
 INSERT INTO the_depenses (DateDepense, MontantDepense, idCategorieDepense)
 VALUES ('2024-01-01', 10, 1);
