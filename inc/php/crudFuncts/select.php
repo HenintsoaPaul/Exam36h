@@ -226,7 +226,7 @@ function getSommeDepensesInPeriod( $connection, $dateDebut, $dateFin )
 // - cueilleur -
 function getPoidsTotalOfCueilleurInPeriod( $connection, $idCueilleur, $dateDebut, $dateFin )
 {
-    $query = "SELECT sum(PoidsCeuilli) as FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
+    $query = "SELECT sum(PoidsCeuilli) as sum FROM the_cueillettes WHERE idCueilleur = $idCueilleur AND DateCeuillette BETWEEN '$dateDebut' AND '$dateFin'";
     return exeSelect( $connection, $query )[0]['sum'];
 }
 
