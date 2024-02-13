@@ -156,7 +156,7 @@
 
     /// Affichage de resultat
         if (poidsCueilli != "") {
-            poidsTotal.innerHTML    = poidsCueilli;    
+            poidsTotal.innerHTML    = poidsCueilli;
         }
         if(prixRevient != "undefined")
         {coutDeRevient.innerHTML = prixRevient;}
