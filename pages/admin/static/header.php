@@ -22,9 +22,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="d-flex"></div>
-                  <ul class="navbar-nav col-2 flex-grow-1 justify-content-center mr-auto mt-2 mt-lg-0">
+                  <ul class="navbar-nav col-2 flex-grow-1 gap-2 justify-content-center mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                          <a class="nav-link" id="admin_li" href="home.php">Admin Home<span class="sr-only"></span></a>
+                          <a class="nav-link" id="admin_li" href="home.php">Admin home<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" id="variete_li" href="insertion-variete.php">Variete</a>
@@ -35,6 +35,29 @@
                         <li class="nav-item">
 
                           <a class="nav-link" id="ceuilleur_li" href="insertion-cueilleur.php">Ceuilleur</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" data-target="configs" id="configDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Configuration
+                          </a>
+                          <div class="dropdown-menu bg-light" aria-labelledby="configDropdown" id="configs" style="width:200px;">
+                            <ul class="nav gap-3">
+                              <li class="nav-item">
+                                <a class="nav-link text-dark" id="configPoids_li" href="insertion-config-poids-min.php">Config poids minimal</a>
+                              </li>
+                              
+                              <li class="nav-item">
+                                <a class="nav-link text-dark" id="configMalus_li" href="insertion-config-malus.php">Config malus</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link text-dark" id="configBonus_li" href="insertion-config-bonus.php">Config bonus</a>
+                              </li>
+                            </ul>      
+                          </div>
+                        </li>
+                        
+              
+                        <li class="nav-item">
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" id="categorie_li" href="insertion-categorie.php">Categorie</a>
@@ -52,5 +75,7 @@
         </div>
         <script>
           collapseAction("collapser");
+          collapseAction("configDropdown");
+    
         </script>
     </header>
