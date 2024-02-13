@@ -1,13 +1,5 @@
 <?php
-require_once 'inc/php/connection.php';
-require_once 'inc/php/crudFuncts/select.php';
 
-$connection = db_connect();
-
-$date = '2024-02-13';
-echo getCoutRevientParKilo($connection, $date, $date);
-
-closeConnection($connection);
 ?>
 <!DOCTYPE html>
 <html lang="en">

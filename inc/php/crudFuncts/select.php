@@ -83,7 +83,7 @@ function exeSelect( $connection, $query )
 
 function getMoisRegeneration( $connection, $idVariete )
 {
-    $query = "SELECT * FROM the_Regenerations WHERE idVarieteThe = $idVariete";
+    $query = "SELECT * FROM the_regenerations WHERE idVarieteThe = $idVariete";
     return exeSelect( $connection, $query );
 }
 
@@ -96,7 +96,7 @@ function comparaisonDecroissanteIdMois( $a, $b )
 /// Recupere l'idVariete planter dans une parcelle donnee
 function getIdVarieteByIdParcelle( $connection, $idParcelle )
 {
-    $idVariete = exeSelect( $connection, "Select idVarieteThe from the_Parcelles WHERE idParcelle = " . $idParcelle );
+    $idVariete = exeSelect( $connection, "Select idVarieteThe from the_parcelles WHERE idParcelle = " . $idParcelle );
     return $idVariete[0]['idVarieteThe'];
 }
 
@@ -165,7 +165,7 @@ function getAllSalaires( $connection )
 
 function getAllGenre( $connection )
 {
-    return getAllRows( $connection, "the_Genres" );
+    return getAllRows( $connection, "the_genres" );
 }
 
 function getAllMois( $connection )
@@ -185,7 +185,7 @@ function getAllUsers( $connection )
 
 function getAllCategoriesDepenses( $connection )
 {
-    return getAllRows( $connection, "the_CategoriesDepenses" );
+    return getAllRows( $connection, "the_categoriesdepenses" );
 }
 
 
