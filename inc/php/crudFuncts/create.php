@@ -112,15 +112,15 @@ function addCategorieDepense( $connection, $nomCategorie )
 /**
  * @return int 1 on SUCCESS.
  */
-function addCueillette( $connection, $dateCueillette, $poidsCeuilli, $idParcelle, $idCeuilleur )
+function addCueillette( $connection, $dateCueillette, $poidsCeuilli, $idParcelle, $idCueilleur )
 {
     if ( !isset( $dateCueillette ) ) echo "dateCueillette cannot be null!";
     if ( !isset( $poidsCeuilli ) ) echo "poidsCeuilli cannot be null!";
     if ( !isset( $idParcelle ) ) echo "idParcelle cannot be null!";
-    if ( !isset( $idCeuilleur ) ) echo "idCeuilleur cannot be null!";
+    if ( !isset( $idCueilleur ) ) echo "idCueilleur cannot be null!";
 
-    $format = "INSERT INTO the_cueillettes (dateceuillette, poidsceuilli, idparcelle, idceuilleur) VALUES ('%s', %f, %d, %d)";
-    $query = sprintf( $format, $dateCueillette, $poidsCeuilli, $idParcelle, $idCeuilleur );
+    $format = "INSERT INTO the_cueillettes (dateceuillette, poidsceuilli, idparcelle, idCueilleur) VALUES ('%s', %f, %d, %d)";
+    $query = sprintf( $format, $dateCueillette, $poidsCeuilli, $idParcelle, $idCueilleur );
 
     return exeInsertThenNbRows( $connection, $query );
 }
