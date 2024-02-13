@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../assets/main.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
+
     <script src="../../inc/js/login.js"></script>
 
     <title>Magic Tea</title>

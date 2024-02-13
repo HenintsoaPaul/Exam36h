@@ -84,12 +84,13 @@
     var dateDebutInput = document.getElementById("dateDebutInput");
     var dateFinInput = document.getElementById("dateFinInput");
 
-
     /// Action lors de la validation du formulaire
     resultForm.addEventListener("submit" , function(event){
         event.preventDefault();
         var poidsTotal = document.getElementById("poidsTotal");
+        poidsTotal.innerHTML = 0;
         var coutDeRevient = document.getElementById("coutDeRevient");
+        coutDeRevient.innerHTML = 0;
         var dateFin = document.getElementById("dateFinTitle"); 
     /// Traitement de donnee
         var poidsCueilli = getPoidsCueilli("getPoidsCueilli.php", dateDebutInput.value, dateFinInput.value);
@@ -97,10 +98,11 @@
         var allParcelle = getAllParcelle("getAllParcelle.php");
         
         var tbody = document.getElementById("parcelleTableBody");
+        tbody.innerHTML = "";
         for (let index = 0; index < allParcelle.length; index++) {
 
             const parcelle = allParcelle[index];
-            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,value.idParcelle);
+            var reste = getPoidsRestants("getReste.php", dateDebutInput.value, dateFinInput.value,parcelle.idParcelle);
 
             var tr = document.createElement("tr");
 
@@ -118,8 +120,11 @@
     ///
 
     /// Affichage de resultat
-        poidsTotal.innerHTML = poidsCueilli;
-        coutDeRevient.innerHTML = prixRevient;
+        if (poidsCueilli != "") {
+            poidsTotal.innerHTML    = poidsCueilli;    
+        }
+        if(prixRevient != "undefined")
+        {coutDeRevient.innerHTML = prixRevient;}
     
         console.log(poidsTotal);
         console.log(coutDeRevient);

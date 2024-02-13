@@ -29,12 +29,12 @@ if ( isset($_GET['message']) ) {
                     <div class="row">
                         <!-- SURFACE -->
                         <div class="form-group col-md-6"> 
-                            <label for="surface">Surface (Ha)</label>
+                            <label for="surface" class="form-label">Surface</label>
                             <input class="form-control" type="number" name="surface" id="surface" required>
                         </div>
                         <!-- variete -->
                         <div class="form-group col-md-6"> 
-                            <label for="idVariete">Variete</label>
+                            <label for="idVariete" class="form-label">Variete</label>
                             <select name="idVariete" title="variete" class="form-select" required>
                                 <option value="">Choisir une variete</option>
                                 <?php foreach($allVarietes as $variete) { ?>

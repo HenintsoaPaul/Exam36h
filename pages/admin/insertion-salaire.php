@@ -24,13 +24,13 @@ if ( isset($_GET['message']) ) {
                     <div class="row">
                         <!-- Montant -->
                         <div class="form-group col-12"> 
-                            <label for="montantInput">Montant Salaire</label>
+                            <label for="montantInput" class="form-label">Montant Salaire</label>
                             <input class="form-control" type="text" name="montantInput" id="montantInput" required>
                         </div>
 
                         <!-- Date debut -->
                         <div class="form-group col-12"> 
-                            <label for="dateInput">Date de debut</label>
+                            <label for="dateInput" class="form-label">Date de debut</label>
                             <div class="form-group col-md-6">
                                 <input type="date" class="form-control" required name="dateInput" id="dateInput">
                             </div>
@@ -42,7 +42,7 @@ if ( isset($_GET['message']) ) {
                 </div>
             </div>
     </div>
-    <br />
+    <br/>
     <script>
         activeCurrentPage("salaire_li")
     </script>

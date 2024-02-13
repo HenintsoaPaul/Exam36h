@@ -22,7 +22,7 @@ if ( isset($_GET['message']) ) {
 
                         <!-- Nom -->
                         <div class="form-group col-md-12">
-                            <label for="nomInput">Nom Categorie</label>
+                            <label for="nomInput" class="form-label">Nom Categorie</label>
                             <input class="form-control" type="text" name="nomInput" id="nomInput" required>
                         </div>
                     <div>

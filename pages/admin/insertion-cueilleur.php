@@ -18,6 +18,7 @@ if ( isset($_GET['message']) ) {
         <div class="container">
             <div class="row">
                 <form action="traitements/addCueilleur.php" method="POST" id="insertionForm" class="col-12 col-md-6 mx-auto">
+                <div class="card p-5 rounded border-3">    
                     <h1>Cueilleur</h1>
                     <!-- insert LOG -->
                     <div >
@@ -27,19 +28,19 @@ if ( isset($_GET['message']) ) {
 
                     <!-- Nom -->
                     <div class="form-group col-md-12">
-                        <label for="nomInput">Nom Cueilleur</label>
+                        <label for="nomInput " class="form-label">Nom Cueilleur</label>
                         <input class="form-control" type="text" name="nomInput" id="nomInput" required>
                     </div>
 
                     <div class="row">
                         <!-- Date de naissance -->
                         <div class="form-group col-md-6"> 
-                            <label for="naissanceInput">Date de naissance</label>
+                            <label for="naissanceInput" class="form-label">Date de naissance</label>
                             <input class="form-control" type="date" name="naissance" required id="naissanceInput">
                         </div>
                         <!-- Genre -->
                         <div class="form-group col-md-6"> 
-                            <label for="genreInput">Genre</label>
+                            <label for="genreInput" class="form-label">Genre</label>
                             <select name="genreInput" title="genre" class="form-select" required>
                                 <option value="">Choisir votre genre </option>
                                 <?php foreach( $genres as $genre ) { ?>
